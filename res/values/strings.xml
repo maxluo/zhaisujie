@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">宅速洁</string>
+    <string name="action_exit">退出</string>
+    <string name="titlebar_title">选择服务地址</string>
+    <string name="back">返回</string>
+    <string name="setting">设置</string>
+    <string name="confirm">确认</string>
+    <string name="orders">订单</string>
+    <string name="search_btn">搜索</string>
+    <string name="btn_login_getCode">获取验证码</string>
+    <string name="btn_login_title">立即使用</string>
+	<string name="btn_submit">下一步,订单确认</string>
+	<string name="contact_detail_title">联系和备注</string>
+	<string name="order_confirm_title">订单确认</string>
+	<string name="pay_submit">使用支付宝付款</string>
+	<string name="address_input">完善地址</string>
+	
+	<string name="order_trace">订单跟踪</string>
+	<string name="order_submit">提交需求</string>
+	<string name="order_cancel">取消订单</string>
+	<string name="match_complete">匹配完成</string>
+	<string name="contact_home_company">联系家政公司</string>
+	<string name="home_service">上门服务</string>
+	<string name="contact_waiter">联系他</string>
+	<string name="confirm_complete">确认完成</string>
+</resources>
