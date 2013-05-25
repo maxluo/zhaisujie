@@ -10,10 +10,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.ag.zhaisujie.App;
 import com.ag.zhaisujie.R;
+import com.ag.zhaisujie.ToastUtil;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -58,6 +60,8 @@ public class MainActivity extends Activity {
 	private static Button loginBtn;
 	private static Button orderBtn;
 	private static Button settingBtn;
+	private Button goOnbtn;//下单
+	private EditText addrTxt;//补充地址
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -73,6 +77,11 @@ public class MainActivity extends Activity {
 		loginBtn.setOnClickListener(listener);
 		orderBtn=(Button) findViewById(R.id.title_btn_order);
 		settingBtn=(Button) findViewById(R.id.title_btn_setting);
+		goOnbtn=(Button) findViewById(R.id.search_clear_bt);
+		addrTxt=(EditText) findViewById(R.id.search_bar_et);
+		goOnbtn.setOnClickListener(listener);
+		orderBtn.setOnClickListener(listener);
+		settingBtn.setOnClickListener(listener);
 		initButton();
 		
 	}
@@ -284,6 +293,16 @@ public class MainActivity extends Activity {
 		locatFrom.setText("获取位置中...");
 	}
 	
+	//去下一个联系页面
+	private void openOrder(){
+		if(app.getUser()==null){
+			ToastUtil.show(this, "请先登录！");
+			return;
+		}
+		String addr=locatFrom.getText().toString()+addrTxt.getText().toString();
+		Intent intent = new Intent(MainActivity.this, OrderFrstActivity.class);
+		MainActivity.this.startActivity(intent);
+	}
 	OnClickListener listener = new OnClickListener() {
 		public void onClick(View v) {
 			Button btn = (Button) v;
@@ -297,6 +316,10 @@ public class MainActivity extends Activity {
 				break;
 			case R.id.title_btn_setting:
 				break;
+			case R.id.search_clear_bt:
+				openOrder();
+				break;
+				
 			}
 		}
 	};
