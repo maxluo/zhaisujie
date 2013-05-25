@@ -8,7 +8,7 @@
     <string name="setting">设置</string>
     <string name="confirm">确认</string>
     <string name="orders">订单</string>
-    <string name="search_btn">搜索</string>
+    <string name="search_btn">继续</string>
     <string name="btn_login_getCode">获取验证码</string>
     <string name="btn_login_title">立即使用</string>
 	<string name="btn_submit">下一步,订单确认</string>
