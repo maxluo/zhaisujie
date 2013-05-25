@@ -22,6 +22,8 @@ public class App {
 	private User user;
 	private Context context;
 	private static App app; 
+	public static final String FAIL="fail";
+	public static final String SUCCES="succes";
 	
 	public App(Context context){
 		this.context=context;
@@ -32,6 +34,9 @@ public class App {
 		if(app==null){
 			app =new App(context);
 		}
+		return app;
+	}
+	public static App getInstance(){
 		return app;
 	}
 	private void init(){
@@ -45,7 +50,7 @@ public class App {
 			JSONObject job= (JSONObject)jsonParser.nextValue();
 			user =new User();
 			user.setUid(job.getInt("uid"));
-			user.setUserName(job.getString("userName"));
+			user.setUserName(job.getString("username"));
 			
 		}catch(Exception ex){
 			user=null;
@@ -65,7 +70,7 @@ public class App {
 	    		editor.putString(USER_NAME, userJob.toString());
 	    		
 			}catch(Exception ex){
-				
+				ex.printStackTrace();
 			}
 		}
 	}
@@ -76,6 +81,7 @@ public class App {
 
 	public void setUser(User user) {
 		this.user = user;
+		writeSesson();
 	}
 	
 	public Context getContext() {

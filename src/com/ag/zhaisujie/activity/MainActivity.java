@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -49,14 +50,14 @@ public class MainActivity extends Activity {
 	private MapView mMapView = null;
 	private MapController mapController = null;
 	private MyLocationOverlay myLocationOverlay;
-	public LocationClient mLocationClient = null;
-	public BDLocationListener myListener = new MyLocationListener();
-	private  MKSearch mkSerach;
-	private  TextView locatFrom;
-	private  App app;
-	private Button loginBtn;
-	private Button orderBtn;
-	private Button settingBtn;
+	private LocationClient mLocationClient = null;
+	private BDLocationListener myListener = new MyLocationListener();
+	private MKSearch mkSerach;
+	private TextView locatFrom;
+	private static App app;
+	private static Button loginBtn;
+	private static Button orderBtn;
+	private static Button settingBtn;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -72,19 +73,21 @@ public class MainActivity extends Activity {
 		loginBtn.setOnClickListener(listener);
 		orderBtn=(Button) findViewById(R.id.title_btn_order);
 		settingBtn=(Button) findViewById(R.id.title_btn_setting);
+		initButton();
 		
-		//设置抬头
-		if(app.getUser()==null){
-			loginBtn.setVisibility(View.VISIBLE);
-			orderBtn.setVisibility(View.GONE);
-			settingBtn.setVisibility(View.GONE);
-		}else{
-			loginBtn.setVisibility(View.GONE);
-			orderBtn.setVisibility(View.VISIBLE);
-			settingBtn.setVisibility(View.VISIBLE);
-		}
 	}
-
+	public static void initButton(){
+		//设置抬头
+				if(app.getUser()==null){
+					loginBtn.setVisibility(View.VISIBLE);
+					orderBtn.setVisibility(View.GONE);
+					settingBtn.setVisibility(View.GONE);
+				}else{
+					loginBtn.setVisibility(View.GONE);
+					orderBtn.setVisibility(View.VISIBLE);
+					settingBtn.setVisibility(View.VISIBLE);
+				}
+	}
 	private void initMap(){
 		
 		mMapView.setBuiltInZoomControls(true);
@@ -226,6 +229,15 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		super.onOptionsItemSelected(item);
+		if(item.getItemId()==R.id.action_exit){
+			finish();
+		}
 		return true;
 	}
 
