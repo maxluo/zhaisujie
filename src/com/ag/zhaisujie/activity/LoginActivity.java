@@ -62,13 +62,14 @@ public class LoginActivity extends Activity {
 			phoneTxt.requestFocus();
 			return;
 		}
-		ToastUtil.show(this,"注意查收短信消息！");
+		
 		String rtn=HttpUtil.getCode(phone);
 		if(App.FAIL.equals(rtn)){
 			ToastUtil.show(this, "获取验证码失败！");
 		}else{
 			time = new TimeCount(60000, 1000);//构造CountDownTimer对象
 			time.start();
+			ToastUtil.show(this,"注意查收短信消息！");
 		}
 		
 	}
