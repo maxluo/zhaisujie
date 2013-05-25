@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.ag.zhaisujie.R;
 
@@ -19,16 +20,17 @@ import com.ag.zhaisujie.R;
  */
 public class OrderFrstActivity extends Activity {
 	private Button backBtn;
-	
+	private TextView titleTxt;
 	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.order_frst);
-		
-		
-		
+		backBtn=(Button)findViewById(R.id.title_btn_back);
+		backBtn.setVisibility(View.VISIBLE);
+		titleTxt=(TextView)findViewById(R.id.title);
+		titleTxt.setText(R.string.order_frst_title);
 	}
 
 

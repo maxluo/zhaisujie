@@ -8,4 +8,5 @@
     <item type="color" name="lightgrey">#9D9D9D</item>
     <item type="color" name="category_title_normal_background">#FFADB2AD</item>
     <item type="drawable" name="titile_background">#0033FF</item>
+     <item type="color" name="blue">#5E9EDB</item>
 </resources>
