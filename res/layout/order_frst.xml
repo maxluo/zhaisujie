@@ -13,72 +13,49 @@
         android:layout_marginLeft="20.0dip"
         android:layout_marginRight="20.0dip"
         android:layout_marginTop="20.0dip" >
-
         <TableRow>
-
             <TextView
-                android:id="@+id/order_user_name"
+                android:drawableLeft="@drawable/home_icon"
+                android:id="@+id/order_txt_addr_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="登陆用户"
-                android:textColor="@color/black" />
-        </TableRow>
-
-        <TableRow>
-
+                android:textSize="16.0sp"
+                android:text="服务地址："
+                android:textColor="@color/blue" />
             <TextView
-                android:id="@+id/order_user_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="13512345678"
-                android:textColor="@color/black" />
-        </TableRow>
-
-        <RelativeLayout
-            android:id="@+id/address_layout"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/order_user_address"
+                android:id="@+id/order_txt_addr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:text="地址xxxxxXXXXXX"
+                android:text=""
                 android:textColor="@color/black" />
 
-            <Button
-                android:id="@+id/address_btn"
-                android:layout_width="70dip"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/btn_green"
-                android:text="@string/address_input"
-                android:textSize="15.0dip" />
-        </RelativeLayout>
-
-        <TableRow>
-
-            <EditText
-                android:id="@+id/address_input"
-                style="@style/common_editview"
-                android:layout_width="0.0dip"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10.0dip"
-                android:layout_weight="1.0"
-                android:hint="请输补充地址信息"
-                android:visibility="gone" />
         </TableRow>
+
     </TableLayout>
 
-    <View
+    <TableLayout
         android:layout_width="fill_parent"
-        android:layout_height="2dip"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20.0dip"
         android:layout_marginRight="20.0dip"
-        android:layout_marginTop="5.0dip"
-        android:background="@color/category_title_normal_background" />
+        android:layout_marginTop="20.0dip" >
+        <TableRow>
+          <TextView
+                android:id="@+id/order_txt_long_name"
+                android:drawableLeft="@drawable/time_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16.0sp"
+                android:text="服务时长："
+                android:textColor="@color/blue" />
+        </TableRow>
+
+        <TableRow>
+            
+        </TableRow>
+
+    </TableLayout>
 
     <TableLayout
         android:layout_width="fill_parent"
@@ -88,121 +65,22 @@
         android:layout_marginTop="20.0dip" >
 
         <TableRow>
-
-            <TextView
+          <TextView
+                android:id="@+id/order_txt_time_name"
+                android:drawableLeft="@drawable/time_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="服务时长"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/service_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="2小时"
-                android:textColor="@color/black" />
+                android:textSize="16.0sp"
+                android:text="服务时间："
+                android:textColor="@color/blue" />
         </TableRow>
 
         <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="服务开始时间"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/service_start_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="9月23日 15:30"
-                android:textColor="@color/black" />
+            
         </TableRow>
 
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="特别备注"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/service_memo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:text="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-                android:textColor="@color/black" />
-        </TableRow>
     </TableLayout>
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="2dip"
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
-        android:layout_marginTop="5.0dip"
-        android:background="@color/category_title_normal_background" />
-
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
-        android:layout_marginTop="20.0dip" >
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="支付方式"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/pay_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dip"
-                android:gravity="right"
-                android:text="支付宝"
-                android:textColor="@color/black" />
-
-            <ImageView
-                android:layout_width="50dip"
-                android:layout_height="50dip"
-                android:layout_gravity="right"
-                android:layout_marginLeft="5dip"
-                android:background="@drawable/title_bg"
-                android:text="特别备注"
-                android:textColor="#000000"
-                android:textSize="18dip" />
-        </TableRow>
-    </TableLayout>
-
-    <FrameLayout
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
-        android:layout_marginTop="20.0dip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/title_bg" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="实际付款    36元"
-            android:textColor="@color/black"
-            android:textSize="18dip" />
-    </FrameLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -212,12 +90,12 @@
         android:layout_marginTop="20.0dip" >
 
         <Button
-            android:id="@+id/pay_submit"
+            android:id="@+id/order_txt_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:background="@drawable/btn_green"
-            android:text="@string/pay_submit"
+            android:text="@string/order_txt_next"
             android:textSize="20.0sp" />
     </RelativeLayout>
 
