@@ -294,13 +294,14 @@ public class MainActivity extends Activity {
 	}
 	
 	//去下一个联系页面
-	private void openOrder(){
+	private void addOrder(){
 		if(app.getUser()==null){
 			ToastUtil.show(this, "请先登录！");
 			return;
 		}
 		String addr=locatFrom.getText().toString()+addrTxt.getText().toString();
 		Intent intent = new Intent(MainActivity.this, OrderFrstActivity.class);
+		intent.putExtra("Addr", addr);//传递地址到下一页面
 		MainActivity.this.startActivity(intent);
 	}
 	OnClickListener listener = new OnClickListener() {
@@ -315,9 +316,11 @@ public class MainActivity extends Activity {
 			case R.id.title_btn_order:
 				break;
 			case R.id.title_btn_setting:
+				Intent intent2 = new Intent(MainActivity.this, ServiceActivity.class);
+				MainActivity.this.startActivity(intent2);
 				break;
 			case R.id.search_clear_bt:
-				openOrder();
+				addOrder();
 				break;
 				
 			}

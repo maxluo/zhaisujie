@@ -52,8 +52,48 @@
         </TableRow>
 
         <TableRow>
-            
-        </TableRow>
+            <RadioGroup
+                android:id="@+id/time_btn_group"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" 
+                android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/time_btn_2"
+                        android:layout_width="80.0sp"
+                        android:layout_height="72.0sp"
+                        android:background="@drawable/time_btn_radion"
+                        android:button="@null"
+                        android:gravity="bottom|start"
+                        android:text="@string/time_txt_2"
+                        android:textColor="@color/white"
+                        android:layout_marginLeft="5.0sp" />
+
+                    <RadioButton
+                        android:id="@+id/time_btn_3"
+                        android:layout_width="80.0sp"
+                        android:layout_height="72.0sp"
+                        android:background="@drawable/time_btn_radion"
+                        android:button="@null"
+                        android:gravity="bottom|start"
+                        android:text="@string/time_txt_3"
+                        android:textColor="@color/white" 
+                        android:layout_marginLeft="5.0sp" />
+
+                    <RadioButton
+                        android:id="@+id/time_btn_4"
+                        android:layout_width="80.0sp"
+                        android:layout_height="72.0sp"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/time_btn_radion"
+                        android:button="@null"
+                        android:gravity="bottom|start"
+                        android:text="@string/time_txt_4"
+                        android:textColor="@color/white" 
+                        android:layout_marginLeft="5.0sp" />
+
+            </RadioGroup>
+	</TableRow>
 
     </TableLayout>
 
@@ -76,6 +116,8 @@
         </TableRow>
 
         <TableRow>
+            
+            
             
         </TableRow>
 
