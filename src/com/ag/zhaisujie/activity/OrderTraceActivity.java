@@ -81,10 +81,12 @@ public class OrderTraceActivity extends Activity {
 			case R.id.contact_home_company:
 				break;
 			case R.id.contact_waiter:
+				Intent intent = new Intent(OrderTraceActivity.this, ServiceHintActivity.class);
+				startActivity(intent);
 				break;
 			case R.id.confirm_done:
-				Intent intent = new Intent(OrderTraceActivity.this, ServiceActivity.class);
-				startActivity(intent);
+				Intent intent2 = new Intent(OrderTraceActivity.this, ServiceActivity.class);
+				startActivity(intent2);
 				break;
 			}
 		}

@@ -18,14 +18,14 @@
             android:id="@+id/hint_pic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/title_bg" />
+            android:src="@drawable/noservice2" />
 
         <TextView
             android:id="@+id/hint_info"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:text="没有服务"
+            android:text="@string/no_service_hint"
             android:textColor="@color/black" />
     </LinearLayout>
 

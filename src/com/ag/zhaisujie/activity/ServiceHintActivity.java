@@ -2,6 +2,8 @@ package com.ag.zhaisujie.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -26,12 +28,12 @@ public class ServiceHintActivity extends Activity {
 	private TextView hintInfo;
 	private ImageView hintPic;
 
-	private Hint hintFlag = Hint.NO_INTERNET;
+	private Hint hintFlag = Hint.NO_SERVICE;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.service);
+		setContentView(R.layout.service_hint);
 
 		Bundle bundle = this.getIntent().getExtras();
 
@@ -46,9 +48,9 @@ public class ServiceHintActivity extends Activity {
 		// 根据枚举内容显示不同界面提示信息
 		switch (hintFlag) {
 		case NO_SERVICE:
+			hintPic.setImageResource(R.drawable.noservice2);
 			hintInfo.setText(getString(R.string.no_service_hint));
 			break;
-
 		default:
 			break;
 		}

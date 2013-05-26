@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ag.zhaisujie.R;
+import com.ant.liao.GifView;
 
 /**
  * OrderSendActivity.java
@@ -25,7 +26,7 @@ import com.ag.zhaisujie.R;
 public class OrderSendActivity extends Activity {
 	
 	private Button backBtn;
-	private ProgressBar progressBar;
+	private GifView progressImg;
 	private TextView resultInfo;
 	private TextView warnInfo;
 	
@@ -60,7 +61,7 @@ public class OrderSendActivity extends Activity {
 		TextView title = (TextView)findViewById(R.id.title);
 		title.setText(R.string.order_send);
 		
-		progressBar = (ProgressBar)findViewById(R.id.order_send_process_bar);
+		progressImg = (GifView)findViewById(R.id.order_send_process);
 		resultInfo = (TextView)findViewById(R.id.order_result_info);
 		warnInfo = (TextView)findViewById(R.id.order_warn_info);
 		
@@ -87,7 +88,7 @@ public class OrderSendActivity extends Activity {
 					//进行支付or获取跟踪信息
 					/*ImageView iv = new ImageView(OrderSendActivity.this);
 					iv.setImageBitmap(BitmapFactory.decodeStream(null));*/
-//					Thread.sleep(3000);
+					Thread.sleep(3000);
 					
 				} catch (InterruptedException e) {
 					e.printStackTrace();
