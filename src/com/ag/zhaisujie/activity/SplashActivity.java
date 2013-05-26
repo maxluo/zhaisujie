@@ -25,11 +25,11 @@ public class SplashActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splash);
-		timer.schedule(task, 100);//设置这个task在延迟三秒之后自动执行
+		timer.schedule(task, 1000 * 3);//设置这个task在延迟三秒之后自动执行
 	}
 	
 	private void goHome() {
-		Intent intent = new Intent(SplashActivity.this, ContactDetailActivity.class);
+		Intent intent = new Intent(SplashActivity.this, MainActivity.class);
 		SplashActivity.this.startActivity(intent);
 		SplashActivity.this.finish();
 	}
