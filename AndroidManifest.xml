@@ -76,6 +76,15 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" >
         </activity>
+        
+         <activity
+            android:name="com.ag.zhaisujie.activity.OrderFrstActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        
         <activity
             android:name="com.ag.zhaisujie.activity.ContactDetailActivity"
             android:configChanges="keyboardHidden|orientation"
