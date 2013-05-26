@@ -48,7 +48,7 @@
                 android:layout_width="70dip"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center"
-                android:layout_marginTop="20dip"
+                android:layout_marginTop="15dip"
                 android:background="@drawable/btn_green"
                 android:text="@string/action_exit"
                 android:textSize="15.0dip" />
@@ -88,7 +88,7 @@
                 android:layout_width="70dip"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center"
-                android:layout_marginTop="20dip"
+                android:layout_marginTop="15dip"
                 android:background="@drawable/btn_green"
                 android:text="@string/call_btn"
                 android:textSize="15.0dip" />

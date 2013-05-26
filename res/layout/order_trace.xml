@@ -23,7 +23,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="10.0dip"
-            android:layout_marginTop="10.0dip"
+            android:layout_marginTop="14.0dip"
             android:background="@drawable/btn_green"
             android:text="@string/order_submit"
             android:textSize="12.0dip" />
