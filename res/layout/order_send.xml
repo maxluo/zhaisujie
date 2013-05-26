@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginRight="20.0dip"
+        android:layout_marginTop="20.0dip"
+        android:orientation="vertical" >
+
+        <ProgressBar
+            android:id="@+id/order_send_process_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:layout_gravity="center"
+            style="?android:attr/progressBarStyleInverse"
+            />
+
+        <TextView
+            android:id="@+id/order_result_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/order_send"
+            android:textColor="@color/black"
+            android:textSize="50dip" />
+
+        <TextView
+            android:id="@+id/order_warn_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="正在进入订单跟踪"
+            android:textColor="@color/black"
+            android:textSize="20dip" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -27,4 +27,12 @@
 	<string name="home_service">上门服务</string>
 	<string name="contact_waiter">联系他</string>
 	<string name="confirm_complete">确认完成</string>
+	
+	<string name="order_send">支付完成</string>
+	
+	<string name="service_title">服务</string>
+	<string name="order_btn">发布订单</string>
+	<string name="call_btn">呼叫</string>
+	
+	<string name="no_service_hint">对不起,您所在的地区还没有开通宅速洁服务，谢谢您的使用。</string>
 </resources>

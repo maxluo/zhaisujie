@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <include layout="@layout/titlebar" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginRight="20.0dip"
+        android:layout_marginTop="20.0dip" >
+
+        <!-- 账号 -->
+        <LinearLayout
+            android:id="@+id/account"
+            android:layout_width="120dip"
+            android:layout_height="120dip"
+            android:layout_marginLeft="15.0dip"
+            android:background="@color/category_title_normal_background"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/order_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_marginTop="20.0dip"
+                android:text="账号"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/order_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5.0dip"
+                android:text="123123213123"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/exit_btn"
+                android:layout_width="70dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:background="@drawable/btn_green"
+                android:text="@string/action_exit"
+                android:textSize="15.0dip" />
+        </LinearLayout>
+        
+        <!-- 客服 -->
+        <LinearLayout
+            android:id="@+id/service"
+            android:layout_width="120dip"
+            android:layout_height="120dip"
+            android:background="@color/category_title_normal_background"
+            android:orientation="vertical" 
+            android:layout_marginRight="15.0dip"
+            android:layout_alignParentRight="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_marginTop="20.0dip"
+                android:text="客服电话"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/service_phone_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5.0dip"
+                android:text="10086"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/call_btn"
+                android:layout_width="70dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:background="@drawable/btn_green"
+                android:text="@string/call_btn"
+                android:textSize="15.0dip" />
+        </LinearLayout>
+        
+        <!-- 用户 -->
+        <LinearLayout
+            android:id="@+id/user_info"
+            android:layout_width="120dip"
+            android:layout_height="120dip"
+            android:background="@color/category_title_normal_background"
+            android:orientation="vertical" 
+            android:layout_marginLeft="15.0dip"
+            android:layout_marginTop="15.0dip"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/account">
+
+            <TextView
+                android:id="@+id/order_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_marginTop="20.0dip"
+                android:text="云小宅"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/order_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5.0dip"
+                android:text="123123213123"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/exit_btn"
+                android:layout_width="70dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:background="@drawable/btn_green"
+                android:text="@string/call_btn"
+                android:textSize="15.0dip" />
+        </LinearLayout>
+        
+        <!-- 关于 -->
+        <LinearLayout
+            android:id="@+id/about"
+            android:layout_width="120dip"
+            android:layout_height="120dip"
+            android:background="@color/category_title_normal_background"
+            android:orientation="vertical" 
+            android:layout_marginTop="15.0dip"
+            android:layout_marginRight="15.0dip"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/service">
+
+            <TextView
+                android:id="@+id/about_us"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_marginTop="20.0dip"
+                android:text="关于我们"
+                android:textColor="@color/black" />
+
+            
+        </LinearLayout>
+        
+    </RelativeLayout>
+
+</LinearLayout>
