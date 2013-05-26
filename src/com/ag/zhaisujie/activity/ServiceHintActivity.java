@@ -48,7 +48,7 @@ public class ServiceHintActivity extends Activity {
 		// 根据枚举内容显示不同界面提示信息
 		switch (hintFlag) {
 		case NO_SERVICE:
-			hintPic.setImageResource(R.drawable.noservice2);
+			hintPic.setImageResource(R.drawable.no_service);
 			hintInfo.setText(getString(R.string.no_service_hint));
 			break;
 		default:

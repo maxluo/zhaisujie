@@ -9,5 +9,10 @@
     <item type="color" name="lightgrey">#d0d0d0</item>
     <item type="color" name="category_title_normal_background">#FFADB2AD</item>
     <item type="drawable" name="titile_background">#0033FF</item>
-     <item type="color" name="blue">#5E9EDB</item>
+    <item type="color" name="blue">#5E9EDB</item>
+    
+    <item type="color" name="cyan">#1abc9c</item>
+    <item type="color" name="purple">#8e44ad</item>
+    <item type="color" name="lightgreen">#2ecc71</item>
+     
 </resources>
