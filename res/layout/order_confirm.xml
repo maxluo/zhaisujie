@@ -82,10 +82,11 @@
         </TableLayout>
 
         <View
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="2dip"
             android:layout_marginTop="5.0dip"
-            android:background="@color/category_title_normal_background" />
+            android:layout_marginRight="5.0dip"
+            android:background="@drawable/sp_line" />
 
         <TableLayout
             android:layout_width="fill_parent"

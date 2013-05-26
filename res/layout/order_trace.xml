@@ -9,320 +9,283 @@
 
     <!-- 提交订单 -->
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:layout_marginTop="10.0dip" >
+        android:layout_gravity="center"
+        android:layout_marginTop="10.0dip"
+        android:background="@drawable/trace_dialog" >
 
-        <ImageView
+        <Button
+            android:id="@+id/order_submit"
+            android:layout_width="75.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5.0dip"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/btn_green"
+            android:text="@string/order_submit"
+            android:textSize="12.0dip" />
+
+        <Button
+            android:id="@+id/order_cancel"
+            android:layout_width="75.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10.0dip"
+            android:layout_marginRight="25.0dip"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/btn_green"
+            android:text="@string/order_cancel"
+            android:textSize="12.0dip" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/title_bg" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10.0dip"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginTop="10.0dip"
+            android:layout_toLeftOf="@id/order_cancel"
+            android:layout_toRightOf="@id/order_submit"
+            android:orientation="vertical" >
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" >
-
-            <Button
-                android:id="@+id/order_submit"
-                android:layout_width="75.0dip"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10.0dip"
-                android:background="@drawable/btn_green"
-                android:text="@string/order_submit"
-                android:textSize="12.0dip" />
-
-            <Button
-                android:id="@+id/order_cancel"
-                android:layout_width="75.0dip"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10.0dip"
-                android:layout_marginRight="10.0dip"
-                android:layout_marginTop="10.0dip"
-                android:background="@drawable/btn_green"
-                android:text="@string/order_cancel"
-                android:textSize="12.0dip" />
-
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10.0dip"
-                android:layout_marginLeft="10.0dip"
-                android:layout_marginTop="10.0dip"
-                android:layout_toLeftOf="@id/order_cancel"
-                android:layout_toRightOf="@id/order_submit"
-                android:orientation="vertical" >
+                android:layout_gravity="center"
+                android:text="提交成功"
+                android:textColor="@color/black" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="提交成功"
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/order_success_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="10dip"
-                    android:text="2012-09-30 15:30"
-                    android:textColor="@color/lightgrey" />
-            </LinearLayout>
-        </RelativeLayout>
-    </FrameLayout>
+            <TextView
+                android:id="@+id/order_success_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="2012-09-30 15:30"
+                android:textColor="@color/lightgrey"
+                android:textSize="8dip" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <!-- 接单公司 -->
-    <FrameLayout
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:layout_marginTop="10.0dip" >
+        android:layout_gravity="center"
+        android:layout_marginTop="10.0dip"
+        android:background="@drawable/trace_dialog" >
 
-        <ImageView
+        <Button
+            android:id="@+id/match_complete"
+            android:layout_width="75.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5.0dip"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/btn_green"
+            android:text="@string/match_complete"
+            android:textSize="12.0dip" />
+
+        <Button
+            android:id="@+id/contact_home_company"
+            android:layout_width="75.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10.0dip"
+            android:layout_marginRight="25.0dip"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/btn_green"
+            android:text="@string/contact_home_company"
+            android:textSize="12.0dip" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/title_bg" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10.0dip"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginTop="10.0dip"
+            android:layout_toLeftOf="@id/contact_home_company"
+            android:layout_toRightOf="@id/match_complete"
+            android:orientation="vertical" >
 
-        <RelativeLayout
+            <TextView
+                android:id="@+id/company_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="XX家政"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/company_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="电话：xxxx"
+                android:textColor="@color/lightgrey"
+                android:textSize="8dip" />
+
+            <TextView
+                android:id="@+id/match_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="2012-09-30 15:30"
+                android:textColor="@color/lightgrey"
+                android:textSize="8dip" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- 服务人员 -->
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10.0dip"
+        android:background="@drawable/trace_dialog" >
+
+        <Button
+            android:id="@+id/home_service"
+            android:layout_width="75.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5.0dip"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/btn_green"
+            android:text="@string/home_service"
+            android:textSize="12.0dip" />
+
+        <Button
+            android:id="@+id/contact_waiter"
+            android:layout_width="75.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10.0dip"
+            android:layout_marginRight="25.0dip"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/btn_green"
+            android:text="@string/contact_waiter"
+            android:textSize="12.0dip" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" >
+            android:layout_marginBottom="10.0dip"
+            android:layout_marginTop="10.0dip"
+            android:layout_toLeftOf="@id/contact_waiter"
+            android:layout_toRightOf="@id/home_service" >
 
-            <Button
-                android:id="@+id/match_complete"
-                android:layout_width="75.0dip"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10.0dip"
-                android:background="@drawable/btn_green"
-                android:text="@string/match_complete"
-                android:textSize="12.0dip" />
-
-            <Button
-                android:id="@+id/contact_home_company"
-                android:layout_width="75.0dip"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10.0dip"
-                android:layout_marginRight="10.0dip"
-                android:layout_marginTop="10.0dip"
-                android:background="@drawable/btn_green"
-                android:text="@string/contact_home_company"
-                android:textSize="12.0dip" />
+            <ImageView
+                android:layout_width="50dip"
+                android:layout_height="40dip"
+                android:src="@drawable/noservice2" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10.0dip"
-                android:layout_marginLeft="10.0dip"
-                android:layout_marginTop="10.0dip"
-                android:layout_toLeftOf="@id/contact_home_company"
-                android:layout_toRightOf="@id/match_complete"
                 android:orientation="vertical" >
 
                 <TextView
-                    android:id="@+id/company_name"
+                    android:id="@+id/waiter_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="XX家政"
+                    android:layout_gravity="left"
+                    android:text="路陈刚"
                     android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/company_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="10dip"
-                    android:text="电话：xxxx"
-                    android:textColor="@color/lightgrey" />
+                    android:layout_gravity="left"
+                    android:text="手机:13512345678"
+                    android:textColor="@color/lightgrey"
+                    android:textSize="8dip" />
 
                 <TextView
                     android:id="@+id/match_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="10dip"
+                    android:layout_gravity="left"
                     android:text="2012-09-30 15:30"
-                    android:textColor="@color/lightgrey" />
+                    android:textColor="@color/lightgrey"
+                    android:textSize="8dip" />
             </LinearLayout>
-        </RelativeLayout>
-    </FrameLayout>
+        </LinearLayout>
+    </RelativeLayout>
 
-    <!-- 服务人员 -->
-    <FrameLayout
+    <!-- 接单公司 -->
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:layout_marginTop="10.0dip" >
+        android:layout_gravity="center"
+        android:layout_marginTop="10.0dip"
+        android:background="@drawable/trace_dialog" >
 
-        <ImageView
+        <Button
+            android:id="@+id/confirm_complete"
+            android:layout_width="75.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="5.0dip"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/btn_green"
+            android:text="@string/confirm_complete"
+            android:textSize="12.0dip" />
+
+        <Button
+            android:id="@+id/confirm_done"
+            android:layout_width="75.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10.0dip"
+            android:layout_marginRight="25.0dip"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/btn_green"
+            android:text="@string/confirm"
+            android:textSize="12.0dip" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/title_bg" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10.0dip"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginTop="10.0dip"
+            android:layout_toLeftOf="@id/confirm_done"
+            android:layout_toRightOf="@id/confirm_complete"
+            android:orientation="vertical" >
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" >
-
-            <Button
-                android:id="@+id/home_service"
-                android:layout_width="75.0dip"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10.0dip"
-                android:background="@drawable/btn_green"
-                android:text="@string/home_service"
-                android:textSize="12.0dip" />
-
-            <Button
-                android:id="@+id/contact_waiter"
-                android:layout_width="75.0dip"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10.0dip"
-                android:layout_marginRight="10.0dip"
-                android:layout_marginTop="10.0dip"
-                android:background="@drawable/btn_green"
-                android:text="@string/contact_waiter"
-                android:textSize="12.0dip" />
-
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10.0dip"
-                android:layout_marginTop="10.0dip"
-                android:layout_toLeftOf="@id/contact_waiter"
-                android:layout_toRightOf="@id/home_service" >
+                android:layout_gravity="center"
+                android:text="服务完成"
+                android:textColor="@color/black" />
 
-                <ImageView
-                    android:layout_width="50dip"
-                    android:layout_height="50dip"
-                    android:src="@drawable/input_box" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:orientation="vertical" >
-
-                    <TextView
-                        android:id="@+id/waiter_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:text="路陈刚"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:id="@+id/company_phone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:text="手机:13512345678"
-                        android:textSize="10dip"
-                        android:textColor="@color/lightgrey" />
-
-                    <TextView
-                        android:id="@+id/match_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:textSize="10dip"
-                        android:text="2012-09-30 15:30"
-                        android:textColor="@color/lightgrey" />
-                </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
-    </FrameLayout>
-    
-     <!-- 接单公司 -->
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginRight="10.0dip"
-        android:layout_marginTop="10.0dip" >
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/title_bg" />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" >
-
-            <Button
-                android:id="@+id/confirm_complete"
-                android:layout_width="75.0dip"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10.0dip"
-                android:background="@drawable/btn_green"
-                android:text="@string/confirm_complete"
-                android:textSize="12.0dip" />
-
-            <Button
-                android:id="@+id/confirm_done"
-                android:layout_width="75.0dip"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10.0dip"
-                android:layout_marginRight="10.0dip"
-                android:layout_marginTop="10.0dip"
-                android:background="@drawable/btn_green"
-                android:text="@string/confirm"
-                android:textSize="12.0dip" />
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/service_done_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10.0dip"
-                android:layout_marginLeft="10.0dip"
-                android:layout_marginTop="10.0dip"
-                android:layout_toLeftOf="@id/confirm_done"
-                android:layout_toRightOf="@id/confirm_complete"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="服务完成"
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/service_done_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="10dip"
-                    android:text="2012-09-30 15:30"
-                    android:textColor="@color/lightgrey" />
-            </LinearLayout>
-        </RelativeLayout>
-    </FrameLayout>
+                android:layout_gravity="center"
+                android:text="2012-09-30 15:30"
+                android:textColor="@color/lightgrey"
+                android:textSize="8dip" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
