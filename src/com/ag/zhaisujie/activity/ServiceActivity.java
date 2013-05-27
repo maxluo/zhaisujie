@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ag.zhaisujie.App;
 import com.ag.zhaisujie.R;
 
 /**
@@ -51,6 +52,10 @@ public class ServiceActivity extends Activity {
 
 		callBtn = (Button) findViewById(R.id.call_btn);
 		callBtn.setOnClickListener(listener);
+		
+		accountNum = (TextView)findViewById(R.id.order_account_num);
+		userName = (TextView)findViewById(R.id.order_user_name);
+		userPic = (ImageView)findViewById(R.id.order_user_pic);
 
 	}
 
@@ -63,7 +68,9 @@ public class ServiceActivity extends Activity {
 				break;
 			case R.id.exit_btn:
 //				android.os.Process.killProcess(android.os.Process.myPid());
-				ServiceActivity.this.finish();
+				App.getInstance().setUser(null);
+				//更新界面
+				
 				break;
 
 			case R.id.call_btn:
