@@ -14,5 +14,7 @@
     <item type="color" name="cyan">#1abc9c</item>
     <item type="color" name="purple">#8e44ad</item>
     <item type="color" name="lightgreen">#2ecc71</item>
+    <item type="color" name="orange">#ff5400</item>
+    <item type="color" name="lightorange">#f9f4cc</item>
      
 </resources>
