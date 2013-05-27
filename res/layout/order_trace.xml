@@ -247,7 +247,10 @@
             android:layout_centerHorizontal="true"
 			android:layout_marginTop="5dip" 
 	        android:background="@drawable/btn_orange_on"
+<<<<<<< HEAD
 	        android:textColor="@color/white"
+=======
+>>>>>>> refs/remotes/origin/master
             android:text="@string/confirm"
             android:textSize="12.0dip" />
 
