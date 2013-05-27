@@ -51,12 +51,14 @@
                 android:textColor="@color/blue" />
         </TableRow>
 
-        <TableRow>
+        <TableRow
+            android:layout_marginTop="20.0dip">
             <RadioGroup
                 android:id="@+id/time_btn_group"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" 
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+                android:background="@color/white" >
 
                     <RadioButton
                         android:id="@+id/time_btn_2"
@@ -115,10 +117,16 @@
                 android:textColor="@color/blue" />
         </TableRow>
 
-        <TableRow>
+        <TableRow 
+            android:layout_marginTop="20.0dip"
+            android:background="@color/white">
             
-            
-            
+            <EditText android:textSize="12.0sp" android:id="@+id/time_txt_input" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:hint="选择日期..." android:singleLine="true" android:layout_weight="1.0" />
+            <Button
+	        android:id="@+id/time_btn_input"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/time_bg_input"/>
         </TableRow>
 
     </TableLayout>
