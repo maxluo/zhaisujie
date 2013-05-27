@@ -60,6 +60,8 @@ public class MainActivity extends Activity {
 	private static Button loginBtn;
 	private static Button orderBtn;
 	private static Button settingBtn;
+	private static Button localBtn;
+	
 	private Button goOnbtn;//下单
 	private EditText addrTxt;//补充地址
 	@Override
@@ -79,6 +81,9 @@ public class MainActivity extends Activity {
 		settingBtn=(Button) findViewById(R.id.title_btn_setting);
 		goOnbtn=(Button) findViewById(R.id.search_clear_bt);
 		addrTxt=(EditText) findViewById(R.id.search_bar_et);
+		localBtn=(Button) findViewById(R.id.mylocation);
+		localBtn.setOnClickListener(listener);
+		
 		goOnbtn.setOnClickListener(listener);
 		orderBtn.setOnClickListener(listener);
 		settingBtn.setOnClickListener(listener);
@@ -321,6 +326,11 @@ public class MainActivity extends Activity {
 				break;
 			case R.id.search_clear_bt:
 				addOrder();
+				break;
+			case R.id.mylocation:
+				//开始
+				mLocationClient.start();
+				mLocationClient.requestLocation();
 				break;
 				
 			}
