@@ -15,10 +15,13 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.ag.zhaisujie.Order;
 import com.ag.zhaisujie.R;
+import com.ag.zhaisujie.ToastUtil;
 
 /**
  *    OrderFrstActivity.java
@@ -34,7 +37,11 @@ public class OrderFrstActivity extends Activity {
 	private TextView titleTxt;
 	private TextView addrTxt;
 	private Button timeBtn;
+	private Button orderBtn;
 	private EditText timeTxt;
+	private RadioButton time2Btn;
+	private RadioButton time3Btn;
+	private RadioButton time4Btn;
 	private int mYear; 
     private int mMonth;
     private int mDay;
@@ -45,7 +52,7 @@ public class OrderFrstActivity extends Activity {
     private static final int DATE_DIALOG_ID = 1; 
     private static final int SHOW_TIMEPICK = 2;
     private static final int TIME_DIALOG_ID = 3;
-
+    private Order order;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,10 +66,16 @@ public class OrderFrstActivity extends Activity {
 		timeBtn=(Button)findViewById(R.id.time_btn_input);
 		timeBtn.setOnClickListener(listener);
 		timeTxt=(EditText)findViewById(R.id.time_txt_input);
+		orderBtn=(Button)findViewById(R.id.order_btn_next);
+		orderBtn.setOnClickListener(listener);
+		time2Btn=(RadioButton)findViewById(R.id.time_btn_2);
+		time3Btn=(RadioButton)findViewById(R.id.time_btn_3);
+		time4Btn=(RadioButton)findViewById(R.id.time_btn_4);
+		
 		//设置地址
 		Intent intent=getIntent();
-		Bundle bundle=intent.getExtras();
-		String addr=bundle.getString("Addr");
+		order=(Order)getIntent().getSerializableExtra("Order");
+		String addr=order.getAddress();
 		addrTxt.setText(addr);
 		//时间初始
 		
@@ -97,7 +110,6 @@ public class OrderFrstActivity extends Activity {
 		timeTxt.setText(new StringBuilder().append(mYear).append("-")
     		   .append((mMonth + 1) < 10 ? "0" + (mMonth + 1) : (mMonth + 1)).append("-")
                .append((mDay < 10) ? "0" + mDay : mDay)); 
-		onCreateDialog(TIME_DIALOG_ID);//显示时间
 	}
 	
     /** 
@@ -190,7 +202,37 @@ public class OrderFrstActivity extends Activity {
        }  
   
     }; 
-
+    //下面页面
+	private void nextPage(){
+		if(!(time2Btn.isChecked()||time3Btn.isChecked()||time4Btn.isChecked())){
+			ToastUtil.show(this, "请选择服务时长！");
+			return;
+		}
+		if(timeTxt.getText().toString().trim().length()==0){
+			ToastUtil.show(this, "请选择服务时间！");
+			return;
+		}
+		String addr=addrTxt.getText().toString();
+		int timeLong=0;
+		if(time2Btn.isSelected()){
+			timeLong=2;
+		}else if(time3Btn.isSelected()){
+			timeLong=3;
+		}else if(time4Btn.isSelected()){
+			timeLong=4;
+		}
+		String dateTime=timeTxt.getText().toString();
+		order.setClean_hours(timeLong);
+		order.setBegin_time(dateTime);
+		
+		Intent intent = new Intent(OrderFrstActivity.this, ContactDetailActivity.class);
+		Bundle bundle = new Bundle();  
+		bundle.putSerializable("Order", order);
+		intent.putExtras(bundle);//传递地址到下一页面
+		OrderFrstActivity.this.startActivity(intent);
+		
+	}
+	
 	OnClickListener listener = new OnClickListener() {
 		public void onClick(View v) {
 			Button btn = (Button) v;
@@ -203,8 +245,14 @@ public class OrderFrstActivity extends Activity {
 					Message msg = new Message();
 	                msg.what = SHOW_DATAPICK; 
 	                dateandtimeHandler.sendMessage(msg);
+	                
+	                Message msg1 = new Message();
+	                msg1.what = TIME_DIALOG_ID; 
+	                dateandtimeHandler.sendMessage(msg1);
 					break;
-				
+				case R.id.order_btn_next:
+					nextPage();
+					break;
 			}
 		}
 	};
