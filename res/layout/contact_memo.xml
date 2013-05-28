@@ -28,9 +28,16 @@
             </TextView>
 
         </TableRow>
-        
+     </TableLayout>
+     <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginRight="20.0dip"
+        android:layout_marginTop="10.0dip"
+ 		android:background="@drawable/round_rect">
         <TableRow
-            android:background="@color/white"
+           
             android:layout_marginTop="10.0dip">
 
             <TextView
@@ -55,10 +62,14 @@
 
             </EditText>
         </TableRow>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dip"
+            android:layout_marginTop="5.0dip"
+            android:layout_marginRight="5.0dip"
+            android:background="@drawable/sp_line" />
         <TableRow
-            android:layout_marginTop="10.0dip"
-            android:layout_weight="2.0"
-            android:background="@color/white">
+            android:layout_marginTop="0.0dip" >
             <TextView
                 android:id="@+id/contact_phone_label"
                 android:layout_width="wrap_content"
@@ -95,18 +106,28 @@
                 android:text="特别备注"
                 android:textColor="@color/blue" />
 		</TableRow>
+	</TableLayout>
+   
+     <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginRight="20.0dip"
+        android:layout_marginTop="10.0dip"
+		android:background="@drawable/round_rect">    
 		<TableRow
 		     android:layout_marginTop="10.0dip">
             <EditText
                 android:id="@+id/contact_memo"
                 style="@style/common_editview"
-                android:layout_width="0.0dip"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10.0dip"
                 android:layout_weight="1.0"
-                android:height="150dp"
-                android:width="80dp" 
-                android:inputType="text" >
+                android:height="60dp"
+                android:hint="输入备注"
+                android:singleLine="false"
+                android:background="@null"
+                android:inputType="textMultiLine" >
             </EditText>
         </TableRow>
     </TableLayout>
