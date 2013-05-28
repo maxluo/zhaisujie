@@ -2,6 +2,7 @@ package com.ag.zhaisujie.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.ag.zhaisujie.R;
+import com.ag.zhaisujie.utils.CustomGifView;
 import com.ag.zhaisujie.utils.ThreadPoolUtils;
 import com.ant.liao.GifView;
 import com.ant.liao.GifView.GifImageType;
@@ -54,8 +56,6 @@ public class OrderSendActivity extends BaseActivity {
 	@Override
 	protected void onStart() {
 		System.out.println("onStart");
-		progressImg.setGifImage(R.drawable.loading);
-		progressImg.showAnimation();
 		super.onStart();
 	}
 
@@ -68,7 +68,7 @@ public class OrderSendActivity extends BaseActivity {
 
 
 	private Button backBtn;
-	private GifView progressImg;
+	private CustomGifView progressImg;
 	private TextView resultInfo;
 	private TextView warnInfo;
 
@@ -101,7 +101,8 @@ public class OrderSendActivity extends BaseActivity {
 		TextView title = (TextView) findViewById(R.id.title);
 		title.setText(R.string.order_send);
 
-		progressImg = (GifView) findViewById(R.id.order_send_process);
+		progressImg = (CustomGifView) findViewById(R.id.order_send_process);
+		progressImg.setResource(R.drawable.loading);
 		resultInfo = (TextView) findViewById(R.id.order_result_info);
 		warnInfo = (TextView) findViewById(R.id.order_warn_info);
 		ThreadPoolUtils.execute(run);

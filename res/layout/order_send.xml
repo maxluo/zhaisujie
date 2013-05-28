@@ -7,7 +7,7 @@
 
     <include layout="@layout/titlebar" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20.0dip"
@@ -15,19 +15,19 @@
         android:layout_marginTop="20.0dip"
         android:orientation="vertical" >
 
-        <com.ant.liao.GifView
+        <com.ag.zhaisujie.utils.CustomGifView
             android:id="@+id/order_send_process"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" 
-            android:layout_gravity="center"
-            android:src="@drawable/loading"
+            android:layout_height="100dip"
+            android:layout_marginLeft="100dip"
             />
 
         <TextView
             android:id="@+id/order_result_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/order_send_process"
             android:text="@string/order_send"
             android:textColor="@color/orange"
             android:textSize="50dip" />
@@ -36,10 +36,11 @@
             android:id="@+id/order_warn_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_below="@id/order_result_info"
+            android:layout_centerHorizontal="true"
             android:text="正在进入订单跟踪"
             android:textColor="@color/black"
             android:textSize="20dip" />
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
