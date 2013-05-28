@@ -160,6 +160,7 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/btn_orange_on"
             android:text="@string/order_txt_next"
+            android:textColor="@color/white"
             android:textSize="20.0sp" />
     </RelativeLayout>
 

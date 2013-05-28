@@ -86,12 +86,12 @@ public class OrderFrstActivity extends BaseActivity {
 		//时间初始
 		
 		 final Calendar c = Calendar.getInstance();
+		 c.add(Calendar.DAY_OF_MONTH, 1);
          mYear = c.get(Calendar.YEAR); 
          mMonth = c.get(Calendar.MONTH); 
          mDay = c.get(Calendar.DAY_OF_MONTH);
          mHour = c.get(Calendar.HOUR_OF_DAY);
          mMinute = c.get(Calendar.MINUTE);
-          
 	}
 
     /**
@@ -145,7 +145,7 @@ public class OrderFrstActivity extends BaseActivity {
 	 * 更新时间显示
 	 */
 	private void updateTimeDisplay(){
-		dateTxt.setText(new StringBuilder().append(mHour).append(":")
+		timeTxt.setText(new StringBuilder().append(mHour).append(":")
                .append((mMinute < 10) ? "0" + mMinute : mMinute)); 
 	}
     
@@ -253,15 +253,14 @@ public class OrderFrstActivity extends BaseActivity {
 					OrderFrstActivity.this.finish();
 					break;
 				case R.id.date_btn_input:
-					//onCreateDialog(DATE_DIALOG_ID);
-					Message msg = new Message();
-	                msg.what = SHOW_DATAPICK; 
-	                dateandtimeHandler.sendMessage(msg);
+					Message msgd = new Message();
+					msgd.what = SHOW_DATAPICK; 
+	                dateandtimeHandler.sendMessage(msgd);
 	                break;
 				case R.id.time_btn_input:   
-	                Message msg1 = new Message();
-	                msg1.what = TIME_DIALOG_ID; 
-	                dateandtimeHandler.sendMessage(msg1);
+	                Message msgt = new Message();
+	                msgt.what = SHOW_TIMEPICK; 
+	                dateandtimeHandler.sendMessage(msgt);
 					break;
 				case R.id.order_btn_next:
 					nextPage();

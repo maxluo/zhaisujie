@@ -15,20 +15,20 @@ public class ToastUtil {
 	private static Toast toast;
 
 	public static void show(Context paramContext, int paramInt) {
-		if (toast == null)
+		if (toast == null){
 			toast = Toast.makeText(paramContext, paramInt, 0);
-		while (true) {
-			toast.show();
-			return;
+		}else{
+			toast.setText(paramInt);
 		}
+		toast.show();
 	}
 
 	public static void show(Context paramContext, String paramString) {
-		if (toast == null)
+		if (toast == null){
 			toast = Toast.makeText(paramContext, paramString, 0);
-		while (true) {
-			toast.show();
-			return;
+		}else{
+			toast.setText(paramString);
 		}
+		toast.show();
 	}
 }

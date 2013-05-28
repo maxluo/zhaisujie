@@ -76,7 +76,7 @@ public class LoginActivity extends Activity {
 	private void login(){
 		String phone=phoneTxt.getText().toString().trim();
 		String pwd=codeTxt.getText().toString().trim();
-		if("".equals(phoneTxt)){
+		if("".equals(phone)){
 			ToastUtil.show(this, "«Î ‰»Î ÷ª˙∫≈¬Î£°");
 			phoneTxt.requestFocus();
 			return;
