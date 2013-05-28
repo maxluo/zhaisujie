@@ -3,6 +3,8 @@ package com.ag.zhaisujie;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import com.ag.zhaisujie.model.User;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
