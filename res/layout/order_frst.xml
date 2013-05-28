@@ -50,15 +50,23 @@
                 android:text="服务时长："
                 android:textColor="@color/blue" />
         </TableRow>
-
+	</TableLayout>
+	
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginRight="20.0dip"
+        android:layout_marginTop="10.0dip" 
+        android:background="@drawable/round_rect">
+    
         <TableRow
-            android:layout_marginTop="20.0dip">
+            android:layout_marginTop="5.0dip">
             <RadioGroup
                 android:id="@+id/time_btn_group"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" 
-                android:orientation="horizontal"
-                android:background="@color/white" >
+                android:orientation="horizontal" >
 
                     <RadioButton
                         android:id="@+id/time_btn_2"
@@ -69,7 +77,7 @@
                         android:gravity="bottom|start"
                         android:text="@string/time_txt_2"
                         android:textColor="@color/white"
-                        android:layout_marginLeft="5.0sp" />
+                        android:layout_marginLeft="3.0sp" />
 
                     <RadioButton
                         android:id="@+id/time_btn_3"
@@ -121,7 +129,13 @@
             android:layout_marginTop="20.0dip"
             android:background="@color/white">
             
-            <EditText android:textSize="12.0sp" android:id="@+id/time_txt_input" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:hint="选择日期..." android:singleLine="true" android:layout_weight="1.0" />
+            <EditText android:textSize="12.0sp" android:id="@+id/date_txt_input" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="选择日期..." android:singleLine="true" android:layout_weight="1.0" />
+            <Button
+	        android:id="@+id/date_btn_input"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/time_bg_input"/>
+            <EditText android:textSize="12.0sp" android:id="@+id/time_txt_input" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="选择时间..." android:singleLine="true" android:layout_weight="1.0" />
             <Button
 	        android:id="@+id/time_btn_input"
 	        android:layout_width="wrap_content"

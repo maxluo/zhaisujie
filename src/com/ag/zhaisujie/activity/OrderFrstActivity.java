@@ -35,9 +35,9 @@ public class OrderFrstActivity extends BaseActivity {
 	private Button backBtn;
 	private TextView titleTxt;
 	private TextView addrTxt;
-	private Button timeBtn;
+	private Button dateBtn;
 	private Button orderBtn;
-	private EditText timeTxt;
+	private EditText dateTxt;
 	private RadioButton time2Btn;
 	private RadioButton time3Btn;
 	private RadioButton time4Btn;
@@ -46,6 +46,9 @@ public class OrderFrstActivity extends BaseActivity {
     private int mDay;
     private int mHour;
     private int mMinute;
+    
+    private Button timeBtn;
+	private EditText timeTxt;
 
     private static final int SHOW_DATAPICK = 0;
     private static final int DATE_DIALOG_ID = 1; 
@@ -62,9 +65,13 @@ public class OrderFrstActivity extends BaseActivity {
 		titleTxt=(TextView)findViewById(R.id.title);
 		titleTxt.setText(R.string.order_frst_title);
 		addrTxt=(TextView)findViewById(R.id.order_txt_addr);
+		dateBtn=(Button)findViewById(R.id.date_btn_input);
+		dateBtn.setOnClickListener(listener);
+		dateTxt=(EditText)findViewById(R.id.date_txt_input);
 		timeBtn=(Button)findViewById(R.id.time_btn_input);
 		timeBtn.setOnClickListener(listener);
 		timeTxt=(EditText)findViewById(R.id.time_txt_input);
+		
 		orderBtn=(Button)findViewById(R.id.order_btn_next);
 		orderBtn.setOnClickListener(listener);
 		time2Btn=(RadioButton)findViewById(R.id.time_btn_2);
@@ -85,8 +92,6 @@ public class OrderFrstActivity extends BaseActivity {
          mHour = c.get(Calendar.HOUR_OF_DAY);
          mMinute = c.get(Calendar.MINUTE);
           
-         setDateTime();
-
 	}
 
     /**
@@ -106,7 +111,7 @@ public class OrderFrstActivity extends BaseActivity {
 	 * 更新日期显示
 	 */
 	private void updateDateDisplay(){
-		timeTxt.setText(new StringBuilder().append(mYear).append("-")
+		dateTxt.setText(new StringBuilder().append(mYear).append("-")
     		   .append((mMonth + 1) < 10 ? "0" + (mMonth + 1) : (mMonth + 1)).append("-")
                .append((mDay < 10) ? "0" + mDay : mDay)); 
 	}
@@ -140,7 +145,7 @@ public class OrderFrstActivity extends BaseActivity {
 	 * 更新时间显示
 	 */
 	private void updateTimeDisplay(){
-		timeTxt.setText(new StringBuilder().append(timeTxt.getText().toString()).append(" ").append(mHour).append(":")
+		dateTxt.setText(new StringBuilder().append(mHour).append(":")
                .append((mMinute < 10) ? "0" + mMinute : mMinute)); 
 	}
     
@@ -207,21 +212,29 @@ public class OrderFrstActivity extends BaseActivity {
 			ToastUtil.show(this, "请选择服务时长！");
 			return;
 		}
+		if(dateTxt.getText().toString().trim().length()==0){
+			ToastUtil.show(this, "请选择服务日期！");
+			return;
+		}
 		if(timeTxt.getText().toString().trim().length()==0){
 			ToastUtil.show(this, "请选择服务时间！");
 			return;
 		}
-		String addr=addrTxt.getText().toString();
 		int timeLong=0;
+		int money=0;
 		if(time2Btn.isSelected()){
 			timeLong=2;
+			money=36;
 		}else if(time3Btn.isSelected()){
 			timeLong=3;
+			money=54;
 		}else if(time4Btn.isSelected()){
 			timeLong=4;
+			money=72;
 		}
-		String dateTime=timeTxt.getText().toString();
+		String dateTime=dateTxt.getText().toString()+" "+timeTxt.getText().toString();
 		order.setClean_hours(timeLong);
+		order.setPrice(money);
 		order.setBegin_time(dateTime);
 		
 		Intent intent = new Intent(OrderFrstActivity.this, ContactDetailActivity.class);
@@ -239,12 +252,13 @@ public class OrderFrstActivity extends BaseActivity {
 				case R.id.title_btn_back:
 					OrderFrstActivity.this.finish();
 					break;
-				case R.id.time_btn_input:
+				case R.id.date_btn_input:
 					//onCreateDialog(DATE_DIALOG_ID);
 					Message msg = new Message();
 	                msg.what = SHOW_DATAPICK; 
 	                dateandtimeHandler.sendMessage(msg);
-	                
+	                break;
+				case R.id.time_btn_input:   
 	                Message msg1 = new Message();
 	                msg1.what = TIME_DIALOG_ID; 
 	                dateandtimeHandler.sendMessage(msg1);
