@@ -2,7 +2,6 @@ package com.ag.zhaisujie.activity;
 
 import java.util.Calendar;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -32,7 +31,7 @@ import com.ag.zhaisujie.ToastUtil;
  *     </p>
  * 
  */
-public class OrderFrstActivity extends Activity {
+public class OrderFrstActivity extends BaseActivity {
 	private Button backBtn;
 	private TextView titleTxt;
 	private TextView addrTxt;
