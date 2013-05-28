@@ -1,6 +1,5 @@
 package com.ag.zhaisujie.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +20,7 @@ import com.ag.zhaisujie.ValidUtil;
  * @email max_null@sina.com ÁªÏµ±¸×¢
  * 
  */
-public class ContactDetailActivity extends Activity {
+public class ContactDetailActivity extends BaseActivity {
 	private Button backBtn;
 	private Button submitBtn;
 	private EditText contactName;
