@@ -14,9 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.ag.zhaisujie.App;
-import com.ag.zhaisujie.Order;
 import com.ag.zhaisujie.R;
 import com.ag.zhaisujie.ToastUtil;
+import com.ag.zhaisujie.model.Order;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -114,7 +114,7 @@ public class MainActivity extends Activity {
 				(int) (116.404 * 1E6));
 		// 用给定的经纬度构造一个GeoPoint，单位是微度 (度 * 1E6)
 		mapController.setCenter(point);// 设置地图中心点
-		mapController.setZoom(12);// 设置地图zoom级别
+		mapController.setZoom(15);// 设置地图zoom级别
 		
 		// 添加定位图层
 		myLocationOverlay = new MyLocationOverlay(mMapView);

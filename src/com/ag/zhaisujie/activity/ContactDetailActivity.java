@@ -9,10 +9,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.ag.zhaisujie.App;
-import com.ag.zhaisujie.Order;
 import com.ag.zhaisujie.R;
 import com.ag.zhaisujie.ToastUtil;
 import com.ag.zhaisujie.ValidUtil;
+import com.ag.zhaisujie.model.Order;
 
 /**
  * 
