@@ -23,6 +23,50 @@ import com.ant.liao.GifView.GifImageType;
  */
 public class OrderSendActivity extends BaseActivity {
 
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		System.out.println("onResume");
+		super.onResume();
+		
+	}
+	
+	
+
+	@Override
+	public void onBackPressed() {
+		System.out.println("onBackPressed");
+		super.onBackPressed();
+	}
+
+	@Override
+	protected void onPause() {
+		System.out.println("onPause");
+		super.onPause();
+	}
+
+	@Override
+	protected void onRestart() {
+		System.out.println("onRestart");
+		super.onRestart();
+	}
+
+	@Override
+	protected void onStart() {
+		System.out.println("onStart");
+		progressImg.setGifImage(R.drawable.loading);
+		progressImg.showAnimation();
+		super.onStart();
+	}
+
+	@Override
+	protected void onStop() {
+		System.out.println("onStop");
+		super.onStop();
+	}
+
+
+
 	private Button backBtn;
 	private GifView progressImg;
 	private TextView resultInfo;
@@ -44,7 +88,6 @@ public class OrderSendActivity extends BaseActivity {
 
 				@Override
 				public void handleMessage(Message msg) {
-					progressImg.clearAnimation();
 					Intent intent = new Intent(OrderSendActivity.this,
 							OrderTraceActivity.class);
 					startActivity(intent);
@@ -59,10 +102,8 @@ public class OrderSendActivity extends BaseActivity {
 		title.setText(R.string.order_send);
 
 		progressImg = (GifView) findViewById(R.id.order_send_process);
-		progressImg.setGifImage(R.drawable.loading);
 		resultInfo = (TextView) findViewById(R.id.order_result_info);
 		warnInfo = (TextView) findViewById(R.id.order_warn_info);
-		progressImg.showAnimation();
 		ThreadPoolUtils.execute(run);
 	}
 

@@ -62,9 +62,10 @@
                     android:layout_width="70dip"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/btn_green"
+                    android:background="@drawable/btn_blue_on"
+                    android:textColor="@color/white"
                     android:text="@string/address_input"
-                    android:textSize="15.0dip" />
+                    android:textSize="10.0dip" />
             </RelativeLayout>
 
             <TableRow>

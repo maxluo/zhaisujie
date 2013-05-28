@@ -19,7 +19,7 @@ import org.ksoap2.transport.HttpTransportSE;
  */
 public class HttpUtil {
 	public static String URL_WEBSERVICE_ENDPOINT="http://test.yunjiazheng.com/api/index.php/app/mobile/ws?=1";
-	public static String URL_WEBSERVICE_NameSpace="urn:AppControllerwsdl";
+	public static String URL_WEBSERVICE_NameSpace="urn:ApiControllerwsdl";
 	public static String URL_WEBSERVICE_GET_CODE="sendMessage";
 	public static String URL_WEBSERVICE_LOGIN="login";
 	public static String URL_WEBSERVICE_LOGOUT="logout";
