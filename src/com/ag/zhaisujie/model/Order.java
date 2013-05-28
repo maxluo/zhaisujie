@@ -1,4 +1,4 @@
-package com.ag.zhaisujie;
+package com.ag.zhaisujie.model;
 
 import java.io.Serializable;
 

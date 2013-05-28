@@ -1,4 +1,4 @@
-package com.ag.zhaisujie;
+package com.ag.zhaisujie.model;
 
 /**
  *    UserSession.java

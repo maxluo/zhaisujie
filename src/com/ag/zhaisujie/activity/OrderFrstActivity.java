@@ -18,9 +18,9 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.ag.zhaisujie.Order;
 import com.ag.zhaisujie.R;
 import com.ag.zhaisujie.ToastUtil;
+import com.ag.zhaisujie.model.Order;
 
 /**
  *    OrderFrstActivity.java

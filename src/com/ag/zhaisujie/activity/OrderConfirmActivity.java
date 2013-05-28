@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.ag.zhaisujie.Order;
 import com.ag.zhaisujie.R;
+import com.ag.zhaisujie.model.Order;
 
 /**
  * 订单确认界面
