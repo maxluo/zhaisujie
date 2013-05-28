@@ -1,13 +1,11 @@
 package com.ag.zhaisujie.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ag.zhaisujie.Order;
@@ -20,7 +18,7 @@ import com.ag.zhaisujie.R;
  * @email max_null@sina.com
  * 
  */
-public class OrderConfirmActivity extends Activity {
+public class OrderConfirmActivity extends BaseActivity {
 	private Button backBtn;
 	private Button submitBtn;
 
@@ -73,8 +71,8 @@ public class OrderConfirmActivity extends Activity {
 
 		order_user_name.setText(order.getLinkman());
 		order_user_phone.setText(order.getLinkmobile());
-		pay_amnt.setText(""+order.getAmnt());
-		service_time.setText(order.getClean_hours());
+		pay_amnt.setText("实际付款          " + order.getAmnt());
+		service_time.setText(order.getClean_hours() + "小时");
 		service_start_time.setText(order.getBegin_time());
 		service_memo.setText(order.getContent());
 

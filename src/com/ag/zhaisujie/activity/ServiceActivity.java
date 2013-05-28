@@ -20,7 +20,7 @@ import com.ag.zhaisujie.R;
  * @email max_null@sina.com
  * 
  */
-public class ServiceActivity extends Activity {
+public class ServiceActivity extends BaseActivity {
 	private Button orderBtn;
 	private Button exitBtn;
 	private Button callBtn;
@@ -68,9 +68,9 @@ public class ServiceActivity extends Activity {
 				break;
 			case R.id.exit_btn:
 //				android.os.Process.killProcess(android.os.Process.myPid());
-				App.getInstance().setUser(null);
+//				App.getInstance().setUser(null);
 				//更新界面
-				
+				accountNum.setText("");
 				break;
 
 			case R.id.call_btn:

@@ -12,17 +12,21 @@ import java.io.Serializable;
  * 
  */
 public class Order implements Serializable  {
-	private String taskId;
-	private String content;
-	private String refuse;
-	private String linkman;
-	private String linkmobile;
-	private String address;
+	private String taskId = "";
+	private String orderNumber = "";
+	private String content = "";
+	private String refuse = "";
+	private String linkman = "";
+	private String linkmobile = "";
+	private String address = "";
 	private double longitude;
 	private double latitude;
-	private String begin_time;
+	private String begin_time = "";
 	private int clean_hours;
-	private double amnt;
+	private double price;
+	private String payStatus = "";
+	private String status = "";
+	
 	
 	public String getTaskId() {
 		return taskId;
@@ -32,10 +36,10 @@ public class Order implements Serializable  {
 	}
 	
 	public double getAmnt() {
-		return amnt;
+		return price;
 	}
 	public void setAmnt(double amnt) {
-		this.amnt = amnt;
+		this.price = amnt;
 	}
 	public String getContent() {
 		return content;

@@ -107,7 +107,7 @@
                     android:id="@+id/service_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
+                    android:layout_marginLeft="10dip"
                     android:text="2小时"
                     android:textColor="@color/black" />
             </TableRow>
@@ -124,7 +124,7 @@
                     android:id="@+id/service_start_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
+                    android:layout_marginLeft="10dip"
                     android:text="9月23日 15:30"
                     android:textColor="@color/black" />
             </TableRow>

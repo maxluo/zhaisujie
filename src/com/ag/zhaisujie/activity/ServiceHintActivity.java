@@ -22,7 +22,7 @@ import com.ag.zhaisujie.model.Hint;
  * @email max_null@sina.com
  * 
  */
-public class ServiceHintActivity extends Activity {
+public class ServiceHintActivity extends BaseActivity {
 	private Button backBtn;
 
 	private TextView hintInfo;

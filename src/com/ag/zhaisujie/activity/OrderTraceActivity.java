@@ -21,7 +21,7 @@ import com.ag.zhaisujie.R;
  * 
  */
 @SuppressWarnings("all")
-public class OrderTraceActivity extends Activity {
+public class OrderTraceActivity extends BaseActivity {
 	private Button backBtn;
 
 	private String commitTime = "";// 提交成功时间

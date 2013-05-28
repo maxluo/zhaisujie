@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.ag.zhaisujie.R;
 import com.ag.zhaisujie.utils.ThreadPoolUtils;
 import com.ant.liao.GifView;
+import com.ant.liao.GifView.GifImageType;
 
 /**
  * OrderSendActivity.java
@@ -20,7 +21,7 @@ import com.ant.liao.GifView;
  * @author max.Luo
  * @email max_null@sina.com 2013-5-25
  */
-public class OrderSendActivity extends Activity {
+public class OrderSendActivity extends BaseActivity {
 
 	private Button backBtn;
 	private GifView progressImg;
@@ -43,6 +44,7 @@ public class OrderSendActivity extends Activity {
 
 				@Override
 				public void handleMessage(Message msg) {
+					progressImg.clearAnimation();
 					Intent intent = new Intent(OrderSendActivity.this,
 							OrderTraceActivity.class);
 					startActivity(intent);
@@ -59,8 +61,8 @@ public class OrderSendActivity extends Activity {
 		progressImg = (GifView) findViewById(R.id.order_send_process);
 		resultInfo = (TextView) findViewById(R.id.order_result_info);
 		warnInfo = (TextView) findViewById(R.id.order_warn_info);
-
-		 ThreadPoolUtils.execute(run);
+		progressImg.animate();
+		ThreadPoolUtils.execute(run);
 	}
 
 	Runnable run = new Runnable() {
