@@ -59,9 +59,10 @@ public class OrderSendActivity extends BaseActivity {
 		title.setText(R.string.order_send);
 
 		progressImg = (GifView) findViewById(R.id.order_send_process);
+		progressImg.setGifImage(R.drawable.loading);
 		resultInfo = (TextView) findViewById(R.id.order_result_info);
 		warnInfo = (TextView) findViewById(R.id.order_warn_info);
-		progressImg.animate();
+		progressImg.showAnimation();
 		ThreadPoolUtils.execute(run);
 	}
 
