@@ -14,24 +14,31 @@
         android:layout_marginRight="20.0dip"
         android:layout_marginTop="20.0dip" >
 
-        <TextView
-            android:id="@+id/contact_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="联系方式"
-            android:textColor="@color/black" 
-            >
-            <requestFocus/>
-            
-        </TextView>
-			
         <TableRow>
+
+            <TextView
+                android:id="@+id/contact_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="联系方式"
+                android:textColor="@color/blue" 
+                android:background="@null">
+
+                <requestFocus />
+            </TextView>
+
+        </TableRow>
+        
+        <TableRow
+            android:background="@color/white"
+            android:layout_marginTop="10.0dip">
 
             <TextView
                 android:id="@+id/contact_name_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="联系人:    "
+                
                 android:textColor="@color/black" />
 
             <EditText
@@ -42,20 +49,22 @@
                 android:layout_marginLeft="10.0dip"
                 android:layout_weight="1.0"
                 android:ems="10"
-                android:hint="请输名称" >
+                android:background="@null"
+                android:hint="请输名称"
+                android:inputType="text"  >
 
             </EditText>
         </TableRow>
-
-        <TableRow>
-
+        <TableRow
+            android:layout_marginTop="10.0dip"
+            android:layout_weight="2.0"
+            android:background="@color/white">
             <TextView
                 android:id="@+id/contact_phone_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="联系电话:"
-                android:textColor="@color/black"
-                android:textStyle="" />
+                android:textColor="@color/black"/>
 
             <EditText
                 android:id="@+id/contact_phone"
@@ -66,19 +75,28 @@
                 android:layout_weight="1.0"
                 android:ems="10"
                 android:hint="请输电话"
+                android:background="@null"
                 android:inputType="phone" >
             </EditText>
         </TableRow>
-
-        <TableRow>
-
+     </TableLayout>
+     <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20.0dip"
+        android:layout_marginRight="20.0dip"
+        android:layout_marginTop="20.0dip" >
+         <TableRow>
+            
             <TextView
                 android:id="@+id/contact_memo_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="特别备注"
-                android:textColor="@color/black" />
-
+                android:textColor="@color/blue" />
+		</TableRow>
+		<TableRow
+		     android:layout_marginTop="10.0dip">
             <EditText
                 android:id="@+id/contact_memo"
                 style="@style/common_editview"
@@ -87,11 +105,12 @@
                 android:layout_marginLeft="10.0dip"
                 android:layout_weight="1.0"
                 android:height="150dp"
-                android:width="50dp" >
+                android:width="80dp" 
+                android:inputType="text" >
             </EditText>
         </TableRow>
-
-        <RelativeLayout
+    </TableLayout>
+     <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20.0dip"
@@ -108,6 +127,4 @@
                	android:textColor="@color/white"
                 android:textSize="20.0sp" />
         </RelativeLayout>
-    </TableLayout>
-
 </LinearLayout>

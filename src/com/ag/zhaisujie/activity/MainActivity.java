@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.ag.zhaisujie.App;
+import com.ag.zhaisujie.Order;
 import com.ag.zhaisujie.R;
 import com.ag.zhaisujie.ToastUtil;
 import com.baidu.location.BDLocation;
@@ -64,6 +65,7 @@ public class MainActivity extends Activity {
 	
 	private Button goOnbtn;//下单
 	private EditText addrTxt;//补充地址
+	private GeoPoint gp;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -146,7 +148,7 @@ public class MainActivity extends Activity {
 					// 做我想做的事 ，显示相关信息，这一步，我不知道怎么处理了。
 					// 这一步想要的效果是：在屏幕中心点图标上面，有个冒泡框显示相关信息
 					// 获取mapview的中心坐标
-					GeoPoint gp = mMapView.getMapCenter();
+					gp = mMapView.getMapCenter();
 					search(gp);//显示
 					return true;
 				}
@@ -305,8 +307,14 @@ public class MainActivity extends Activity {
 			return;
 		}
 		String addr=locatFrom.getText().toString()+addrTxt.getText().toString();
+		Order order =new Order();
+		order.setAddress(addr);
+		order.setLatitude(gp.getLatitudeE6());
+		order.setLongitude(gp.getLongitudeE6());
 		Intent intent = new Intent(MainActivity.this, OrderFrstActivity.class);
-		intent.putExtra("Addr", addr);//传递地址到下一页面
+		Bundle bundle = new Bundle();  
+		bundle.putSerializable("Order", order);
+		intent.putExtras(bundle);//传递地址到下一页面
 		MainActivity.this.startActivity(intent);
 	}
 	OnClickListener listener = new OnClickListener() {
