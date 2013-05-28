@@ -206,6 +206,7 @@
             android:src="@color/lig" /> -->
 
         <TextView
+            android:id="@+id/pay_amnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

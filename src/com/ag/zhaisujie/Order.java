@@ -12,6 +12,7 @@ import java.io.Serializable;
  * 
  */
 public class Order implements Serializable  {
+	private String taskId;
 	private String content;
 	private String refuse;
 	private String linkman;
@@ -21,7 +22,21 @@ public class Order implements Serializable  {
 	private double latitude;
 	private String begin_time;
 	private int clean_hours;
+	private double amnt;
 	
+	public String getTaskId() {
+		return taskId;
+	}
+	public void setTaskId(String taskId) {
+		this.taskId = taskId;
+	}
+	
+	public double getAmnt() {
+		return amnt;
+	}
+	public void setAmnt(double amnt) {
+		this.amnt = amnt;
+	}
 	public String getContent() {
 		return content;
 	}
