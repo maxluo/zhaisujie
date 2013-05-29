@@ -71,7 +71,8 @@ public class OrderConfirmActivity extends BaseActivity {
 
 		order_user_name.setText(order.getLinkman());
 		order_user_phone.setText(order.getLinkmobile());
-		pay_amnt.setText("实际付款          " + order.getAmnt());
+		order_user_address.setText(order.getAddress());
+		pay_amnt.setText("实际付款          " + order.getPrice());
 		service_time.setText(order.getClean_hours() + "小时");
 		service_start_time.setText(order.getBegin_time());
 		service_memo.setText(order.getContent());

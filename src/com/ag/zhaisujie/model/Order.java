@@ -35,12 +35,6 @@ public class Order implements Serializable  {
 		this.taskId = taskId;
 	}
 	
-	public double getAmnt() {
-		return price;
-	}
-	public void setAmnt(double amnt) {
-		this.price = amnt;
-	}
 	public String getContent() {
 		return content;
 	}

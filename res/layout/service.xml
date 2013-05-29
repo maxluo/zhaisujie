@@ -123,7 +123,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="5.0dip"
                 android:textColor="@color/white" 
-                android:src="@drawable/no_service"/>
+                android:src="@drawable/default_avatar"/>
 
         </LinearLayout>
         

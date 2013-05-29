@@ -1,6 +1,5 @@
 package com.ag.zhaisujie.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 
 import com.ag.zhaisujie.App;
 import com.ag.zhaisujie.R;
+import com.ag.zhaisujie.utils.SimpleFuncUtils;
 
 /**
  * 服务界面
@@ -56,6 +56,14 @@ public class ServiceActivity extends BaseActivity {
 		accountNum = (TextView)findViewById(R.id.order_account_num);
 		userName = (TextView)findViewById(R.id.order_user_name);
 		userPic = (ImageView)findViewById(R.id.order_user_pic);
+		
+		
+		String acc = "";
+		try {
+			acc = App.getInstance().getUser().getUserName();
+		} catch (Exception e) {
+		}
+		accountNum.setText(acc);
 
 	}
 
@@ -68,17 +76,17 @@ public class ServiceActivity extends BaseActivity {
 				break;
 			case R.id.exit_btn:
 //				android.os.Process.killProcess(android.os.Process.myPid());
-//				App.getInstance().setUser(null);
 				//更新界面
 				accountNum.setText("");
+				App.getInstance().setUser(null);
 				break;
 
 			case R.id.call_btn:
 				// 调用支付接口，然后跳转页面
-				Intent intent = new Intent();
-				intent.setAction(Intent.ACTION_CALL);
-				intent.setData(Uri.parse("tel:" + servicePhoneNum.getText()));
-				startActivity(intent);
+//				Intent intent = new Intent();
+//				intent.setAction(Intent.ACTION_CALL);
+//				intent.setData(Uri.parse("tel:" + servicePhoneNum.getText()));
+				SimpleFuncUtils.startPhoneIntent(ServiceActivity.this, "" + servicePhoneNum.getText());
 				break;
 			}
 		}

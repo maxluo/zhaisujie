@@ -25,48 +25,6 @@ import com.ant.liao.GifView.GifImageType;
  */
 public class OrderSendActivity extends BaseActivity {
 
-	@Override
-	public void onResume() {
-		// TODO Auto-generated method stub
-		System.out.println("onResume");
-		super.onResume();
-		
-	}
-	
-	
-
-	@Override
-	public void onBackPressed() {
-		System.out.println("onBackPressed");
-		super.onBackPressed();
-	}
-
-	@Override
-	protected void onPause() {
-		System.out.println("onPause");
-		super.onPause();
-	}
-
-	@Override
-	protected void onRestart() {
-		System.out.println("onRestart");
-		super.onRestart();
-	}
-
-	@Override
-	protected void onStart() {
-		System.out.println("onStart");
-		super.onStart();
-	}
-
-	@Override
-	protected void onStop() {
-		System.out.println("onStop");
-		super.onStop();
-	}
-
-
-
 	private Button backBtn;
 	private CustomGifView progressImg;
 	private TextView resultInfo;
@@ -91,6 +49,7 @@ public class OrderSendActivity extends BaseActivity {
 					Intent intent = new Intent(OrderSendActivity.this,
 							OrderTraceActivity.class);
 					startActivity(intent);
+					OrderSendActivity.this.finish();
 				}
 
 			};

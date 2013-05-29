@@ -37,12 +37,12 @@
 
         <Button
             android:id="@+id/order_cancel"
-            android:layout_width="75.0dip"
+            android:layout_width="85.0dip"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5.0dip"
-            android:background="@drawable/btn_orange_on"
+            android:background="@drawable/btn_orange"
             android:text="@string/order_cancel"
             android:textColor="@color/white"
             android:textSize="12.0dip" />
@@ -72,7 +72,7 @@
                 android:layout_gravity="center"
                 android:text="2012-09-30 15:30"
                 android:textColor="@color/lightgrey"
-                android:textSize="8dip" />
+                android:textSize="10dip" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -106,12 +106,12 @@
 
         <Button
             android:id="@+id/contact_home_company"
-            android:layout_width="75.0dip"
+            android:layout_width="85.0dip"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5.0dip"
-            android:background="@drawable/btn_orange_on"
+            android:background="@drawable/btn_orange"
             android:text="@string/contact_home_company"
             android:textColor="@color/white"
             android:textSize="12.0dip" />
@@ -132,7 +132,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="XX家政"
+                android:text="爱君家政接单"
                 android:textColor="@color/black" />
 
             <TextView
@@ -140,9 +140,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="电话：xxxx"
+                android:text="电话：10086"
                 android:textColor="@color/lightgrey"
-                android:textSize="8dip" />
+                android:textSize="10dip" />
 
             <TextView
                 android:id="@+id/match_time"
@@ -151,7 +151,7 @@
                 android:layout_gravity="center"
                 android:text="2012-09-30 15:30"
                 android:textColor="@color/lightgrey"
-                android:textSize="8dip" />
+                android:textSize="10dip" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -185,12 +185,12 @@
 
         <Button
             android:id="@+id/contact_waiter"
-            android:layout_width="75.0dip"
+            android:layout_width="85.0dip"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5.0dip"
-            android:background="@drawable/btn_orange_on"
+            android:background="@drawable/btn_orange"
             android:text="@string/contact_waiter"
             android:textColor="@color/white"
             android:textSize="12.0dip" />
@@ -206,7 +206,7 @@
             <ImageView
                 android:layout_width="50dip"
                 android:layout_height="40dip"
-                android:src="@drawable/no_service" />
+                android:src="@drawable/default_avatar" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -223,22 +223,22 @@
                     android:textColor="@color/black" />
 
                 <TextView
-                    android:id="@+id/company_phone"
+                    android:id="@+id/waiter_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:text="手机:13512345678"
+                    android:text="手机:10086"
                     android:textColor="@color/lightgrey"
-                    android:textSize="8dip" />
+                    android:textSize="10dip" />
 
                 <TextView
-                    android:id="@+id/match_time"
+                    android:id="@+id/waiter_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:text="2012-09-30 15:30"
                     android:textColor="@color/lightgrey"
-                    android:textSize="8dip" />
+                    android:textSize="10dip" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
@@ -273,12 +273,12 @@
 
         <Button
             android:id="@+id/confirm_done"
-            android:layout_width="75.0dip"
+            android:layout_width="85.0dip"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dip"
-            android:background="@drawable/btn_orange_on"
+            android:background="@drawable/btn_orange"
             android:text="@string/confirm"
             android:textColor="@color/white"
             android:textSize="12.0dip" />
@@ -308,7 +308,7 @@
                 android:layout_gravity="center"
                 android:text="2012-09-30 15:30"
                 android:textColor="@color/lightgrey"
-                android:textSize="8dip" />
+                android:textSize="10dip" />
         </LinearLayout>
     </RelativeLayout>
 

@@ -62,7 +62,7 @@
                     android:layout_width="70dip"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/btn_blue_on"
+                    android:background="@drawable/btn_blue"
                     android:textColor="@color/white"
                     android:text="@string/address_input"
                     android:textSize="10.0dip" />
@@ -196,10 +196,10 @@
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="80dip"
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
+        android:layout_marginLeft="25.0dip"
+        android:layout_marginRight="25.0dip"
         android:layout_marginTop="10.0dip"
-        android:background="@color/lightorange">
+        android:background="@drawable/roundcorner">
 
        <!--  <ImageView
             android:layout_width="wrap_content"
@@ -228,7 +228,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/btn_orange_on"
+            android:background="@drawable/btn_orange"
             android:text="@string/pay_submit"
             android:textColor="@color/white"
             android:textSize="20.0sp" />
