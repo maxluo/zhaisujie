@@ -3,7 +3,7 @@
 
     <string name="app_name">宅速洁</string>
     <string name="action_exit">退出</string>
-    <string name="titlebar_title">选择服务地址</string>
+    <string name="titlebar_title">发布需求</string>
     <string name="back">返回</string>
     <string name="setting">服务</string>
     <string name="confirm">确认</string>
@@ -12,6 +12,7 @@
     <string name="btn_login_getCode">获取验证码</string>
     <string name="btn_login_title">立即使用</string>
 	<string name="btn_submit">下一步,订单确认</string>
+	<string name="login_detail_title">用户登录</string>
 	<string name="contact_detail_title">联系和备注</string>
 	<string name="order_confirm_title">订单确认</string>
 	<string name="order_frst_title">服务时长和时间</string>
