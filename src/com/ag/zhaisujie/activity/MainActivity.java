@@ -16,6 +16,7 @@ import com.ag.zhaisujie.App;
 import com.ag.zhaisujie.R;
 import com.ag.zhaisujie.ToastUtil;
 import com.ag.zhaisujie.model.Order;
+import com.ag.zhaisujie.utils.SimpleFuncUtils;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -357,7 +358,13 @@ public class MainActivity extends Activity {
 			Button btn = (Button) v;
 			switch (btn.getId()) {
 			case R.id.title_btn_login:
+				
 				Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+				
+				if(!SimpleFuncUtils.isNetworkAvailable(MainActivity.this)) {
+					intent = new Intent(MainActivity.this, ServiceHintActivity.class);
+				}
+				
 				MainActivity.this.startActivity(intent);
 				//MainActivity.this.finish();
 				break;

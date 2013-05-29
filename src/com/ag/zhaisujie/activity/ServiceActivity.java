@@ -1,7 +1,5 @@
 package com.ag.zhaisujie.activity;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -79,6 +77,8 @@ public class ServiceActivity extends BaseActivity {
 				//更新界面
 				accountNum.setText("");
 				App.getInstance().setUser(null);
+				MainActivity.initButton();
+				ServiceActivity.this.finish();
 				break;
 
 			case R.id.call_btn:

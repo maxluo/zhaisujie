@@ -36,7 +36,14 @@ public class ServiceHintActivity extends BaseActivity {
 		setContentView(R.layout.service_hint);
 
 		Bundle bundle = this.getIntent().getExtras();
-
+		if(bundle != null) {
+			hintFlag = (Hint)bundle.getSerializable("hintFlag");
+			if(hintFlag == null) {
+				hintFlag = Hint.NO_SERVICE;
+			}
+		}
+		
+		
 		TextView title = (TextView) findViewById(R.id.title);
 		title.setText(R.string.order_confirm_title);
 		backBtn = (Button) findViewById(R.id.title_btn_back);
