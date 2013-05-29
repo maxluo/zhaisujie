@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.ag.zhaisujie.App;
 import com.ag.zhaisujie.HttpUtil;
@@ -39,6 +40,8 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);
+		TextView title = (TextView)findViewById(R.id.title);
+		title.setText(R.string.login_detail_title);
 		backBtn=(Button)findViewById(R.id.title_btn_back);
 		backBtn.setVisibility(View.VISIBLE);
 		backBtn.setOnClickListener(listener);

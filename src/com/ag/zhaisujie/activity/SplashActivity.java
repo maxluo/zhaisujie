@@ -30,10 +30,10 @@ public class SplashActivity extends Activity {
 	}
 	
 	private void goHome() {
-		Intent intent = new Intent(SplashActivity.this, OrderConfirmActivity.class);
-		Bundle bundle = new Bundle();  
-		bundle.putSerializable("Order", new Order());
-		intent.putExtras(bundle);//传递地址到下一页面
+		Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+		//Bundle bundle = new Bundle();  
+		//bundle.putSerializable("Order", new Order());
+		//intent.putExtras(bundle);//传递地址到下一页面
 		SplashActivity.this.startActivity(intent);
 		SplashActivity.this.finish();
 	}
