@@ -2,6 +2,8 @@ package com.ag.zhaisujie.model;
 
 import java.io.Serializable;
 
+import org.json.JSONObject;
+
 /**
  *    Order.java
  *     <p>
@@ -114,4 +116,24 @@ public class Order implements Serializable  {
 		this.status = status;
 	}
 	
+	public String toJson(){
+		String jsonStr="";	
+		try{
+			JSONObject userJob = new JSONObject(); 
+			userJob.put("content", getContent());
+			userJob.put("refuse", getRefuse());
+			userJob.put("linkman", getLinkman());
+			userJob.put("linkmobile", getLinkmobile());
+			userJob.put("address", getAddress());
+			userJob.put("longitude", getLongitude());
+			userJob.put("latitude", getLatitude());
+			userJob.put("begin_time", getBegin_time());
+			userJob.put("clean_hours", getClean_hours());
+			
+			jsonStr=userJob.toString();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		return jsonStr;
+	}
 }
