@@ -228,13 +228,13 @@ public class OrderFrstActivity extends BaseActivity {
 		}
 		int timeLong=0;
 		int money=0;
-		if(time2Btn.isSelected()){
+		if(time2Btn.isChecked()){
 			timeLong=2;
 			money=36;
-		}else if(time3Btn.isSelected()){
+		}else if(time3Btn.isChecked()){
 			timeLong=3;
 			money=54;
-		}else if(time4Btn.isSelected()){
+		}else if(time4Btn.isChecked()){
 			timeLong=4;
 			money=72;
 		}
