@@ -20,6 +20,7 @@ import android.widget.TimePicker;
 
 import com.ag.zhaisujie.R;
 import com.ag.zhaisujie.ToastUtil;
+import com.ag.zhaisujie.ValidUtil;
 import com.ag.zhaisujie.model.Order;
 
 /**
@@ -215,9 +216,14 @@ public class OrderFrstActivity extends BaseActivity {
 		if(dateTxt.getText().toString().trim().length()==0){
 			ToastUtil.show(this, "请选择服务日期！");
 			return;
-		}
-		if(timeTxt.getText().toString().trim().length()==0){
+		}else if(ValidUtil.isDate(dateTxt.getText().toString())){
+			ToastUtil.show(this, "请选择输入正确日期：yyyy-mm-dd！");
+			return;
+		}else if(timeTxt.getText().toString().trim().length()==0){
 			ToastUtil.show(this, "请选择服务时间！");
+			return;
+		}else if (ValidUtil.validTime(timeTxt.getText().toString()).length()>0){
+			ToastUtil.show(this, ValidUtil.validTime(timeTxt.getText().toString()));
 			return;
 		}
 		int timeLong=0;
