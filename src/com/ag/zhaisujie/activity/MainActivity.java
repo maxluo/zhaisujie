@@ -2,13 +2,12 @@ package com.ag.zhaisujie.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,7 +22,9 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.BMapManager;
 import com.baidu.mapapi.map.LocationData;
+import com.baidu.mapapi.map.MKMapViewListener;
 import com.baidu.mapapi.map.MapController;
+import com.baidu.mapapi.map.MapPoi;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationOverlay;
 import com.baidu.mapapi.search.MKAddrInfo;
@@ -65,7 +66,7 @@ public class MainActivity extends Activity {
 	
 	private Button goOnbtn;//下单
 	private EditText addrTxt;//补充地址
-	private GeoPoint gp;
+	private GeoPoint globleGP;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -94,15 +95,15 @@ public class MainActivity extends Activity {
 	}
 	public static void initButton(){
 		//设置抬头
-				if(app.getUser()==null){
-					loginBtn.setVisibility(View.VISIBLE);
-					orderBtn.setVisibility(View.GONE);
-					settingBtn.setVisibility(View.GONE);
-				}else{
-					loginBtn.setVisibility(View.GONE);
-					orderBtn.setVisibility(View.VISIBLE);
-					settingBtn.setVisibility(View.VISIBLE);
-				}
+		if(app.getUser()==null){
+			loginBtn.setVisibility(View.VISIBLE);
+			orderBtn.setVisibility(View.GONE);
+			settingBtn.setVisibility(View.GONE);
+		}else{
+			loginBtn.setVisibility(View.GONE);
+			orderBtn.setVisibility(View.VISIBLE);
+			settingBtn.setVisibility(View.VISIBLE);
+		}
 	}
 	private void initMap(){
 		
@@ -138,7 +139,7 @@ public class MainActivity extends Activity {
 		//开始
 		mLocationClient.start();
 		mLocationClient.requestLocation();
-		
+		/*
 		mMapView.setOnTouchListener(new OnTouchListener() {
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
@@ -148,14 +149,44 @@ public class MainActivity extends Activity {
 					// 做我想做的事 ，显示相关信息，这一步，我不知道怎么处理了。
 					// 这一步想要的效果是：在屏幕中心点图标上面，有个冒泡框显示相关信息
 					// 获取mapview的中心坐标
-					gp = mMapView.getMapCenter();
-					search(gp);//显示
+					globleGP=null;//全局
+					GeoPoint gpt = mMapView.getMapCenter();
+					search(gpt);//显示
 					return true;
 				}
 				return false;
 			}
-		});
+		});*/
 
+		MKMapViewListener mapViewListener = new MKMapViewListener() {
+			 
+	        @Override
+	        public void onMapMoveFinish() {
+	            // 此处可以实现地图移动完成事件的状态监听
+	        	globleGP=null;//全局
+				GeoPoint gpt = mMapView.getMapCenter();
+				search(gpt);//显示
+	        }
+	                        
+	        @Override
+	        public void onClickMapPoi(MapPoi arg0) {
+	                // 此处可实现地图点击事件的监听
+	        }
+
+			@Override
+			public void onGetCurrentMap(Bitmap arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onMapAnimationFinish() {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+		mMapView.regMapViewListener(mBMapMan, mapViewListener);  //注册监听
+		
 		//搜索初始化
 		mkSerach = new MKSearch();
 		mkSerach.init(mBMapMan, new MKSearchListener() {
@@ -208,6 +239,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onGetAddrResult(MKAddrInfo info, int arg1) {
 				locatFrom.setText(info.strAddr);
+				globleGP=info.geoPt;
 			}
 		});
 		
@@ -305,12 +337,15 @@ public class MainActivity extends Activity {
 		if(app.getUser()==null){
 			ToastUtil.show(this, "请先登录！");
 			return;
+		}else if(globleGP==null){
+			ToastUtil.show(this, "正在定位请稍后！");
+			return;
 		}
 		String addr=locatFrom.getText().toString()+addrTxt.getText().toString();
 		Order order =new Order();
 		order.setAddress(addr);
-		order.setLatitude(gp.getLatitudeE6());
-		order.setLongitude(gp.getLongitudeE6());
+		order.setLatitude(globleGP.getLatitudeE6());
+		order.setLongitude(globleGP.getLongitudeE6());
 		Intent intent = new Intent(MainActivity.this, OrderFrstActivity.class);
 		Bundle bundle = new Bundle();  
 		bundle.putSerializable("Order", order);
