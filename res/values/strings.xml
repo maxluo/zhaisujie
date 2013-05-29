@@ -6,6 +6,7 @@
     <string name="titlebar_title">发布需求</string>
     <string name="back">返回</string>
     <string name="setting">服务</string>
+    <string name="login">登录</string>
     <string name="confirm">确认</string>
     <string name="orders">订单</string>
     <string name="search_btn">继续</string>
