@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -35,6 +36,7 @@ public class LoginActivity extends Activity {
 	private EditText codeTxt;
 	private Button getCodeBtn;
 	private Button loginBtn;
+	private CheckBox agreeCbx;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,8 @@ public class LoginActivity extends Activity {
 		codeTxt=(EditText)findViewById(R.id.login_txt_pwd);
 		getCodeBtn=(Button)findViewById(R.id.login_btn_get_code);
 		loginBtn=(Button)findViewById(R.id.login_btn_login);
+		agreeCbx=(CheckBox)findViewById(R.id.login_cbx_agree);
+		
 		getCodeBtn.setOnClickListener(listener);
 		loginBtn.setOnClickListener(listener);
 	}
@@ -90,6 +94,10 @@ public class LoginActivity extends Activity {
 		}else if("".equals(pwd)){
 			ToastUtil.show(this, "请输入验证码！");
 			phoneTxt.requestFocus();
+			return;
+		}else if(!agreeCbx.isChecked()){
+			ToastUtil.show(this, "请同意软件服务协议！");
+			agreeCbx.requestFocus();
 			return;
 		}
 		String rtn=HttpUtil.login(phone, pwd);

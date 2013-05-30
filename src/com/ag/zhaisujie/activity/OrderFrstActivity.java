@@ -217,7 +217,7 @@ public class OrderFrstActivity extends BaseActivity {
 			ToastUtil.show(this, "请选择服务日期！");
 			return;
 		}else if(!ValidUtil.isDate(dateTxt.getText().toString())){
-			ToastUtil.show(this, "请选择输入正确日期：yyyy-mm-dd！");
+			ToastUtil.show(this, "请选择输入正确日期：yyyy-mm-dd");
 			return;
 		}else if(timeTxt.getText().toString().trim().length()==0){
 			ToastUtil.show(this, "请选择服务时间！");
