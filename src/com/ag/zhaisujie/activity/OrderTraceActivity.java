@@ -95,6 +95,11 @@ public class OrderTraceActivity extends BaseActivity {
 		waiter_phone.setText(waiterPhone);
 		waiter_time.setText(serviceTime);
 		service_done_time.setText(serviceDoneTime);
+		
+		String from = getIntent().getStringExtra("ActivityClass");
+    	if(from == null || from.equals(OrderSendActivity.class.getCanonicalName())) {
+    		backBtn.setVisibility(View.GONE);
+    	}
 
 	}
 
@@ -133,7 +138,7 @@ public class OrderTraceActivity extends BaseActivity {
 		}
 	};
 
-	@Override
+	/*@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 
 	    switch (keyCode) {
@@ -141,14 +146,13 @@ public class OrderTraceActivity extends BaseActivity {
 	        	//≈–∂œ¿¥‘¥Activity
 	        	String from = getIntent().getStringExtra("ActivityClass");
 	        	if(from == null || from.equals(OrderSendActivity.class.getCanonicalName())) {
-	        		backBtn.setVisibility(View.GONE);
 	        		return true;
 	        	}
 	    }
 	    return super.onKeyDown(keyCode, event);
-	}
+	}*/
 	
-	@Override
+	/*@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
@@ -161,5 +165,5 @@ public class OrderTraceActivity extends BaseActivity {
 			finish();
 		}
 		return true;
-	}
+	}*/
 }
