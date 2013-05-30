@@ -2,9 +2,6 @@ package com.ag.zhaisujie.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -97,17 +94,19 @@ public class OrderTraceActivity extends BaseActivity {
 		service_done_time.setText(serviceDoneTime);
 		
 	}
-
+	
+   protected void myExit() {  
+        Intent intent = new Intent();  
+        intent.setAction("ExitApp");  
+        this.sendBroadcast(intent);  
+        super.finish();  
+    }  
 	OnClickListener listener = new OnClickListener() {
 		public void onClick(View v) {
 			Button btn = (Button) v;
 			switch (btn.getId()) {
 			case R.id.title_btn_back:
-				
-				Intent intent = new Intent(OrderTraceActivity.this, OrderFrstActivity.class);
-				intent.putExtras(getIntent());
-				startActivity(intent);
-				
+				myExit();
 				break;
 			case R.id.order_cancel:
 				break;
