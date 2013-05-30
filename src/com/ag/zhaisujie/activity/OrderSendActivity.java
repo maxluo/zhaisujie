@@ -66,18 +66,13 @@ public class OrderSendActivity extends BaseActivity {
 
 		@Override
 		public void handleMessage(Message msg) {
-			/*Intent intent = new Intent(OrderSendActivity.this,
-					OrderTraceActivity.class);
-			intent.putExtras(getIntent());
-			intent.putExtra("ActivityClass", OrderSendActivity.class.getCanonicalName());
-			startActivity(intent);
-			OrderSendActivity.this.finish();*/
 			
 			 switch (msg.what) {  
 	           case ADD_ORDER_SUCCESS:  
 	        	   resultInfo.setText(R.string.order_send_success);
 	        	   warnInfo.setVisibility(View.VISIBLE);
-	        	   
+	        	   Intent intent = new Intent(OrderSendActivity.this,OrderTraceActivity.class);
+	   			   startActivity(intent);
 	               break; 
 	           case ADD_ORDER_FAIL:
 	        	   resultInfo.setText(R.string.order_send_fail);

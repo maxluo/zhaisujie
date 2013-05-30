@@ -372,9 +372,9 @@ public class MainActivity extends Activity {
 			case R.id.title_btn_order:
 				Intent intent3 = new Intent(MainActivity.this, OrderTraceActivity.class);
 				Bundle bundle = new Bundle();
-				bundle.putSerializable("Order", getOrder());
-				intent3.putExtras(bundle);
-				intent3.putExtra("ActivityClass", MainActivity.class.getCanonicalName());
+				//bundle.putSerializable("Order", getOrder());
+				//intent3.putExtras(bundle);
+				//intent3.putExtra("ActivityClass", MainActivity.class.getCanonicalName());
 				MainActivity.this.startActivity(intent3);
 				break;
 			case R.id.title_btn_setting:
