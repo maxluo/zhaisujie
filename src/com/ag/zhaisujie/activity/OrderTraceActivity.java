@@ -3,6 +3,8 @@ package com.ag.zhaisujie.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -139,10 +141,25 @@ public class OrderTraceActivity extends BaseActivity {
 	        	//≈–∂œ¿¥‘¥Activity
 	        	String from = getIntent().getStringExtra("ActivityClass");
 	        	if(from == null || from.equals(OrderSendActivity.class.getCanonicalName())) {
-//	        		backBtn.setVisibility(View.GONE);
+	        		backBtn.setVisibility(View.GONE);
 	        		return true;
 	        	}
 	    }
 	    return super.onKeyDown(keyCode, event);
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		super.onOptionsItemSelected(item);
+		if(item.getItemId()==R.id.action_exit){
+			finish();
+		}
+		return true;
 	}
 }
