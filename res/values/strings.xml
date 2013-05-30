@@ -10,10 +10,11 @@
     <string name="confirm">确认</string>
     <string name="orders">订单</string>
     <string name="search_btn">继续</string>
-    <string name="btn_login_getCode">获取验证码</string>
-    <string name="btn_login_title">立即使用</string>
+    <string name="btn_login_getCode">获取动态密码</string>
+    <string name="btn_login_title">开始使用</string>
+    <string name="agree_txt">阅读并同意软件及服务协议</string>
 	<string name="btn_submit">下一步,订单确认</string>
-	<string name="login_detail_title">用户登录</string>
+	<string name="login_detail_title">一键登录</string>
 	<string name="contact_detail_title">联系和备注</string>
 	<string name="order_confirm_title">订单确认</string>
 	<string name="order_frst_title">服务时长和时间</string>
@@ -33,11 +34,16 @@
 	<string name="contact_waiter">联系他</string>
 	<string name="confirm_complete">确认完成</string>
 	
-	<string name="order_send">支付完成</string>
+	<string name="order_send">提交订单</string>
+	<string name="pay_send">支付中</string>
+	<string name="order_send_fail">提交订单失败</string>
+	<string name="order_send_success">提交订单失败</string>
+	<string name="pay_send_fail">支付失败</string>
+	<string name="pay_send_success">支付失败</string>
 	
 	<string name="service_title">服务</string>
 	<string name="order_btn">发布订单</string>
 	<string name="call_btn">呼叫</string>
-	
+	<string name="service_phone">18621082366</string>
 	<string name="no_service_hint">对不起,您所在的地区还没有开通宅速洁服务，谢谢您的使用。</string>
 </resources>
