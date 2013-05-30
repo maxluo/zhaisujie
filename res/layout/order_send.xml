@@ -40,7 +40,8 @@
             android:layout_centerHorizontal="true"
             android:text="正在进入订单跟踪"
             android:textColor="@color/black"
-            android:textSize="20dip" />
+            android:textSize="20dip" 
+            android:visibility="gone"/>
     </RelativeLayout>
 
 </LinearLayout>
