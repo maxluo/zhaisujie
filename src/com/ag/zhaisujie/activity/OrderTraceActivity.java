@@ -1,5 +1,11 @@
 package com.ag.zhaisujie.activity;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +14,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ag.zhaisujie.App;
+import com.ag.zhaisujie.HttpUtil;
 import com.ag.zhaisujie.R;
+import com.ag.zhaisujie.ToastUtil;
+import com.ag.zhaisujie.model.Order;
 import com.ag.zhaisujie.utils.SimpleFuncUtils;
 
 /**
@@ -48,7 +58,7 @@ public class OrderTraceActivity extends BaseActivity {
 	private TextView waiter_phone;
 	private TextView waiter_time;
 	private TextView service_done_time;
-
+	private Order order;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -92,9 +102,57 @@ public class OrderTraceActivity extends BaseActivity {
 		waiter_phone.setText(waiterPhone);
 		waiter_time.setText(serviceTime);
 		service_done_time.setText(serviceDoneTime);
-		
+		getOrderDetial();
 	}
 	
+	private void getOrderDetial(){
+		try{
+			Map<String ,Object> orderMap=new HashMap<String ,Object>();
+			orderMap.put("uid", App.getInstance().getUser().getUid());
+			orderMap.put("username", App.getInstance().getUser().getUserName());
+			String rtn=HttpUtil.getInfoFromServer(HttpUtil.URL_WEBSERVICE_GET_ORDER_DETAIL, orderMap).toString();
+			if(App.FAIL.equals(rtn)){
+				ToastUtil.show(this, "没有订单！");
+				myExit();
+			}else{
+				JSONTokener jsonParser = new JSONTokener(rtn);
+				JSONObject job= (JSONObject)jsonParser.nextValue();
+				if(job.getString("task_id").trim()==null||job.getString("task_id").length()==0){
+					ToastUtil.show(this, "没有订单！");
+					myExit();
+				}else{//处理显示
+					order=new Order();
+					order.setTaskId(job.getString("task_id"));
+					order.setOrderNumber(job.getString("ordernumber"));
+					
+					order_success_time.setText(job.getString("created"));
+				}
+				
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+			myExit();
+		}
+	}
+	
+	private void sendCancel(){
+		try{
+			Map<String ,Object> orderMap=new HashMap<String ,Object>();
+			orderMap.put("uid", App.getInstance().getUser().getUid());
+			orderMap.put("username", App.getInstance().getUser().getUserName());
+			orderMap.put("task_id", order.getTaskId());
+			String rtn=HttpUtil.getInfoFromServer(HttpUtil.URL_WEBSERVICE_CANCEL_ORDER, orderMap).toString();
+			if(App.FAIL.equals(rtn)){
+				ToastUtil.show(this, "取消订单失败！");
+			}else{
+				ToastUtil.show(this, "取消订单成功！");
+				myExit();
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+			ToastUtil.show(this, "取消订单失败！");
+		}
+	}
    protected void myExit() {  
         Intent intent = new Intent();  
         intent.setAction("ExitApp");  
@@ -109,6 +167,8 @@ public class OrderTraceActivity extends BaseActivity {
 				myExit();
 				break;
 			case R.id.order_cancel:
+				sendCancel();
+				
 				break;
 			case R.id.contact_home_company:
 				SimpleFuncUtils.startPhoneIntent(OrderTraceActivity.this,
