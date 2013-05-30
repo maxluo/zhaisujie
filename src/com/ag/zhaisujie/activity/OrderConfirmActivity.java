@@ -107,6 +107,7 @@ public class OrderConfirmActivity extends BaseActivity {
 				// 调用支付接口，然后跳转页面
 				Intent intent = new Intent(OrderConfirmActivity.this,
 						OrderSendActivity.class);
+				intent.putExtras(getIntent());
 				startActivity(intent);
 				break;
 			}

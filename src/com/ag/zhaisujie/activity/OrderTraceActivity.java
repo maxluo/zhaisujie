@@ -1,14 +1,12 @@
 package com.ag.zhaisujie.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ag.zhaisujie.R;
@@ -62,6 +60,7 @@ public class OrderTraceActivity extends BaseActivity {
 		TextView title = (TextView) findViewById(R.id.title);
 		title.setText(R.string.order_trace);
 		backBtn = (Button) findViewById(R.id.title_btn_back);
+		backBtn.setText(R.string.order_btn);
 		backBtn.setVisibility(View.VISIBLE);
 		backBtn.setOnClickListener(listener);
 
@@ -102,7 +101,11 @@ public class OrderTraceActivity extends BaseActivity {
 			Button btn = (Button) v;
 			switch (btn.getId()) {
 			case R.id.title_btn_back:
-				OrderTraceActivity.this.finish();
+				
+				Intent intent = new Intent(OrderTraceActivity.this, OrderFrstActivity.class);
+				intent.putExtras(getIntent());
+				startActivity(intent);
+				
 				break;
 			case R.id.order_cancel:
 				break;
@@ -128,4 +131,18 @@ public class OrderTraceActivity extends BaseActivity {
 		}
 	};
 
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+	    switch (keyCode) {
+	        case KeyEvent.KEYCODE_BACK:
+	        	//≈–∂œ¿¥‘¥Activity
+	        	String from = getIntent().getStringExtra("ActivityClass");
+	        	if(from == null || from.equals(OrderSendActivity.class.getCanonicalName())) {
+//	        		backBtn.setVisibility(View.GONE);
+	        		return true;
+	        	}
+	    }
+	    return super.onKeyDown(keyCode, event);
+	}
 }

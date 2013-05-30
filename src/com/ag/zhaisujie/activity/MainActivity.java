@@ -342,17 +342,23 @@ public class MainActivity extends Activity {
 			ToastUtil.show(this, "正在定位请稍后！");
 			return;
 		}
-		String addr=locatFrom.getText().toString()+addrTxt.getText().toString();
-		Order order =new Order();
-		order.setAddress(addr);
-		order.setLatitude(globleGP.getLatitudeE6());
-		order.setLongitude(globleGP.getLongitudeE6());
+		Order order = this.getOrder();
 		Intent intent = new Intent(MainActivity.this, OrderFrstActivity.class);
 		Bundle bundle = new Bundle();  
 		bundle.putSerializable("Order", order);
 		intent.putExtras(bundle);//传递地址到下一页面
 		MainActivity.this.startActivity(intent);
 	}
+	
+	private Order getOrder() {
+		String addr=locatFrom.getText().toString()+addrTxt.getText().toString();
+		Order order =new Order();
+		order.setAddress(addr);
+		order.setLatitude(globleGP.getLatitudeE6());
+		order.setLongitude(globleGP.getLongitudeE6());
+		return order;
+	}
+	
 	OnClickListener listener = new OnClickListener() {
 		public void onClick(View v) {
 			Button btn = (Button) v;
@@ -360,15 +366,16 @@ public class MainActivity extends Activity {
 			case R.id.title_btn_login:
 				
 				Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-				
-				if(!SimpleFuncUtils.isNetworkAvailable(MainActivity.this)) {
-					intent = new Intent(MainActivity.this, ServiceHintActivity.class);
-				}
-				
 				MainActivity.this.startActivity(intent);
 				//MainActivity.this.finish();
 				break;
 			case R.id.title_btn_order:
+				Intent intent3 = new Intent(MainActivity.this, OrderTraceActivity.class);
+				Bundle bundle = new Bundle();
+				bundle.putSerializable("Order", getOrder());
+				intent3.putExtras(bundle);
+				intent3.putExtra("ActivityClass", MainActivity.class.getCanonicalName());
+				MainActivity.this.startActivity(intent3);
 				break;
 			case R.id.title_btn_setting:
 				Intent intent2 = new Intent(MainActivity.this, ServiceActivity.class);

@@ -48,6 +48,8 @@ public class OrderSendActivity extends BaseActivity {
 				public void handleMessage(Message msg) {
 					Intent intent = new Intent(OrderSendActivity.this,
 							OrderTraceActivity.class);
+					intent.putExtras(getIntent());
+					intent.putExtra("ActivityClass", OrderSendActivity.class.getCanonicalName());
 					startActivity(intent);
 					OrderSendActivity.this.finish();
 				}

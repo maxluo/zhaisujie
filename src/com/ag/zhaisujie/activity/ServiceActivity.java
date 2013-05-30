@@ -29,6 +29,8 @@ public class ServiceActivity extends BaseActivity {
 	private TextView userName;
 	private ImageView userPic;
 
+	private String servicePhone = "10086";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,7 +57,7 @@ public class ServiceActivity extends BaseActivity {
 		userName = (TextView)findViewById(R.id.order_user_name);
 		userPic = (ImageView)findViewById(R.id.order_user_pic);
 		
-		
+		servicePhoneNum.setText(servicePhone);
 		String acc = "";
 		try {
 			acc = App.getInstance().getUser().getUserName();
