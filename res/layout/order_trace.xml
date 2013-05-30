@@ -10,7 +10,8 @@
     <!-- 提交订单 -->
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/add_order_layout"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10.0dip"
@@ -79,11 +80,13 @@
     <!-- 接单公司 -->
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/company_order_layout"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10.0dip"
-        android:background="@drawable/round_rect_arrow_down" >
+        android:background="@drawable/round_rect_arrow_down"
+        android:visibility="gone" >
 
         <FrameLayout
             android:id="@+id/match_complete"
@@ -158,11 +161,13 @@
     <!-- 服务人员 -->
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/people_order_layout"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10.0dip"
-        android:background="@drawable/round_rect_arrow_down" >
+        android:background="@drawable/round_rect_arrow_down" 
+        android:visibility="gone">
 
         <FrameLayout
             android:id="@+id/home_service"
@@ -243,14 +248,15 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <!-- 接单公司 -->
+    <!-- 服务完成 -->
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10.0dip"
-        android:background="@drawable/round_rect" >
+        android:background="@drawable/round_rect" 
+        android:visibility="gone">
 
         <FrameLayout
             android:id="@+id/confirm_complete"
