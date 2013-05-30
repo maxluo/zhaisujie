@@ -125,6 +125,10 @@ public class OrderTraceActivity extends BaseActivity {
 						getPhoneNum(waiterPhone));
 				break;
 			case R.id.confirm_done:
+				
+				Intent intent2 = new Intent(OrderTraceActivity.this, OrderSendActivity.class);
+				intent2.putExtras(getIntent());
+				startActivity(intent2);
 				break;
 			}
 		}

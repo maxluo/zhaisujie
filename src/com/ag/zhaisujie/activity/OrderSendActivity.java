@@ -46,12 +46,13 @@ public class OrderSendActivity extends BaseActivity {
 
 				@Override
 				public void handleMessage(Message msg) {
-					Intent intent = new Intent(OrderSendActivity.this,
+					/*Intent intent = new Intent(OrderSendActivity.this,
 							OrderTraceActivity.class);
 					intent.putExtras(getIntent());
 					intent.putExtra("ActivityClass", OrderSendActivity.class.getCanonicalName());
 					startActivity(intent);
-					OrderSendActivity.this.finish();
+					OrderSendActivity.this.finish();*/
+					progressImg.setVisibility(View.GONE);
 				}
 
 			};
