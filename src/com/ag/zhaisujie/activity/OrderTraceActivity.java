@@ -96,11 +96,6 @@ public class OrderTraceActivity extends BaseActivity {
 		waiter_time.setText(serviceTime);
 		service_done_time.setText(serviceDoneTime);
 		
-		String from = getIntent().getStringExtra("ActivityClass");
-    	if(from == null || from.equals(OrderSendActivity.class.getCanonicalName())) {
-    		backBtn.setVisibility(View.GONE);
-    	}
-
 	}
 
 	OnClickListener listener = new OnClickListener() {
