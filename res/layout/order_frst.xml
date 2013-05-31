@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+<LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/background"
@@ -10,8 +16,8 @@
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
+        android:layout_marginLeft="15.0dip"
+        android:layout_marginRight="15.0dip"
         android:layout_marginTop="20.0dip" >
         <TableRow>
             <TextView
@@ -37,8 +43,8 @@
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
+        android:layout_marginLeft="15.0dip"
+        android:layout_marginRight="15.0dip"
         android:layout_marginTop="20.0dip" >
         <TableRow>
           <TextView
@@ -55,8 +61,8 @@
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
+        android:layout_marginLeft="15.0dip"
+        android:layout_marginRight="15.0dip"
         android:layout_marginTop="10.0dip" 
         android:background="@drawable/round_rect">
     
@@ -70,19 +76,18 @@
 
                     <RadioButton
                         android:id="@+id/time_btn_2"
-                        android:layout_width="80.0sp"
-                        android:layout_height="72.0sp"
+                        android:layout_width="85.0sp"
+                        android:layout_height="75.0sp"
                         android:background="@drawable/time_btn_radion"
                         android:button="@null"
                         android:gravity="bottom|start"
                         android:text="@string/time_txt_2"
-                        android:textColor="@color/white"
-                        android:layout_marginLeft="3.0sp" />
+                        android:textColor="@color/white" />
 
                     <RadioButton
                         android:id="@+id/time_btn_3"
-                        android:layout_width="80.0sp"
-                        android:layout_height="72.0sp"
+                        android:layout_width="85.0sp"
+                        android:layout_height="75.0sp"
                         android:background="@drawable/time_btn_radion"
                         android:button="@null"
                         android:gravity="bottom|start"
@@ -92,8 +97,8 @@
 
                     <RadioButton
                         android:id="@+id/time_btn_4"
-                        android:layout_width="80.0sp"
-                        android:layout_height="72.0sp"
+                        android:layout_width="85.0sp"
+                        android:layout_height="75.0sp"
                         android:layout_gravity="bottom"
                         android:background="@drawable/time_btn_radion"
                         android:button="@null"
@@ -110,8 +115,8 @@
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
+        android:layout_marginLeft="15.0dip"
+        android:layout_marginRight="15.0dip"
         android:layout_marginTop="20.0dip" >
 
         <TableRow>
@@ -129,13 +134,13 @@
             android:layout_marginTop="20.0dip"
             android:background="@color/white">
             
-            <EditText android:textSize="12.0sp" android:id="@+id/date_txt_input" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="选择日期..." android:singleLine="true" android:layout_weight="1.0" />
+            <EditText android:textSize="12.0sp" android:id="@+id/date_txt_input" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="选择日期..." android:singleLine="true" android:layout_weight="1.0" android:inputType="none"/>
             <Button
 	        android:id="@+id/date_btn_input"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:background="@drawable/time_bg_input"/>
-            <EditText android:textSize="12.0sp" android:id="@+id/time_txt_input" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="选择时间..." android:singleLine="true" android:layout_weight="1.0" />
+            <EditText android:textSize="12.0sp" android:id="@+id/time_txt_input" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="选择时间..." android:singleLine="true" android:layout_weight="1.0" android:inputType="none"/>
             <Button
 	        android:id="@+id/time_btn_input"
 	        android:layout_width="wrap_content"
@@ -149,8 +154,8 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
+        android:layout_marginLeft="15.0dip"
+        android:layout_marginRight="15.0dip"
         android:layout_marginTop="20.0dip" >
 
         <Button
@@ -165,3 +170,4 @@
     </RelativeLayout>
 
 </LinearLayout>
+</ScrollView>

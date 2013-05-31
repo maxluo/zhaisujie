@@ -19,9 +19,9 @@
 	<string name="order_confirm_title">订单确认</string>
 	<string name="order_frst_title">服务时长和时间</string>
 	<string name="order_txt_next">下一步,联系方式和备注</string>
-	<string name="time_txt_2">2小时 36元</string>
-	<string name="time_txt_3">3小时 54元</string>
-	<string name="time_txt_4">4小时 72元</string>
+	<string name="time_txt_2">2小时 60元</string>
+	<string name="time_txt_3">3小时 90元</string>
+	<string name="time_txt_4">4小时 120元</string>
 	<string name="pay_submit">使用支付宝付款</string>
 	<string name="address_input">完善地址</string>
 	
