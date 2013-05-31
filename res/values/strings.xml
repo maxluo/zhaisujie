@@ -40,6 +40,8 @@
 	<string name="order_send_success">提交订单成功</string>
 	<string name="pay_send_fail">支付失败</string>
 	<string name="pay_send_success">支付失败</string>
+	<string name="pay_install">下载安全支付组件</string>
+	<string name="pay_install_success">安装安全支付组件</string>
 	
 	<string name="service_title">服务</string>
 	<string name="order_btn">发布订单</string>

@@ -17,14 +17,14 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.ArrayList;
 import java.util.List;
- 
+
 import javax.crypto.Cipher;
- 
+
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
- 
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -32,6 +32,8 @@ import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Base64;
+
+import com.ag.zhaisujie.activity.OrderSendActivity;
 
 public class MobileSecurePayHelper {
 	Context mContext = null;
@@ -218,7 +220,7 @@ public class MobileSecurePayHelper {
                 mPath = mContext.getCacheDir().getAbsolutePath() + "/temp.apk";
                 urlDownloadToFile(mContext, mUrl, mPath);
                 Message msg = new Message();
-                msg.what = 2;
+                msg.what = OrderSendActivity.PAY_INSTALL;
                 mHandler.sendMessage(msg);
             }
         }).start();
