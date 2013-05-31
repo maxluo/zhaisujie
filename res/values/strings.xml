@@ -37,7 +37,7 @@
 	<string name="order_send">提交订单</string>
 	<string name="pay_send">支付中</string>
 	<string name="order_send_fail">提交订单失败</string>
-	<string name="order_send_success">提交订单失败</string>
+	<string name="order_send_success">提交订单成功</string>
 	<string name="pay_send_fail">支付失败</string>
 	<string name="pay_send_success">支付失败</string>
 	
