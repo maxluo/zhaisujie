@@ -1,137 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/background"
     android:orientation="vertical" >
 
-    <include layout="@layout/titlebar" />
-
-    <TableLayout
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
-        android:layout_marginTop="20.0dip" >
+        android:layout_height="fill_parent"
+        android:background="@drawable/background"
+        android:orientation="vertical" >
 
-        <TableRow>
+        <include layout="@layout/titlebar" />
 
-            <TextView
-                android:id="@+id/contact_text"
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20.0dip"
+            android:layout_marginRight="20.0dip"
+            android:layout_marginTop="20.0dip" >
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/contact_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:text="联系方式"
+                    android:textColor="@color/blue" >
+
+                    <requestFocus />
+                </TextView>
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20.0dip"
+            android:layout_marginRight="20.0dip"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/round_rect" >
+
+            <TableRow android:layout_marginTop="10.0dip" >
+
+                <TextView
+                    android:id="@+id/contact_name_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="联系人:    "
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/contact_name"
+                    style="@style/common_editview"
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="请输名称"
+                    android:inputType="text" >
+                </EditText>
+            </TableRow>
+
+            <View
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="联系方式"
-                android:textColor="@color/blue" 
-                android:background="@null">
+                android:layout_height="2dip"
+                android:layout_marginRight="5.0dip"
+                android:layout_marginTop="5.0dip"
+                android:background="@drawable/sp_line" />
 
-                <requestFocus />
-            </TextView>
+            <TableRow android:layout_marginTop="0.0dip" >
 
-        </TableRow>
-     </TableLayout>
-     <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
-        android:layout_marginTop="10.0dip"
- 		android:background="@drawable/round_rect">
-        <TableRow
-           
-            android:layout_marginTop="10.0dip">
+                <TextView
+                    android:id="@+id/contact_phone_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="联系电话:"
+                    android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/contact_name_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="联系人:    "
-                
-                android:textColor="@color/black" />
+                <EditText
+                    android:id="@+id/contact_phone"
+                    style="@style/common_editview"
+                    android:layout_width="0.0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:ems="10"
+                    android:hint="请输电话"
+                    android:inputType="phone" >
+                </EditText>
+            </TableRow>
+        </TableLayout>
 
-            <EditText
-                android:id="@+id/contact_name"
-                style="@style/common_editview"
-                android:layout_width="0.0dip"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10.0dip"
-                android:layout_weight="1.0"
-                android:ems="10"
-                android:background="@null"
-                android:hint="请输名称"
-                android:inputType="text"  >
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20.0dip"
+            android:layout_marginRight="20.0dip"
+            android:layout_marginTop="20.0dip" >
 
-            </EditText>
-        </TableRow>
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="2dip"
-            android:layout_marginTop="5.0dip"
-            android:layout_marginRight="5.0dip"
-            android:background="@drawable/sp_line" />
-        <TableRow
-            android:layout_marginTop="0.0dip" >
-            <TextView
-                android:id="@+id/contact_phone_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="联系电话:"
-                android:textColor="@color/black"/>
+            <TableRow>
 
-            <EditText
-                android:id="@+id/contact_phone"
-                style="@style/common_editview"
-                android:layout_width="0.0dip"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10.0dip"
-                android:layout_weight="1.0"
-                android:ems="10"
-                android:hint="请输电话"
-                android:background="@null"
-                android:inputType="phone" >
-            </EditText>
-        </TableRow>
-     </TableLayout>
-     <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
-        android:layout_marginTop="20.0dip" >
-         <TableRow>
-            
-            <TextView
-                android:id="@+id/contact_memo_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="特别备注"
-                android:textColor="@color/blue" />
-		</TableRow>
-	</TableLayout>
-   
-     <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
-        android:layout_marginTop="10.0dip"
-		android:background="@drawable/round_rect">    
-		<TableRow
-		     android:layout_marginTop="10.0dip">
-            <EditText
-                android:id="@+id/contact_memo"
-                style="@style/common_editview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:height="60dp"
-                android:hint="输入备注"
-                android:singleLine="false"
-                android:background="@null"
-                android:inputType="textMultiLine" >
-            </EditText>
-        </TableRow>
-    </TableLayout>
-     <RelativeLayout
+                <TextView
+                    android:id="@+id/contact_memo_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="特别备注"
+                    android:textColor="@color/blue" />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20.0dip"
+            android:layout_marginRight="20.0dip"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/round_rect" >
+
+            <TableRow android:layout_marginTop="10.0dip" >
+
+                <EditText
+                    android:id="@+id/contact_memo"
+                    style="@style/common_editview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@null"
+                    android:height="60dp"
+                    android:hint="输入备注"
+                    android:inputType="textMultiLine"
+                    android:singleLine="false" >
+                </EditText>
+            </TableRow>
+        </TableLayout>
+
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20.0dip"
@@ -145,7 +154,9 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/btn_orange"
                 android:text="@string/btn_submit"
-               	android:textColor="@color/white"
+                android:textColor="@color/white"
                 android:textSize="20.0sp" />
         </RelativeLayout>
-</LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
