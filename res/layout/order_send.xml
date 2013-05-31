@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/order_send_process"
-            android:text="@string/order_send"
+            android:text="@string/pay_install"
             android:textColor="@color/orange"
             android:textSize="50dip" />
 

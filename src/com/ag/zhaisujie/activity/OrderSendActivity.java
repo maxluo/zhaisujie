@@ -19,6 +19,8 @@ import com.ag.zhaisujie.App;
 import com.ag.zhaisujie.HttpUtil;
 import com.ag.zhaisujie.R;
 import com.ag.zhaisujie.model.Order;
+import com.ag.zhaisujie.pay.MobileSecurePayHelper;
+import com.ag.zhaisujie.pay.MobileSecurePayer;
 import com.ag.zhaisujie.utils.CustomGifView;
 import com.ag.zhaisujie.utils.ThreadPoolUtils;
 
@@ -40,6 +42,9 @@ public class OrderSendActivity extends BaseActivity {
     private static final int PAY_SEND = 2;
     private static final int PAY_SEND_SUCCESS = 3;
     private static final int PAY_SEND_FAIL = 4;
+    public static final int PAY_INSTALL = 5;
+    
+    private MobileSecurePayHelper msPayHelper;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -57,10 +62,15 @@ public class OrderSendActivity extends BaseActivity {
 
 		Bundle bundle = this.getIntent().getExtras();
 		order = (Order) bundle.getSerializable("Order");
-		
-		ThreadPoolUtils.execute(run);
+		msPayHelper=new MobileSecurePayHelper(this,handler);
+		if (!msPayHelper.detectService()) {
+            msPayHelper.downloadAliMSP();
+            return;
+	    }else{
+	    	resultInfo.setText(R.string.order_send);
+	    	ThreadPoolUtils.execute(run);
+	    }
 	}
-
 	      
 	Handler handler =  new Handler() {
 
@@ -90,10 +100,51 @@ public class OrderSendActivity extends BaseActivity {
 	        	   resultInfo.setText(R.string.pay_send_fail);
 	        	   //progressImg.setVisibility(View.GONE);
 	        	   break;
+	           case  PAY_INSTALL:
+	        	   resultInfo.setText(R.string.pay_install_success);
+	        	   msPayHelper.installAliMSP();
+	        	   sendOrder();
+	        	   //progressImg.setVisibility(View.GONE);
+	        	   break;
 	           }  
 		}
 
 	};
+	private void sendOrder(){
+		try{
+			Map<String ,Object> orderMap=new HashMap<String ,Object>();
+			orderMap.put("uid", App.getInstance().getUser().getUid());
+			orderMap.put("username", App.getInstance().getUser().getUserName());
+			orderMap.put("orderjson", order.toJson());
+			String rtn=HttpUtil.getInfoFromServer(HttpUtil.URL_WEBSERVICE_SET_ORDER, orderMap).toString();
+			Message msg = new Message();
+			if(App.FAIL.equals(rtn)){
+				msg.what=ADD_ORDER_FAIL;
+			}else{
+				msg.what=ADD_ORDER_SUCCESS;
+				JSONTokener jsonParser = new JSONTokener(rtn);
+				JSONObject job= (JSONObject)jsonParser.nextValue();
+				order.setTaskId(job.getString("task_id"));
+				order.setOrderNumber(job.getString("ordernumber"));//price
+			}
+			handler.sendMessage(msg);
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
+	private void payOrder(){
+		MobileSecurePayer msp = new MobileSecurePayer();
+		String payStr="";
+		
+        if (!msp.pay(payStr, handler, PAY_SEND_SUCCESS, OrderSendActivity.this)) {
+        	Message msg = new Message();
+        	msg.what=PAY_SEND_FAIL;
+        	handler.sendMessage(msg);
+            return;
+        }
+    }
+		
 	Runnable run = new Runnable() {
 
 		@Override
@@ -101,26 +152,7 @@ public class OrderSendActivity extends BaseActivity {
 			// TODO Auto-generated method stub
 			try {
 				Thread.sleep(1000);
-				try{
-					Map<String ,Object> orderMap=new HashMap<String ,Object>();
-					orderMap.put("uid", App.getInstance().getUser().getUid());
-					orderMap.put("username", App.getInstance().getUser().getUserName());
-					orderMap.put("orderjson", order.toJson());
-					String rtn=HttpUtil.getInfoFromServer(HttpUtil.URL_WEBSERVICE_SET_ORDER, orderMap).toString();
-					Message msg = new Message();
-					if(App.FAIL.equals(rtn)){
-						msg.what=ADD_ORDER_FAIL;
-					}else{
-						msg.what=ADD_ORDER_SUCCESS;
-						JSONTokener jsonParser = new JSONTokener(rtn);
-						JSONObject job= (JSONObject)jsonParser.nextValue();
-						order.setTaskId(job.getString("task_id"));
-						order.setOrderNumber(job.getString("ordernumber"));//price
-					}
-					handler.sendMessage(msg);
-				}catch(Exception ex){
-					ex.printStackTrace();
-				}
+				sendOrder();
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
