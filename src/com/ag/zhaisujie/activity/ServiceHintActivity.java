@@ -45,7 +45,7 @@ public class ServiceHintActivity extends BaseActivity {
 		
 		
 		TextView title = (TextView) findViewById(R.id.title);
-		title.setText(R.string.order_confirm_title);
+		title.setText(R.string.no_service_title);
 		backBtn = (Button) findViewById(R.id.title_btn_back);
 		backBtn.setVisibility(View.VISIBLE);
 		backBtn.setOnClickListener(listener);

@@ -1,5 +1,8 @@
 package com.ag.zhaisujie.activity;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,10 +16,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.ag.zhaisujie.App;
+import com.ag.zhaisujie.HttpUtil;
 import com.ag.zhaisujie.R;
 import com.ag.zhaisujie.ToastUtil;
 import com.ag.zhaisujie.model.Order;
-import com.ag.zhaisujie.utils.SimpleFuncUtils;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -342,6 +345,20 @@ public class MainActivity extends Activity {
 			ToastUtil.show(this, "正在定位请稍后！");
 			return;
 		}
+		//没有服务验证
+		try{
+			Map<String ,Object> orderMap=new HashMap<String ,Object>();
+			orderMap.put("longitude",globleGP.getLongitudeE6());
+			orderMap.put("latitude",globleGP.getLatitudeE6());
+			String rtn=HttpUtil.getInfoFromServer(HttpUtil.URL_WEBSERVICE_IS_SERVICE, orderMap).toString();
+			if(App.FAIL.equals(rtn)){
+				Intent intent = new Intent(MainActivity.this, ServiceHintActivity.class);
+				MainActivity.this.startActivity(intent);
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		//去添加订单
 		Order order = this.getOrder();
 		Intent intent = new Intent(MainActivity.this, OrderFrstActivity.class);
 		Bundle bundle = new Bundle();  

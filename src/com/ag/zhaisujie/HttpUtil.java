@@ -28,6 +28,7 @@ public class HttpUtil {
 	public static String URL_WEBSERVICE_CANCEL_ORDER="cancelOrder";
 	public static String URL_WEBSERVICE_PAY_ORDER="payOrder";
 	public static String URL_WEBSERVICE_CONFIRM_ORDER="confirmOrder";
+	public static String URL_WEBSERVICE_IS_SERVICE="isService";
 	
 	private static boolean DEBUG = true;
 	
