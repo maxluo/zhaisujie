@@ -41,15 +41,16 @@
             android:layout_marginLeft="20.0dip"
             android:layout_marginRight="20.0dip"
             android:layout_marginTop="10.0dip"
-            android:background="@drawable/round_rect" >
+            android:background="@drawable/contact_top" >
 
-            <TableRow android:layout_marginTop="10.0dip" >
+            <TableRow android:layout_marginTop="15.0dip"
+                android:layout_marginLeft="10.0dip" >
 
                 <TextView
                     android:id="@+id/contact_name_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="联系人:    "
+                    android:text="联系人    "
                     android:textColor="@color/black" 
                     android:textSize="14.0sp"/>
 
@@ -67,20 +68,14 @@
                     android:textSize="14.0sp">
                 </EditText>
             </TableRow>
-            
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2dip"
-                android:layout_marginTop="5.0dip"
-                android:background="@color/line_color" />
-            
-            <TableRow android:layout_marginTop="0.0dip" >
+            <TableRow android:layout_marginTop="15.0dip" 
+                android:layout_marginLeft="10.0dip">
 
                 <TextView
                     android:id="@+id/contact_phone_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="联系电话:"
+                    android:text="联系电话"
                     android:textColor="@color/black" 
                     android:textSize="14.0sp"/>
 
@@ -124,7 +119,7 @@
             android:layout_marginLeft="20.0dip"
             android:layout_marginRight="20.0dip"
             android:layout_marginTop="10.0dip"
-            android:background="@drawable/round_rect" >
+            android:background="@drawable/contact_bottom" >
 
             <TableRow>
 
@@ -136,7 +131,7 @@
                     android:layout_weight="1.0"
                     android:background="@null"
                     android:height="60dp"
-                    android:hint="输入备注"
+                    android:hint="输入文字"
                     android:inputType="textMultiLine" 
                     android:gravity="start|left"
                     android:textSize="14.0sp">
