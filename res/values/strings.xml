@@ -4,9 +4,10 @@
     <string name="app_name">宅速洁</string>
     <string name="action_exit">退出</string>
     <string name="titlebar_title">发布需求</string>
+    <string name="drag_map_to_select">直接拖拽到您想要的位置</string>
     <string name="back">返回</string>
     <string name="setting">服务</string>
-    <string name="login">登录</string>
+    <string name="login">&#160;&#160;&#160;登录 &#160;&#160;</string>
     <string name="confirm">确认</string>
     <string name="orders">订单</string>
     <string name="search_btn">继续</string>
@@ -26,7 +27,7 @@
 	<string name="address_input">完善地址</string>
 	
 	<string name="order_trace">订单跟踪</string>
-	<string name="order_submit">提交需求</string>
+	<string name="order_submit">需求提交</string>
 	<string name="order_cancel">取消订单</string>
 	<string name="match_complete">匹配完成</string>
 	<string name="contact_home_company">联系家政公司</string>

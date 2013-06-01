@@ -79,7 +79,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="5.0dip"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:text="@string/service_phone" />
 
             <Button
                 android:id="@+id/call_btn"

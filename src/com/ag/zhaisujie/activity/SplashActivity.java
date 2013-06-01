@@ -26,7 +26,7 @@ public class SplashActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splash);
-		timer.schedule(task, 2000);//设置这个task在延迟三秒之后自动执行
+		timer.schedule(task, 1000);//设置这个task在延迟三秒之后自动执行
 	}
 	
 	private void goHome() {
