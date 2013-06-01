@@ -41,7 +41,7 @@ public class ServiceActivity extends BaseActivity {
 		servicePhoneNum = (TextView)findViewById(R.id.service_phone_num);
 		
 		TextView title = (TextView) findViewById(R.id.title);
-		title.setText(R.string.order_confirm_title);
+		title.setText(R.string.service_title);
 		orderBtn = (Button) findViewById(R.id.title_btn_back);
 		orderBtn.setText(R.string.order_btn);
 		orderBtn.setVisibility(View.VISIBLE);

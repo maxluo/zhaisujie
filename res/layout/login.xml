@@ -60,7 +60,7 @@
                 android:layout_marginRight="5.0dip"
                 android:layout_marginTop="10.0dip"
                 android:ems="10"
-                android:hint="请输入您收到的密码"
+                android:hint="输入收到的密码"
                 android:inputType="phone"
                 android:paddingLeft="10.0dip" />
 
