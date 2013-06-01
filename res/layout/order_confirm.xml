@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background"
+    android:background="@color/body_bg"
     android:orientation="vertical" >
 
     <include layout="@layout/titlebar" />
@@ -24,17 +24,17 @@
                 android:layout_marginLeft="20.0dip"
                 android:layout_marginRight="20.0dip"
                 android:layout_marginTop="20.0dip"
-                android:background="@drawable/round_rect"
+                android:background="@drawable/confirm_top"
                 android:orientation="vertical" >
 
                 <TableLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10.0dip"
-                    android:layout_marginRight="10.0dip"
-                    android:layout_marginTop="5.0dip" >
+                    android:layout_marginRight="10.0dip" >
 
-                    <TableRow>
+                    <TableRow
+                        android:layout_marginTop="10.0dip">
 
                         <TextView
                             android:id="@+id/order_user_name"
@@ -44,7 +44,8 @@
                             android:textColor="@color/black" />
                     </TableRow>
 
-                    <TableRow>
+                    <TableRow
+                        android:layout_marginTop="5.0dip">
 
                         <TextView
                             android:id="@+id/order_user_phone"
@@ -58,7 +59,8 @@
                         android:id="@+id/address_layout"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal" 
+                        android:layout_marginTop="5.0dip">
 
                         <TextView
                             android:id="@+id/order_user_address"
@@ -73,7 +75,7 @@
                             android:layout_width="70dip"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:background="@drawable/btn_blue"
+                            android:background="@drawable/adress_btn"
                             android:text="@string/address_input"
                             android:textColor="@color/white"
                             android:textSize="10.0dip" />
@@ -93,19 +95,12 @@
                     </TableRow>
                 </TableLayout>
 
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="2dip"
-                    android:layout_marginRight="5.0dip"
-                    android:layout_marginTop="5.0dip"
-                    android:background="@color/line_color" />
-
                 <TableLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10.0dip"
                     android:layout_marginRight="10.0dip"
-                    android:layout_marginTop="5.0dip" >
+                    android:layout_marginTop="20.0dip" >
 
                     <TableRow>
 
@@ -124,7 +119,8 @@
                             android:textColor="@color/black" />
                     </TableRow>
 
-                    <TableRow>
+                    <TableRow
+                        android:layout_marginTop="5.0dip">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -141,7 +137,8 @@
                             android:textColor="@color/black" />
                     </TableRow>
 
-                    <TableRow>
+                    <TableRow
+                        android:layout_marginTop="5.0dip">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -166,7 +163,7 @@
                 android:layout_marginLeft="20.0dip"
                 android:layout_marginRight="20.0dip"
                 android:layout_marginTop="10.0dip"
-                android:background="@drawable/round_rect"
+                android:background="@drawable/confirm_pay"
                 android:layout_gravity="center_vertical">
 
                 <RelativeLayout
@@ -174,6 +171,7 @@
                     android:layout_height="30.0dip"
                     android:layout_marginLeft="10.0dip"
                     android:layout_marginRight="10.0dip"
+                    android:layout_marginTop="7.0dip"
                     android:layout_gravity="center_vertical" >
 
                     <TextView
@@ -191,7 +189,7 @@
                         android:layout_marginLeft="30dip"
                         android:layout_toRightOf="@id/pay_label"
                         android:gravity="right"
-                        android:text="支付宝"
+                        android:text="账户余额"
                         android:textColor="@color/grey" />
 
                     <ImageView
@@ -210,7 +208,7 @@
                 android:layout_marginLeft="25.0dip"
                 android:layout_marginRight="25.0dip"
                 android:layout_marginTop="10.0dip"
-                android:background="@drawable/roundcorner" >
+                android:background="@color/lightorange" >
 
                 <!--
              <ImageView

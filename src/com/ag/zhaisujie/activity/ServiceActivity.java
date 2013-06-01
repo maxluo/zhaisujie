@@ -29,8 +29,6 @@ public class ServiceActivity extends BaseActivity {
 	private TextView userName;
 	private ImageView userPic;
 
-	private String servicePhone = "10086";
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,7 +40,7 @@ public class ServiceActivity extends BaseActivity {
 		
 		TextView title = (TextView) findViewById(R.id.title);
 		title.setText(R.string.service_title);
-		orderBtn = (Button) findViewById(R.id.title_btn_back);
+		orderBtn = (Button) findViewById(R.id.title_btn_setting);
 		orderBtn.setText(R.string.order_btn);
 		orderBtn.setVisibility(View.VISIBLE);
 		orderBtn.setOnClickListener(listener);
@@ -57,7 +55,6 @@ public class ServiceActivity extends BaseActivity {
 		userName = (TextView)findViewById(R.id.order_user_name);
 		userPic = (ImageView)findViewById(R.id.order_user_pic);
 		
-		servicePhoneNum.setText(servicePhone);
 		String acc = "";
 		try {
 			acc = App.getInstance().getUser().getUserName();
@@ -71,7 +68,7 @@ public class ServiceActivity extends BaseActivity {
 		public void onClick(View v) {
 			Button btn = (Button) v;
 			switch (btn.getId()) {
-			case R.id.title_btn_back:
+			case R.id.title_btn_setting:
 				ServiceActivity.this.finish();
 				break;
 			case R.id.exit_btn:
