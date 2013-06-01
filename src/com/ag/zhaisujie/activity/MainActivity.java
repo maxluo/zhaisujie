@@ -354,9 +354,11 @@ public class MainActivity extends Activity {
 			if(App.FAIL.equals(rtn)){
 				Intent intent = new Intent(MainActivity.this, ServiceHintActivity.class);
 				MainActivity.this.startActivity(intent);
+				return;
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();
+			return;
 		}
 		//È¥Ìí¼Ó¶©µ¥
 		Order order = this.getOrder();
