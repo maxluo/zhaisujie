@@ -16,5 +16,6 @@
     <item type="color" name="lightgreen">#2ecc71</item>
     <item type="color" name="orange">#ff5400</item>
     <item type="color" name="lightorange">#f9f4cc</item>
+    <item type="color" name="line_color">#c7d6e2</item>
      
 </resources>

@@ -22,7 +22,7 @@
 	<string name="order_txt_next">下一步,联系方式和备注</string>
 	<string name="time_txt_2">2小时 60元</string>
 	<string name="time_txt_3">3小时 90元</string>
-	<string name="time_txt_4">4小时 120元</string>
+	<string name="time_txt_4">4小时120元</string>
 	<string name="pay_submit">使用支付宝付款</string>
 	<string name="address_input">完善地址</string>
 	
@@ -49,4 +49,5 @@
 	<string name="call_btn">呼叫</string>
 	<string name="service_phone">18621082366</string>
 	<string name="no_service_hint">对不起,您所在的地区还没有开通宅速洁服务，谢谢您的使用。</string>
+	<string name="no_service_title">该地区没有服务</string>
 </resources>
