@@ -19,20 +19,21 @@
         android:layout_marginLeft="15.0dip"
         android:layout_marginRight="15.0dip"
         android:layout_marginTop="20.0dip" >
-        <TableRow>
+        <TableRow
+            android:layout_marginRight="15.0dip">
             <TextView
                 android:drawableLeft="@drawable/home_icon"
                 android:id="@+id/order_txt_addr_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16.0sp"
-                android:text="服务地址："
+                android:text=" 服务地址："
                 android:textColor="@color/blue" />
             <TextView
                 android:id="@+id/order_txt_addr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                
                 android:text=""
                 android:textColor="@color/black" />
 
@@ -46,14 +47,14 @@
         android:layout_marginLeft="15.0dip"
         android:layout_marginRight="15.0dip"
         android:layout_marginTop="20.0dip" >
-        <TableRow>
+        <TableRow android:layout_marginRight="15.0dip">
           <TextView
                 android:id="@+id/order_txt_long_name"
                 android:drawableLeft="@drawable/time_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16.0sp"
-                android:text="服务时长："
+                android:text=" 服务时长："
                 android:textColor="@color/blue" />
         </TableRow>
 	</TableLayout>
@@ -119,14 +120,14 @@
         android:layout_marginRight="15.0dip"
         android:layout_marginTop="20.0dip" >
 
-        <TableRow>
+        <TableRow android:layout_marginRight="15.0dip">
           <TextView
                 android:id="@+id/order_txt_time_name"
                 android:drawableLeft="@drawable/time_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16.0sp"
-                android:text="服务时间："
+                android:text=" 服务时间："
                 android:textColor="@color/blue" />
         </TableRow>
 
