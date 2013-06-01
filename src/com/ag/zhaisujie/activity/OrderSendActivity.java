@@ -1,5 +1,6 @@
 package com.ag.zhaisujie.activity;
 
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ import com.ag.zhaisujie.R;
 import com.ag.zhaisujie.model.Order;
 import com.ag.zhaisujie.pay.MobileSecurePayHelper;
 import com.ag.zhaisujie.pay.MobileSecurePayer;
+import com.ag.zhaisujie.pay.PartnerConfig;
 import com.ag.zhaisujie.utils.CustomGifView;
 import com.ag.zhaisujie.utils.ThreadPoolUtils;
 
@@ -80,9 +82,6 @@ public class OrderSendActivity extends BaseActivity {
 			 switch (msg.what) {  
 	           case ADD_ORDER_SUCCESS:  
 	        	   resultInfo.setText(R.string.order_send_success);
-	        	   warnInfo.setVisibility(View.VISIBLE);
-	        	   Intent intent = new Intent(OrderSendActivity.this,OrderTraceActivity.class);
-	   			   startActivity(intent);
 	               break; 
 	           case ADD_ORDER_FAIL:
 	        	   resultInfo.setText(R.string.order_send_fail);
@@ -91,10 +90,13 @@ public class OrderSendActivity extends BaseActivity {
 	           case  PAY_SEND:
 	        	   resultInfo.setText(R.string.pay_send);
 	        	   //progressImg.setVisibility(View.GONE);
+	        	   payOrder();
 	        	   break;
 	           case  PAY_SEND_SUCCESS:
 	        	   resultInfo.setText(R.string.pay_send_success);
-	        	   //progressImg.setVisibility(View.GONE);
+	        	   warnInfo.setVisibility(View.VISIBLE);
+	        	   Intent intent = new Intent(OrderSendActivity.this,OrderTraceActivity.class);
+	   			   startActivity(intent);
 	        	   break;
 	           case  PAY_SEND_FAIL:
 	        	   resultInfo.setText(R.string.pay_send_fail);
@@ -111,38 +113,70 @@ public class OrderSendActivity extends BaseActivity {
 
 	};
 	private void sendOrder(){
+		Message msg = new Message();
 		try{
 			Map<String ,Object> orderMap=new HashMap<String ,Object>();
 			orderMap.put("uid", App.getInstance().getUser().getUid());
 			orderMap.put("username", App.getInstance().getUser().getUserName());
 			orderMap.put("orderjson", order.toJson());
 			String rtn=HttpUtil.getInfoFromServer(HttpUtil.URL_WEBSERVICE_SET_ORDER, orderMap).toString();
-			Message msg = new Message();
+			
 			if(App.FAIL.equals(rtn)){
 				msg.what=ADD_ORDER_FAIL;
 			}else{
-				msg.what=ADD_ORDER_SUCCESS;
+				msg.what=PAY_SEND;
 				JSONTokener jsonParser = new JSONTokener(rtn);
 				JSONObject job= (JSONObject)jsonParser.nextValue();
 				order.setTaskId(job.getString("task_id"));
 				order.setOrderNumber(job.getString("ordernumber"));//price
 			}
-			handler.sendMessage(msg);
+			
 		}catch(Exception ex){
 			ex.printStackTrace();
+			msg.what=ADD_ORDER_FAIL;
 		}
+		handler.sendMessage(msg);
 	}
 	
-	private void payOrder(){
+	private void payOrder() {
 		MobileSecurePayer msp = new MobileSecurePayer();
-		String payStr="";
 		
-        if (!msp.pay(payStr, handler, PAY_SEND_SUCCESS, OrderSendActivity.this)) {
-        	Message msg = new Message();
+		String payStr = "partner=" + "\"" + PartnerConfig.PARTNER + "\"";
+		payStr += "&";
+		payStr += "seller=" + "\"" + PartnerConfig.SELLER + "\"";
+		payStr += "&";
+		payStr += "out_trade_no=" + "\"" +order.getOrderNumber() + "\"";
+		payStr += "&";
+		payStr += "subject=" + "\"" + "测试产品"
+				+ "\"";
+		payStr += "&";
+		payStr += "body=" + "\"" + "测试产品" + "\"";
+		payStr += "&";
+		payStr += "total_fee=" + "\""
+				+ order.getPrice()+"\"";
+		payStr += "&";
+		payStr += "notify_url=" + "\""
+				+ "http://notify.java.jpxx.org/index.jsp" + "\"";
+		Message msg = new Message();
+		try
+		{
+			String sign = URLEncoder.encode(MobileSecurePayHelper.RsaSign(
+					payStr, PartnerConfig.RSA_PRIVATE),"utf-8");
+			payStr += String.format("&sign=\"%s\"", sign);
+			payStr += String.format("&sign_type=\"%s\"", "RSA");
+			
+	        if (msp.pay(payStr, handler, PAY_SEND_SUCCESS, OrderSendActivity.this)) {
+	        	
+	        	msg.what=PAY_SEND_FAIL;
+	        	
+	        }else{
+	        	msg.what=PAY_SEND_SUCCESS;
+	        }
+        }catch(Exception ex){
+        	ex.printStackTrace();
         	msg.what=PAY_SEND_FAIL;
-        	handler.sendMessage(msg);
-            return;
         }
+		handler.sendMessage(msg);
     }
 		
 	Runnable run = new Runnable() {

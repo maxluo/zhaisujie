@@ -150,7 +150,7 @@ public class MobileSecurePayHelper {
         try {
             PKCS8EncodedKeySpec pkcs8 = new PKCS8EncodedKeySpec(Base64.decode(
                     privateKey, Base64.DEFAULT));
-            KeyFactory kf = KeyFactory.getInstance("RSA");
+            KeyFactory kf = KeyFactory.getInstance("RSA", "BC");
             PrivateKey priKey = kf.generatePrivate(pkcs8);
             Signature signature = Signature.getInstance("SHA1WithRSA");
             signature.initSign(priKey);
