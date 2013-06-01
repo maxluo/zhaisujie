@@ -33,7 +33,7 @@
                 android:id="@+id/order_txt_addr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                
+                android:ems="10"
                 android:text=""
                 android:textColor="@color/black" />
 
@@ -81,9 +81,9 @@
                         android:layout_height="75.0sp"
                         android:background="@drawable/time_btn_radion"
                         android:button="@null"
-                        android:gravity="bottom|start"
+                        android:gravity="bottom|center"
                         android:text="@string/time_txt_2"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"/>
 
                     <RadioButton
                         android:id="@+id/time_btn_3"
@@ -91,7 +91,7 @@
                         android:layout_height="75.0sp"
                         android:background="@drawable/time_btn_radion"
                         android:button="@null"
-                        android:gravity="bottom|start"
+                        android:gravity="bottom|center"
                         android:text="@string/time_txt_3"
                         android:textColor="@color/white" 
                         android:layout_marginLeft="5.0sp" />
@@ -103,7 +103,7 @@
                         android:layout_gravity="bottom"
                         android:background="@drawable/time_btn_radion"
                         android:button="@null"
-                        android:gravity="bottom|start"
+                        android:gravity="bottom|center"
                         android:text="@string/time_txt_4"
                         android:textColor="@color/white" 
                         android:layout_marginLeft="5.0sp" />
@@ -135,13 +135,13 @@
             android:layout_marginTop="20.0dip"
             android:background="@color/white">
             
-            <EditText android:textSize="12.0sp" android:id="@+id/date_txt_input" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="选择日期..." android:singleLine="true" android:layout_weight="1.0" android:inputType="none"/>
+            <EditText android:textSize="14.0sp" android:id="@+id/date_txt_input" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="选择日期..." android:singleLine="true" android:layout_weight="1.0" android:inputType="none"/>
             <Button
 	        android:id="@+id/date_btn_input"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:background="@drawable/time_bg_input"/>
-            <EditText android:textSize="12.0sp" android:id="@+id/time_txt_input" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="选择时间..." android:singleLine="true" android:layout_weight="1.0" android:inputType="none"/>
+            <EditText android:textSize="14.0sp" android:id="@+id/time_txt_input" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="选择时间..." android:singleLine="true" android:layout_weight="1.0" android:inputType="none"/>
             <Button
 	        android:id="@+id/time_btn_input"
 	        android:layout_width="wrap_content"
@@ -161,13 +161,14 @@
 
         <Button
             android:id="@+id/order_btn_next"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:background="@drawable/btn_orange"
             android:text="@string/order_txt_next"
             android:textColor="@color/white"
-            android:textSize="20.0sp" />
+            android:textSize="18.0sp" />
     </RelativeLayout>
 
 </LinearLayout>
