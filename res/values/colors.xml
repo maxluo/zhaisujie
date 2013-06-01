@@ -17,5 +17,5 @@
     <item type="color" name="orange">#ff5400</item>
     <item type="color" name="lightorange">#f9f4cc</item>
     <item type="color" name="line_color">#c7d6e2</item>
-     
+    <item type="color" name="body_bg">#eff3f6</item>
 </resources>

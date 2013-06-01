@@ -68,7 +68,7 @@ public class OrderTraceActivity extends BaseActivity {
 
 		TextView title = (TextView) findViewById(R.id.title);
 		title.setText(R.string.order_trace);
-		backBtn = (Button) findViewById(R.id.title_btn_back);
+		backBtn = (Button) findViewById(R.id.title_btn_setting);
 		backBtn.setText(R.string.order_btn);
 		backBtn.setVisibility(View.VISIBLE);
 		backBtn.setOnClickListener(listener);
@@ -163,7 +163,7 @@ public class OrderTraceActivity extends BaseActivity {
 		public void onClick(View v) {
 			Button btn = (Button) v;
 			switch (btn.getId()) {
-			case R.id.title_btn_back:
+			case R.id.title_btn_setting:
 				myExit();
 				break;
 			case R.id.order_cancel:

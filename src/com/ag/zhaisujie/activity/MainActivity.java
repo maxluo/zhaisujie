@@ -85,7 +85,8 @@ public class MainActivity extends Activity {
 		loginBtn=(Button) findViewById(R.id.title_btn_login);
 		loginBtn.setOnClickListener(listener);
 		orderBtn=(Button) findViewById(R.id.title_btn_order);
-		settingBtn=(Button) findViewById(R.id.title_btn_setting);
+		settingBtn=(Button) findViewById(R.id.title_btn_back);
+		settingBtn.setText(R.string.service_title);
 		goOnbtn=(Button) findViewById(R.id.search_clear_bt);
 		addrTxt=(EditText) findViewById(R.id.search_bar_et);
 		localBtn=(Button) findViewById(R.id.mylocation);
@@ -346,7 +347,7 @@ public class MainActivity extends Activity {
 			return;
 		}
 		//没有服务验证
-		try{
+		/*try{
 			Map<String ,Object> orderMap=new HashMap<String ,Object>();
 			orderMap.put("longitude",globleGP.getLongitudeE6());
 			orderMap.put("latitude",globleGP.getLatitudeE6());
@@ -359,7 +360,7 @@ public class MainActivity extends Activity {
 		}catch(Exception ex){
 			ex.printStackTrace();
 			return;
-		}
+		}*/
 		//去添加订单
 		Order order = this.getOrder();
 		Intent intent = new Intent(MainActivity.this, OrderFrstActivity.class);
@@ -396,7 +397,7 @@ public class MainActivity extends Activity {
 				//intent3.putExtra("ActivityClass", MainActivity.class.getCanonicalName());
 				MainActivity.this.startActivity(intent3);
 				break;
-			case R.id.title_btn_setting:
+			case R.id.title_btn_back:
 				Intent intent2 = new Intent(MainActivity.this, ServiceActivity.class);
 				MainActivity.this.startActivity(intent2);
 				break;

@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center"
                 android:layout_marginTop="15dip"
-                android:background="@drawable/btn_green"
+                android:background="@drawable/service_quit"
                 android:text="@string/action_exit"
                 android:textSize="15.0dip" />
         </LinearLayout>
@@ -60,7 +60,7 @@
             android:layout_height="120dip"
             android:background="@color/cyan"
             android:orientation="vertical" 
-            android:layout_marginRight="15.0dip"
+            android:layout_marginRight="10.0dip"
             android:layout_alignParentRight="true">
 
             <TextView
@@ -70,7 +70,7 @@
                 android:layout_marginLeft="20.0dip"
                 android:layout_marginRight="20.0dip"
                 android:layout_marginTop="20.0dip"
-                android:text="客服电话"
+                android:text="电话客服"
                 android:textColor="@color/white" />
 
             <TextView
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|center"
                 android:layout_marginTop="15dip"
-                android:background="@drawable/btn_green"
+                android:background="@drawable/service_call"
                 android:text="@string/call_btn"
                 android:textSize="15.0dip" />
         </LinearLayout>
@@ -101,7 +101,7 @@
             android:background="@color/lightgreen"
             android:orientation="vertical" 
             android:layout_marginLeft="15.0dip"
-            android:layout_marginTop="15.0dip"
+            android:layout_marginTop="20.0dip"
             android:layout_alignParentLeft="true"
             android:layout_below="@id/account">
 
@@ -134,8 +134,8 @@
             android:layout_height="120dip"
             android:background="@color/purple"
             android:orientation="vertical" 
-            android:layout_marginTop="15.0dip"
-            android:layout_marginRight="15.0dip"
+            android:layout_marginTop="20.0dip"
+            android:layout_marginRight="10.0dip"
             android:layout_alignParentRight="true"
             android:layout_below="@id/service">
 
