@@ -18,4 +18,9 @@
     <item type="color" name="lightorange">#f9f4cc</item>
     <item type="color" name="line_color">#c7d6e2</item>
     <item type="color" name="body_bg">#eff3f6</item>
+    
+     <item type="color" name="conact_frst">#2782CA</item>
+     <item type="color" name="conact_scnd">#1ABC9C</item>
+     <item type="color" name="conact_three">#2ECC71</item>
+     <item type="color" name="conact_four">#8E44AD</item>
 </resources>

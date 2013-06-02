@@ -40,6 +40,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="登陆用户"
+                            android:textStyle="bold"
                             android:textColor="@color/black" />
                     </TableRow>
 
@@ -50,6 +51,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="13512345678"
+                            android:textStyle="bold"
                             android:textColor="@color/black" />
                     </TableRow>
 
@@ -66,6 +68,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ems="10"
+                            android:textStyle="bold"
                             android:text="地址xxxxxXXXXXX"
                             android:textColor="@color/black" />
 
@@ -116,7 +119,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="服务时长"
+                            android:text="服务时长:"
+                            android:textStyle="bold"
                             android:textColor="@color/black" />
 
                         <TextView
@@ -125,6 +129,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dip"
                             android:text="2小时"
+                            android:textStyle="bold"
                             android:textColor="@color/black" />
                     </TableRow>
 
@@ -133,7 +138,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="服务开始时间"
+                            android:text="服务开始时间:"
+                            android:textStyle="bold"
                             android:textColor="@color/black" />
 
                         <TextView
@@ -142,6 +148,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dip"
                             android:text="9月23日 15:30"
+                            android:textStyle="bold"
                             android:textColor="@color/black" />
                     </TableRow>
 
@@ -150,7 +157,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="特别备注"
+                            android:text="特别备注:"
+                            android:textStyle="bold"
                             android:textColor="@color/black" />
 
                         <TextView
@@ -158,28 +166,21 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ems="10"
+                            android:textStyle="bold"
                             android:text="XXXXXXXXXXXXXXXXXXXXXXXXXX"
                             android:textColor="@color/black" />
                     </TableRow>
                 </TableLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="50dip"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20.0dip"
-                android:layout_marginRight="20.0dip"
-                android:layout_marginTop="10.0dip"
-                android:background="@drawable/confirm_pay" >
-
                 <RelativeLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="30.0dip"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10.0dip"
-                    android:layout_marginRight="10.0dip"
-                    android:layout_marginTop="7.0dip" >
+                    android:layout_height="50.0dip"
+	                android:layout_marginLeft="20.0dip"
+	                android:layout_marginRight="20.0dip"
+	                android:layout_marginTop="10.0dip"
+                    android:background="@drawable/confirm_pay"
+                    android:gravity="center_vertical">
 
                     <TextView
                         android:id="@+id/pay_label"
@@ -187,6 +188,8 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:text="支付方式"
+                        android:layout_marginLeft="10.0dip"
+                        android:textStyle="bold"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -205,9 +208,9 @@
                         android:layout_alignParentRight="true"
                         android:layout_gravity="right"
                         android:layout_marginTop="5.0dip"
+                        android:layout_marginRight="10.0dip"
                         android:background="@drawable/retrive_list_arrow" />
                 </RelativeLayout>
-            </LinearLayout>
 
             <FrameLayout
                 android:layout_width="fill_parent"

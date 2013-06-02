@@ -20,7 +20,7 @@
             android:layout_width="120dip"
             android:layout_height="120dip"
             android:layout_marginLeft="15.0dip"
-            android:background="@color/blue"
+            android:background="@color/conact_frst"
             android:orientation="vertical" >
 
             <TextView
@@ -58,7 +58,7 @@
             android:id="@+id/service"
             android:layout_width="120dip"
             android:layout_height="120dip"
-            android:background="@color/cyan"
+            android:background="@color/conact_scnd"
             android:orientation="vertical" 
             android:layout_marginRight="10.0dip"
             android:layout_alignParentRight="true">
@@ -98,7 +98,7 @@
             android:id="@+id/user_info"
             android:layout_width="120dip"
             android:layout_height="120dip"
-            android:background="@color/lightgreen"
+            android:background="@color/conact_three"
             android:orientation="vertical" 
             android:layout_marginLeft="15.0dip"
             android:layout_marginTop="20.0dip"
@@ -132,7 +132,7 @@
             android:id="@+id/about"
             android:layout_width="120dip"
             android:layout_height="120dip"
-            android:background="@color/purple"
+            android:background="@color/conact_four"
             android:orientation="vertical" 
             android:layout_marginTop="20.0dip"
             android:layout_marginRight="10.0dip"
