@@ -230,10 +230,10 @@ public class OrderFrstActivity extends BaseActivity {
 		int money=0;
 		if(time2Btn.isChecked()){
 			timeLong=2;
-			money=30;
+			money=60;
 		}else if(time3Btn.isChecked()){
 			timeLong=3;
-			money=60;
+			money=90;
 		}else if(time4Btn.isChecked()){
 			timeLong=4;
 			money=120;

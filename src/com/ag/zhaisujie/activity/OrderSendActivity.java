@@ -163,8 +163,8 @@ public class OrderSendActivity extends BaseActivity {
 		payStr += "body=" + "\"" + "宅速洁服务费" + "\"";
 		payStr += "&";
 		payStr += "total_fee=" + "\""
-				+ 0.01+"\"";
-		//		+ order.getPrice()+"\"";
+		//		+ 0.01+"\"";
+				+ order.getPrice()+"\"";
 		payStr += "&";
 		payStr += "notify_url=" + "\""
 				+ "http://test.yunjiazheng.com/code/alipay/notify" + "\"";
@@ -172,7 +172,7 @@ public class OrderSendActivity extends BaseActivity {
 		try
 		{
 			String sign = URLEncoder.encode(MobileSecurePayHelper.RsaSign(
-					payStr, PartnerConfig.RSA_PRIVATE),"utf-8");
+					payStr, PartnerConfig.RSA_PRIVATE));
 			payStr += String.format("&sign=\"%s\"", sign);
 			payStr += String.format("&sign_type=\"%s\"", "RSA");
 			

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bid {
-
+	private String department="";
 	private String bid_status = "";
 	private String created = "";
 	private Ayi ayi;
@@ -41,4 +41,13 @@ public class Bid {
 	public void setProcessList(List<ProcessPo> processList) {
 		this.processList = processList;
 	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+	
 }
