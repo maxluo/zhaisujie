@@ -78,14 +78,14 @@ public class MobileSecurePayHelper {
         HttpURLConnection conn = null;
         UrlEncodedFormEntity p_entity;
         try {
-            p_entity = new UrlEncodedFormEntity(pairs, "utf-8");
+            p_entity = new UrlEncodedFormEntity(pairs, "UTF-8");
             URL url = new URL(strUrl);
             conn = (HttpURLConnection) url.openConnection();
             conn.setConnectTimeout(30 * 1000);
             conn.setReadTimeout(30 * 1000);
             conn.setDoOutput(true);
             conn.addRequestProperty("Content-type",
-                    "application/x-www-form-urlencoded;charset=utf-8");
+                    "application/x-www-form-urlencoded;charset=UTF-8");
             conn.connect();
  
             OutputStream os = conn.getOutputStream();
@@ -150,11 +150,12 @@ public class MobileSecurePayHelper {
         try {
             PKCS8EncodedKeySpec pkcs8 = new PKCS8EncodedKeySpec(Base64.decode(
                     privateKey, Base64.DEFAULT));
-            KeyFactory kf = KeyFactory.getInstance("RSA", "BC");
+            //KeyFactory kf = KeyFactory.getInstance("RSA", "BC");
+            KeyFactory kf = KeyFactory.getInstance("RSA");
             PrivateKey priKey = kf.generatePrivate(pkcs8);
             Signature signature = Signature.getInstance("SHA1WithRSA");
             signature.initSign(priKey);
-            signature.update(content.getBytes("utf-8"));
+            signature.update(content.getBytes("UTF-8"));
             byte[] signed = signature.sign();
             return new String(Base64.encode(signed, Base64.DEFAULT));
         } catch (Exception e) {
@@ -171,7 +172,7 @@ public class MobileSecurePayHelper {
                     .generatePublic(new X509EncodedKeySpec(encodedKey));
             Signature signature = Signature.getInstance("SHA1WithRSA");
             signature.initVerify(pubKey);
-            signature.update(content.getBytes("utf-8"));
+            signature.update(content.getBytes("UTF-8"));
             boolean bverify = signature.verify(Base64.decode(sign,
                     Base64.DEFAULT));
             return bverify;
