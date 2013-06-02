@@ -63,7 +63,7 @@ public class ContactDetailActivity extends BaseActivity {
 		
 		order.setLinkman(contactName.getText().toString());
 		order.setLinkmobile(contactPhone.getText().toString());
-		order.setContent(contactMemo.getText().toString());
+		order.setContent(contactMemo.getText().toString().trim().length()==0?"нч":contactMemo.getText().toString());
 		
 		Intent intent = new Intent(ContactDetailActivity.this, OrderConfirmActivity.class);
 		Bundle bundle = new Bundle();  

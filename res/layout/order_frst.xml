@@ -26,15 +26,18 @@
                 android:id="@+id/order_txt_addr_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16.0sp"
+                android:textSize="17.0sp"
+                android:textStyle="bold"
                 android:text=" 服务地址："
                 android:textColor="@color/blue" />
             <TextView
                 android:id="@+id/order_txt_addr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="8"
                 android:text=""
+                android:textStyle="bold"
+                android:textSize="17.0sp"
                 android:textColor="@color/black" />
 
         </TableRow>
@@ -53,8 +56,9 @@
                 android:drawableLeft="@drawable/time_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16.0sp"
+                android:textSize="17.0sp"
                 android:text=" 服务时长："
+                android:textStyle="bold"
                 android:textColor="@color/blue" />
         </TableRow>
 	</TableLayout>
@@ -126,8 +130,9 @@
                 android:drawableLeft="@drawable/time_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16.0sp"
+                android:textSize="17.0sp"
                 android:text=" 服务时间："
+                android:textStyle="bold"
                 android:textColor="@color/blue" />
         </TableRow>
 
@@ -168,7 +173,7 @@
             android:background="@drawable/btn_orange"
             android:text="@string/order_txt_next"
             android:textColor="@color/white"
-            android:textSize="18.0sp" />
+            android:textSize="17.0sp" />
     </RelativeLayout>
 
 </LinearLayout>

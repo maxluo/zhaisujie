@@ -27,6 +27,8 @@
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:text="联系方式"
+                    android:textSize="18.0sp"
+               		android:textStyle="bold"
                     android:textColor="@color/blue" >
 
                     <requestFocus />
@@ -42,7 +44,7 @@
             android:layout_marginTop="10.0dip"
             android:background="@drawable/contact_top" >
 
-            <TableRow android:layout_marginTop="15.0dip"
+            <TableRow android:layout_marginTop="13.0dip"
                 android:layout_marginLeft="10.0dip" >
 
                 <TextView
@@ -51,7 +53,8 @@
                     android:layout_height="wrap_content"
                     android:text="联系人    "
                     android:textColor="@color/black" 
-                    android:textSize="14.0sp"/>
+               		android:textStyle="bold"
+                    android:textSize="16.0sp"/>
 
                 <EditText
                     android:id="@+id/contact_name"
@@ -67,7 +70,7 @@
                     android:textSize="14.0sp">
                 </EditText>
             </TableRow>
-            <TableRow android:layout_marginTop="15.0dip" 
+            <TableRow android:layout_marginTop="13.0dip" 
                 android:layout_marginLeft="10.0dip">
 
                 <TextView
@@ -75,8 +78,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="联系电话"
+               		android:textStyle="bold"
                     android:textColor="@color/black" 
-                    android:textSize="14.0sp"/>
+                    android:textSize="16.0sp"/>
 
                 <EditText
                     android:id="@+id/contact_phone"
@@ -108,6 +112,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="特别备注"
+                     android:textSize="18.0sp"
+               		android:textStyle="bold"
                     android:textColor="@color/blue" />
             </TableRow>
         </TableLayout>

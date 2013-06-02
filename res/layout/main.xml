@@ -36,7 +36,7 @@
                 android:paddingRight="10.0dip"
                 android:paddingTop="8.0dip"
                 android:textColor="@color/white"
-                android:text="初始化中。。。" />
+                android:text="初始化中..." />
 
          
         </RelativeLayout>
