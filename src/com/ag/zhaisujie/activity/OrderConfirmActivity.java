@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.ag.zhaisujie.DateUtil;
 import com.ag.zhaisujie.R;
 import com.ag.zhaisujie.model.Order;
 
@@ -72,9 +73,14 @@ public class OrderConfirmActivity extends BaseActivity {
 		order_user_name.setText(order.getLinkman());
 		order_user_phone.setText(order.getLinkmobile());
 		order_user_address.setText(order.getAddress());
-		pay_amnt.setText("实际付款          " + order.getPrice());
+		pay_amnt.setText("实际付款          " + Double.valueOf(order.getPrice()).intValue()+"元");
 		service_time.setText(order.getClean_hours() + "小时");
-		service_start_time.setText(order.getBegin_time());
+		if(DateUtil.toDateByDT(order.getBegin_time())!=null){
+			service_start_time.setText(DateUtil.formatDateToMDHM(DateUtil.toDateByDT(order.getBegin_time())));
+		}else{
+			service_start_time.setText(order.getBegin_time());
+		}
+		
 		service_memo.setText(order.getContent());
 
 		oriAddress = order.getAddress();

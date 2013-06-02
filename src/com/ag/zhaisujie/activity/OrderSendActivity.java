@@ -93,10 +93,20 @@ public class OrderSendActivity extends BaseActivity {
 	        	   payOrder();
 	        	   break;
 	           case  PAY_SEND_SUCCESS:
-	        	   resultInfo.setText(R.string.pay_send_success);
-	        	   warnInfo.setVisibility(View.VISIBLE);
-	        	   Intent intent = new Intent(OrderSendActivity.this,OrderTraceActivity.class);
-	   			   startActivity(intent);
+	        	   
+	        	   String ret = (String) msg.obj;
+	               String memo = "memo={";
+	               int start = ret.indexOf(memo) + memo.length();
+	               int end = ret.indexOf("};result=");
+	               memo = ret.substring(start, end);
+	               if (memo.indexOf("付款成功") >= 0){
+		        	   resultInfo.setText(R.string.pay_send_success);
+		        	   warnInfo.setVisibility(View.VISIBLE);
+		        	   Intent intent = new Intent(OrderSendActivity.this,OrderTraceActivity.class);
+		   			   startActivity(intent);
+	               }else{
+	            	   resultInfo.setText(R.string.pay_send_fail);
+	               }
 	        	   break;
 	           case  PAY_SEND_FAIL:
 	        	   resultInfo.setText(R.string.pay_send_fail);
@@ -147,16 +157,17 @@ public class OrderSendActivity extends BaseActivity {
 		payStr += "&";
 		payStr += "out_trade_no=" + "\"" +order.getOrderNumber() + "\"";
 		payStr += "&";
-		payStr += "subject=" + "\"" + "测试产品"
+		payStr += "subject=" + "\"" + "宅速洁服务费"
 				+ "\"";
 		payStr += "&";
-		payStr += "body=" + "\"" + "测试产品" + "\"";
+		payStr += "body=" + "\"" + "宅速洁服务费" + "\"";
 		payStr += "&";
 		payStr += "total_fee=" + "\""
-				+ order.getPrice()+"\"";
+				+ 0.01+"\"";
+		//		+ order.getPrice()+"\"";
 		payStr += "&";
 		payStr += "notify_url=" + "\""
-				+ "http://notify.java.jpxx.org/index.jsp" + "\"";
+				+ "http://test.yunjiazheng.com/code/alipay/notify" + "\"";
 		Message msg = new Message();
 		try
 		{
@@ -165,12 +176,10 @@ public class OrderSendActivity extends BaseActivity {
 			payStr += String.format("&sign=\"%s\"", sign);
 			payStr += String.format("&sign_type=\"%s\"", "RSA");
 			
-	        if (msp.pay(payStr, handler, PAY_SEND_SUCCESS, OrderSendActivity.this)) {
+	        if (!msp.pay(payStr, handler, PAY_SEND_SUCCESS, OrderSendActivity.this)) {
 	        	
 	        	msg.what=PAY_SEND_FAIL;
 	        	
-	        }else{
-	        	msg.what=PAY_SEND_SUCCESS;
 	        }
         }catch(Exception ex){
         	ex.printStackTrace();
