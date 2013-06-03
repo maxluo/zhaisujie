@@ -71,31 +71,8 @@
                             android:text="地址xxxxxXXXXXX"
                             android:textSize="16.0sp"
                             android:textColor="@color/little_black" />
-
-                        <Button
-                            android:id="@+id/address_btn"
-                            android:layout_width="70dip"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:background="@drawable/adress_btn"
-                            android:text="@string/address_input"
-                            android:textColor="@color/white"
-                            android:textSize="10.0dip" />
                     </RelativeLayout>
 
-                    <TableRow>
-
-                        <EditText
-                            android:id="@+id/address_input"
-                            style="@style/common_editview"
-                            android:layout_width="0.0dip"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10.0dip"
-                            android:layout_marginBottom="5dip"
-                            android:layout_weight="1.0"
-                            android:hint="请输补充地址信息"
-                            android:visibility="gone" />
-                    </TableRow>
                 </TableLayout>
             </LinearLayout>
 

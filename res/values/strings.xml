@@ -3,7 +3,7 @@
 
     <string name="app_name">宅速洁</string>
     <string name="action_exit">退出</string>
-    <string name="titlebar_title">发布需求</string>
+    <string name="titlebar_title">服务地址</string>
     <string name="drag_map_to_select">直接拖拽到您想要的位置</string>
     <string name="back">返回</string>
     <string name="setting">服务</string>
