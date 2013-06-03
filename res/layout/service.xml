@@ -10,16 +10,16 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20.0dip"
-        android:layout_marginRight="20.0dip"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
         android:layout_marginTop="20.0dip" >
 
         <!-- 账号 -->
         <LinearLayout
             android:id="@+id/account"
-            android:layout_width="120dip"
-            android:layout_height="120dip"
-            android:layout_marginLeft="15.0dip"
+            android:layout_width="130dip"
+            android:layout_height="130dip"
+            android:layout_marginLeft="10.0dip"
             android:background="@color/conact_frst"
             android:orientation="vertical" >
 
@@ -56,8 +56,8 @@
         <!-- 客服 -->
         <LinearLayout
             android:id="@+id/service"
-            android:layout_width="120dip"
-            android:layout_height="120dip"
+            android:layout_width="130dip"
+            android:layout_height="130dip"
             android:background="@color/conact_scnd"
             android:orientation="vertical" 
             android:layout_marginRight="10.0dip"
@@ -96,11 +96,11 @@
         <!-- 用户 -->
         <LinearLayout
             android:id="@+id/user_info"
-            android:layout_width="120dip"
-            android:layout_height="120dip"
+            android:layout_width="130dip"
+            android:layout_height="130dip"
             android:background="@color/conact_three"
             android:orientation="vertical" 
-            android:layout_marginLeft="15.0dip"
+            android:layout_marginLeft="10.0dip"
             android:layout_marginTop="20.0dip"
             android:layout_alignParentLeft="true"
             android:layout_below="@id/account">
@@ -130,8 +130,8 @@
         <!-- 关于 -->
         <LinearLayout
             android:id="@+id/about"
-            android:layout_width="120dip"
-            android:layout_height="120dip"
+            android:layout_width="130dip"
+            android:layout_height="130dip"
             android:background="@color/conact_four"
             android:orientation="vertical" 
             android:layout_marginTop="20.0dip"

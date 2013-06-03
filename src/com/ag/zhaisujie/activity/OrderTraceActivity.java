@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ag.zhaisujie.App;
@@ -31,7 +32,7 @@ import com.ag.zhaisujie.utils.SimpleFuncUtils;
 @SuppressWarnings("all")
 public class OrderTraceActivity extends BaseActivity {
 	private Button backBtn;
-
+	private Button serviceBtn;
 	private String commitTime = "2012-09-30 15:30";// 提交成功时间
 
 	private String companyName = "爱君家政接单";// 家政公司名称
@@ -59,6 +60,7 @@ public class OrderTraceActivity extends BaseActivity {
 	private TextView waiter_time;
 	private TextView service_done_time;
 	private Order order;
+	private RelativeLayout companyLayout;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -69,9 +71,14 @@ public class OrderTraceActivity extends BaseActivity {
 		TextView title = (TextView) findViewById(R.id.title);
 		title.setText(R.string.order_trace);
 		backBtn = (Button) findViewById(R.id.title_btn_setting);
+		serviceBtn= (Button) findViewById(R.id.title_btn_order);
 		backBtn.setText(R.string.order_btn);
 		backBtn.setVisibility(View.VISIBLE);
 		backBtn.setOnClickListener(listener);
+		
+		serviceBtn.setText(R.string.setting);
+		serviceBtn.setVisibility(View.VISIBLE);
+		serviceBtn.setOnClickListener(listener);
 
 		orderCancelBtn = (Button) findViewById(R.id.order_cancel);
 		orderCancelBtn.setOnClickListener(listener);
@@ -93,6 +100,7 @@ public class OrderTraceActivity extends BaseActivity {
 		waiter_phone = (TextView) findViewById(R.id.waiter_phone);
 		waiter_time = (TextView) findViewById(R.id.waiter_time);
 		service_done_time = (TextView) findViewById(R.id.service_done_time);
+		companyLayout=(RelativeLayout) findViewById(R.id.company_order_layout);
 
 		order_success_time.setText(commitTime);
 		company_name.setText(companyName);
@@ -124,8 +132,13 @@ public class OrderTraceActivity extends BaseActivity {
 					order=new Order();
 					order.setTaskId(job.getString("task_id"));
 					order.setOrderNumber(job.getString("ordernumber"));
-					
 					order_success_time.setText(job.getString("created"));
+					JSONObject bids=job.getJSONObject("bids");
+					if(bids!=null){
+						companyLayout.setVisibility(View.VISIBLE);
+						company_name.setText(bids.getString("department"));
+						companyPhone=bids.getString("mobile");
+					}
 				}
 				
 			}
@@ -179,10 +192,13 @@ public class OrderTraceActivity extends BaseActivity {
 						getPhoneNum(waiterPhone));
 				break;
 			case R.id.confirm_done:
-				
 				Intent intent2 = new Intent(OrderTraceActivity.this, OrderSendActivity.class);
 				intent2.putExtras(getIntent());
 				startActivity(intent2);
+				break;
+			case R.id.title_btn_order:
+				Intent intent3 = new Intent(OrderTraceActivity.this, ServiceActivity.class);
+				startActivity(intent3);
 				break;
 			}
 		}
