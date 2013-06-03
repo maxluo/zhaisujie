@@ -32,11 +32,6 @@ public class OrderConfirmActivity extends BaseActivity {
 	private TextView service_start_time;
 	private TextView service_memo;
 
-	private Button addressButton;
-	private EditText addressInput;
-
-	private String oriAddress;
-
 	private Order order;
 
 	@Override
@@ -65,11 +60,6 @@ public class OrderConfirmActivity extends BaseActivity {
 		service_start_time = (TextView) findViewById(R.id.service_start_time);
 		service_memo = (TextView) findViewById(R.id.service_memo);
 
-		addressButton = (Button) findViewById(R.id.address_btn);
-		addressInput = (EditText) findViewById(R.id.address_input);
-
-		addressButton.setOnClickListener(listener);
-
 		order_user_name.setText(order.getLinkman());
 		order_user_phone.setText(order.getLinkmobile());
 		order_user_address.setText(order.getAddress());
@@ -83,8 +73,6 @@ public class OrderConfirmActivity extends BaseActivity {
 		
 		service_memo.setText(order.getContent());
 
-		oriAddress = order.getAddress();
-
 	}
 
 	OnClickListener listener = new OnClickListener() {
@@ -94,21 +82,6 @@ public class OrderConfirmActivity extends BaseActivity {
 			case R.id.title_btn_back:
 				OrderConfirmActivity.this.finish();
 				break;
-			case R.id.address_btn:
-				if (addressButton.getText().toString()
-						.equals(getString(R.string.address_input))) {
-					addressInput.setVisibility(View.VISIBLE);
-					addressButton.setText(R.string.confirm);
-				} else {
-					addressInput.setVisibility(View.GONE);
-					addressButton.setText(R.string.address_input);
-
-					order_user_address.setText(oriAddress
-							+ addressInput.getText().toString());
-				}
-				addressInput.setText("");
-				break;
-
 			case R.id.pay_submit:
 				// 调用支付接口，然后跳转页面
 				Intent intent = new Intent(OrderConfirmActivity.this,

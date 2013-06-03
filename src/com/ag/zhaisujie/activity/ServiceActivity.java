@@ -1,5 +1,6 @@
 package com.ag.zhaisujie.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -69,7 +70,7 @@ public class ServiceActivity extends BaseActivity {
 			Button btn = (Button) v;
 			switch (btn.getId()) {
 			case R.id.title_btn_setting:
-				ServiceActivity.this.finish();
+				myExit();
 				break;
 			case R.id.exit_btn:
 //				android.os.Process.killProcess(android.os.Process.myPid());
@@ -90,5 +91,10 @@ public class ServiceActivity extends BaseActivity {
 			}
 		}
 	};
-
+   protected void myExit() {  
+        Intent intent = new Intent();  
+        intent.setAction("ExitApp");  
+        this.sendBroadcast(intent);  
+        super.finish();  
+    }  
 }
