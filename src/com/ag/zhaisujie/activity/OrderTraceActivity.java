@@ -8,6 +8,8 @@ import org.json.JSONTokener;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -61,6 +63,9 @@ public class OrderTraceActivity extends BaseActivity {
 	private TextView service_done_time;
 	private Order order;
 	private RelativeLayout companyLayout;
+	
+	private final int INIT_ORDER=0;//初始化
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -110,7 +115,10 @@ public class OrderTraceActivity extends BaseActivity {
 		waiter_phone.setText(waiterPhone);
 		waiter_time.setText(serviceTime);
 		service_done_time.setText(serviceDoneTime);
-		getOrderDetial();
+		//初始化
+		Message msg = new Message();
+		msg.what=INIT_ORDER;
+		handler.sendMessage(msg);
 	}
 	
 	private void getOrderDetial(){
@@ -121,11 +129,11 @@ public class OrderTraceActivity extends BaseActivity {
 			String rtn=HttpUtil.getInfoFromServer(HttpUtil.URL_WEBSERVICE_GET_ORDER_DETAIL, orderMap).toString();
 			if(App.FAIL.equals(rtn)){
 				ToastUtil.show(this, "没有订单！");
-				myExit();
+				this.finish();
 			}else{
 				JSONTokener jsonParser = new JSONTokener(rtn);
 				JSONObject job= (JSONObject)jsonParser.nextValue();
-				if(job.getString("task_id").trim()==null||job.getString("task_id").length()==0){
+				if("null".equals(job.getString("task_id"))||job.getString("task_id").trim().length()==0){
 					ToastUtil.show(this, "没有订单！");
 					myExit();
 				}else{//处理显示
@@ -172,6 +180,21 @@ public class OrderTraceActivity extends BaseActivity {
         this.sendBroadcast(intent);  
         super.finish();  
     }  
+   
+   Handler handler =  new Handler() {
+
+		@Override
+		public void handleMessage(Message msg) {
+			
+			 switch (msg.what) {  
+	           case INIT_ORDER:  
+	        	   getOrderDetial();
+	               break; 
+	           }  
+		}
+
+	};
+   
 	OnClickListener listener = new OnClickListener() {
 		public void onClick(View v) {
 			Button btn = (Button) v;

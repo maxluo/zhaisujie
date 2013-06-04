@@ -341,13 +341,14 @@ public class MainActivity extends Activity {
 	private void addOrder(){
 		if(app.getUser()==null){
 			ToastUtil.show(this, "请先登录！");
+			login();
 			return;
-		}else if(globleGP==null){
+		}else if(globleGP==null&&addrTxt.getText().toString().trim().length()==0){
 			ToastUtil.show(this, "正在定位请稍后！");
 			return;
 		}
 		//没有服务验证
-		/*try{
+		try{
 			Map<String ,Object> orderMap=new HashMap<String ,Object>();
 			orderMap.put("longitude",globleGP.getLongitudeE6());
 			orderMap.put("latitude",globleGP.getLatitudeE6());
@@ -360,7 +361,7 @@ public class MainActivity extends Activity {
 		}catch(Exception ex){
 			ex.printStackTrace();
 			return;
-		}*/
+		}
 		//去添加订单
 		Order order = this.getOrder();
 		Intent intent = new Intent(MainActivity.this, OrderFrstActivity.class);
@@ -371,23 +372,30 @@ public class MainActivity extends Activity {
 	}
 	
 	private Order getOrder() {
-		String addr=locatFrom.getText().toString()+addrTxt.getText().toString();
+		String addr=locatFrom.getText().toString();
+		if(addrTxt.getText().toString().trim().length()>0){
+			addr=addrTxt.getText().toString();
+		}
 		Order order =new Order();
 		order.setAddress(addr);
-		order.setLatitude(globleGP.getLatitudeE6());
-		order.setLongitude(globleGP.getLongitudeE6());
+		if(globleGP!=null){
+			order.setLatitude(globleGP.getLatitudeE6());
+			order.setLongitude(globleGP.getLongitudeE6());
+		}
 		return order;
 	}
-	
+	private void login(){
+
+		Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+		MainActivity.this.startActivity(intent);
+		//MainActivity.this.finish();
+	}
 	OnClickListener listener = new OnClickListener() {
 		public void onClick(View v) {
 			Button btn = (Button) v;
 			switch (btn.getId()) {
 			case R.id.title_btn_login:
-				
-				Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-				MainActivity.this.startActivity(intent);
-				//MainActivity.this.finish();
+				login();
 				break;
 			case R.id.title_btn_order:
 				Intent intent3 = new Intent(MainActivity.this, OrderTraceActivity.class);
