@@ -63,7 +63,7 @@ public class OrderConfirmActivity extends BaseActivity {
 		order_user_name.setText(order.getLinkman());
 		order_user_phone.setText(order.getLinkmobile());
 		order_user_address.setText(order.getAddress());
-		pay_amnt.setText("实际付款          " + Double.valueOf(order.getPrice()).intValue()+"元");
+		pay_amnt.setText("￥"+Double.valueOf(order.getPrice()).intValue()+"元");
 		service_time.setText(order.getClean_hours() + "小时");
 		if(DateUtil.toDateByDT(order.getBegin_time())!=null){
 			service_start_time.setText(DateUtil.formatDateToMDHM(DateUtil.toDateByDT(order.getBegin_time())));
