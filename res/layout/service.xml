@@ -98,14 +98,21 @@
             android:id="@+id/user_info"
             android:layout_width="130dip"
             android:layout_height="130dip"
-            android:background="@color/conact_three"
             android:orientation="vertical" 
             android:layout_marginLeft="10.0dip"
             android:layout_marginTop="20.0dip"
             android:layout_alignParentLeft="true"
             android:layout_below="@id/account">
-
-            <TextView
+            
+			<ImageView 
+                android:id="@+id/user_info_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/yunxiaozhai_icon"
+                />
+            
+           <!--  <TextView
                 android:id="@+id/order_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -123,7 +130,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="5.0dip"
                 android:textColor="@color/white" 
-                android:src="@drawable/default_avatar"/>
+                android:src="@drawable/default_avatar"/> -->
 
         </LinearLayout>
         
@@ -132,14 +139,20 @@
             android:id="@+id/about"
             android:layout_width="130dip"
             android:layout_height="130dip"
-            android:background="@color/conact_four"
             android:orientation="vertical" 
             android:layout_marginTop="20.0dip"
             android:layout_marginRight="10.0dip"
             android:layout_alignParentRight="true"
             android:layout_below="@id/service">
 
-            <TextView
+            <ImageView 
+                android:id="@+id/about_us_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/aboutus_icon"
+                />
+            <!-- <TextView
                 android:id="@+id/about_us"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -148,7 +161,40 @@
                 android:layout_marginRight="20.0dip"
                 android:layout_marginTop="20.0dip"
                 android:text="关于我们"
-                android:textColor="@color/white" />
+                android:textColor="@color/white" /> -->
+
+            
+        </LinearLayout>
+        
+        <!-- 价格 -->
+        <LinearLayout
+            android:id="@+id/service_price"
+            android:layout_width="130dip"
+            android:layout_height="130dip"
+            android:orientation="vertical" 
+            android:layout_marginTop="20.0dip"
+            android:layout_marginLeft="10.0dip"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/user_info"
+            >
+            <ImageView 
+                android:id="@+id/price_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/price_icon"
+                />
+
+            <!-- <TextView
+                android:id="@+id/about_us"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_marginTop="20.0dip"
+                android:text="关于我们"
+                android:textColor="@color/white" /> -->
 
             
         </LinearLayout>

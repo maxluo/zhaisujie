@@ -2,6 +2,7 @@ package com.ag.zhaisujie.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -28,7 +29,12 @@ public class ServiceActivity extends BaseActivity {
 	private TextView accountNum;
 
 	private TextView userName;
+	
 	private ImageView userPic;
+	private ImageView aboutUsImg;
+	private ImageView priceImg;
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +60,15 @@ public class ServiceActivity extends BaseActivity {
 		
 		accountNum = (TextView)findViewById(R.id.order_account_num);
 		userName = (TextView)findViewById(R.id.order_user_name);
-		userPic = (ImageView)findViewById(R.id.order_user_pic);
+		
+		userPic = (ImageView)findViewById(R.id.user_info_img);
+		aboutUsImg = (ImageView)findViewById(R.id.about_us_img);
+		priceImg =  (ImageView)findViewById(R.id.price_img);
+		
+		
+		userPic.setOnClickListener(listener);
+		aboutUsImg.setOnClickListener(listener);
+		priceImg.setOnClickListener(listener);
 		
 		String acc = "";
 		try {
@@ -64,11 +78,10 @@ public class ServiceActivity extends BaseActivity {
 		accountNum.setText(acc);
 
 	}
-
+	
 	OnClickListener listener = new OnClickListener() {
 		public void onClick(View v) {
-			Button btn = (Button) v;
-			switch (btn.getId()) {
+			switch (v.getId()) {
 			case R.id.title_btn_setting:
 				myExit();
 				break;
@@ -88,7 +101,17 @@ public class ServiceActivity extends BaseActivity {
 //				intent.setData(Uri.parse("tel:" + servicePhoneNum.getText()));
 				SimpleFuncUtils.startPhoneIntent(ServiceActivity.this, "" + servicePhoneNum.getText());
 				break;
+			case R.id.user_info_img:
+				Log.d("sss", "user_info_img");
+				break;
+			case R.id.about_us_img:
+				Log.d("sss", "about_us_img");
+				break;
+			case R.id.price_img:
+				Log.d("sss", "price_img");
+				break;
 			}
+			
 		}
 	};
    protected void myExit() {  

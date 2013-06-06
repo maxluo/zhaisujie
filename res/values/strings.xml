@@ -50,5 +50,6 @@
 	<string name="service_phone">18621082366</string>
 	<string name="no_service_hint">对不起,您所在的地区还没有开通宅速洁服务，谢谢您的使用。</string>
 	<string name="no_service_title">该地区没有服务</string>
-	<string name="no_order">您还没有发布订单，请立即发布吧。</string>
+	<string name="no_order">您还没有发布订单，请立即发布吧!</string>
+	
 </resources>
