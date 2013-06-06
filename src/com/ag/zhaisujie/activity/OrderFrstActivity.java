@@ -35,7 +35,7 @@ import com.ag.zhaisujie.model.Order;
 public class OrderFrstActivity extends BaseActivity {
 	private Button backBtn;
 	private TextView titleTxt;
-	private TextView addrTxt;
+	private EditText addrTxt;
 	private Button dateBtn;
 	private Button orderBtn;
 	private EditText dateTxt;
@@ -65,7 +65,7 @@ public class OrderFrstActivity extends BaseActivity {
 		backBtn.setOnClickListener(listener);
 		titleTxt=(TextView)findViewById(R.id.title);
 		titleTxt.setText(R.string.order_frst_title);
-		addrTxt=(TextView)findViewById(R.id.order_txt_addr);
+		addrTxt=(EditText)findViewById(R.id.order_txt_addr);
 		dateBtn=(Button)findViewById(R.id.date_btn_input);
 		dateBtn.setOnClickListener(listener);
 		dateTxt=(EditText)findViewById(R.id.date_txt_input);
@@ -209,11 +209,13 @@ public class OrderFrstActivity extends BaseActivity {
     }; 
     //下面页面
 	private void nextPage(){
-		if(!(time2Btn.isChecked()||time3Btn.isChecked()||time4Btn.isChecked())){
+		if(addrTxt.getText().toString().trim().length()==0){
+			ToastUtil.show(this, "服务地址不能为空！");
+			return;
+		}else if(!(time2Btn.isChecked()||time3Btn.isChecked()||time4Btn.isChecked())){
 			ToastUtil.show(this, "请选择服务时长！");
 			return;
-		}
-		if(dateTxt.getText().toString().trim().length()==0){
+		}else if(dateTxt.getText().toString().trim().length()==0){
 			ToastUtil.show(this, "请选择服务日期！");
 			return;
 		}else if(!ValidUtil.isDate(dateTxt.getText().toString())){
@@ -242,7 +244,7 @@ public class OrderFrstActivity extends BaseActivity {
 		order.setClean_hours(timeLong);
 		order.setPrice(money);
 		order.setBegin_time(dateTime);
-		
+		order.setAddress(addrTxt.getText().toString().trim());
 		Intent intent = new Intent(OrderFrstActivity.this, ContactDetailActivity.class);
 		Bundle bundle = new Bundle();  
 		bundle.putSerializable("Order", order);

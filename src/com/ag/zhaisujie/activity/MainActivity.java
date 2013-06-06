@@ -347,12 +347,15 @@ public class MainActivity extends Activity {
 			ToastUtil.show(this, "正在定位请稍后！");
 			return;
 		}
+		String addr=locatFrom.getText().toString();
+		if(addrTxt.getText().toString().trim().length()>0){
+			addr=addrTxt.getText().toString();
+		}
 		//没有服务验证
 		try{
 			Map<String ,Object> orderMap=new HashMap<String ,Object>();
-			orderMap.put("longitude",globleGP.getLongitudeE6());
-			orderMap.put("latitude",globleGP.getLatitudeE6());
-			String rtn=HttpUtil.getInfoFromServer(HttpUtil.URL_WEBSERVICE_IS_SERVICE, orderMap).toString();
+			orderMap.put("address",addr);
+			String rtn=HttpUtil.getInfoFromServer(HttpUtil.URL_WEBSERVICE_IS_SERVICE_BY_ADDR, orderMap).toString();
 			if(App.FAIL.equals(rtn)){
 				Intent intent = new Intent(MainActivity.this, ServiceHintActivity.class);
 				MainActivity.this.startActivity(intent);
@@ -363,7 +366,12 @@ public class MainActivity extends Activity {
 			return;
 		}
 		//去添加订单
-		Order order = this.getOrder();
+		Order order =new Order();
+		order.setAddress(addr);
+		//if(globleGP!=null){
+		//	order.setLatitude(globleGP.getLatitudeE6());
+		//	order.setLongitude(globleGP.getLongitudeE6());
+		//}
 		Intent intent = new Intent(MainActivity.this, OrderFrstActivity.class);
 		Bundle bundle = new Bundle();  
 		bundle.putSerializable("Order", order);
@@ -371,19 +379,6 @@ public class MainActivity extends Activity {
 		MainActivity.this.startActivity(intent);
 	}
 	
-	private Order getOrder() {
-		String addr=locatFrom.getText().toString();
-		if(addrTxt.getText().toString().trim().length()>0){
-			addr=addrTxt.getText().toString();
-		}
-		Order order =new Order();
-		order.setAddress(addr);
-		if(globleGP!=null){
-			order.setLatitude(globleGP.getLatitudeE6());
-			order.setLongitude(globleGP.getLongitudeE6());
-		}
-		return order;
-	}
 	private void login(){
 
 		Intent intent = new Intent(MainActivity.this, LoginActivity.class);
