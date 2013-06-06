@@ -62,6 +62,9 @@ public class OrderTraceActivity extends BaseActivity {
 	private TextView waiter_time;
 	private TextView service_done_time;
 	private Order order;
+	
+	private RelativeLayout norderLayout;
+	private RelativeLayout orderLayout;
 	private RelativeLayout companyLayout;
 	
 	private final int INIT_ORDER=0;//初始化
@@ -105,8 +108,11 @@ public class OrderTraceActivity extends BaseActivity {
 		waiter_phone = (TextView) findViewById(R.id.waiter_phone);
 		waiter_time = (TextView) findViewById(R.id.waiter_time);
 		service_done_time = (TextView) findViewById(R.id.service_done_time);
+		
+		norderLayout=(RelativeLayout) findViewById(R.id.no_order);
+		orderLayout=(RelativeLayout) findViewById(R.id.add_order_layout);
 		companyLayout=(RelativeLayout) findViewById(R.id.company_order_layout);
-
+		
 		order_success_time.setText(commitTime);
 		company_name.setText(companyName);
 		company_phone.setText(companyPhone);
@@ -135,12 +141,13 @@ public class OrderTraceActivity extends BaseActivity {
 				JSONObject job= (JSONObject)jsonParser.nextValue();
 				if("null".equals(job.getString("task_id"))||job.getString("task_id").trim().length()==0){
 					ToastUtil.show(this, "没有订单！");
-					myExit();
+					norderLayout.setVisibility(View.VISIBLE);
 				}else{//处理显示
 					order=new Order();
 					order.setTaskId(job.getString("task_id"));
 					order.setOrderNumber(job.getString("ordernumber"));
 					order_success_time.setText(job.getString("created"));
+					orderLayout.setVisibility(View.VISIBLE);
 					JSONObject bids=job.getJSONObject("bids");
 					if(bids!=null){
 						companyLayout.setVisibility(View.VISIBLE);
