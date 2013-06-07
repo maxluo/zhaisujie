@@ -15,13 +15,14 @@
         android:layout_marginRight="20.0dip"
         android:layout_gravity="center"
         android:orientation="vertical" 
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/hint_pic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/no_order" />
+            android:src="@drawable/no_order"
+            android:layout_gravity="center" />
 
         <TextView
             android:id="@+id/hint_info"
@@ -30,6 +31,7 @@
             android:ems="10"
             android:text="@string/no_order"
             android:gravity="center"
+            android:layout_marginTop="10.0dip"
             android:textColor="@color/black" />
     </LinearLayout>
 
@@ -150,6 +152,7 @@
             />
 
         <LinearLayout
+            android:id="@+id/contact_home_Linear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
