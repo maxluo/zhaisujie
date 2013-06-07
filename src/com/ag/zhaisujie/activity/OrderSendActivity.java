@@ -95,18 +95,23 @@ public class OrderSendActivity extends BaseActivity {
 	           case  PAY_SEND_SUCCESS:
 	        	   
 	        	   String ret = (String) msg.obj;
-	               String memo = "memo={";
-	               int start = ret.indexOf(memo) + memo.length();
-	               int end = ret.indexOf("};result=");
-	               memo = ret.substring(start, end);
-	               if (memo.indexOf("付款成功") >= 0){
-		        	   resultInfo.setText(R.string.pay_send_success);
-		        	   warnInfo.setVisibility(View.VISIBLE);
-		        	   Intent intent = new Intent(OrderSendActivity.this,OrderTraceActivity.class);
-		   			   startActivity(intent);
-	               }else{
-	            	   resultInfo.setText(R.string.pay_send_fail);
-	               }
+	        	   
+	        	   // 获取交易状态码，具体状态代码请参看文档
+	        	   String tradeStatus = "resultStatus={";
+	        	   int imemoStart = ret.indexOf("resultStatus=");
+	        	   imemoStart += tradeStatus.length();
+	        	   int imemoEnd = ret.indexOf("};memo=");
+	        	   tradeStatus = ret.substring(imemoStart, imemoEnd);
+	        	   if(tradeStatus.equals("9000"))//判断交易状态码，只有9000表示交易成功
+					{
+						resultInfo.setText(R.string.pay_send_success);
+		        	    warnInfo.setVisibility(View.VISIBLE);
+		        	    Intent intent = new Intent(OrderSendActivity.this,OrderTraceActivity.class);
+		   			    startActivity(intent);
+					}else{
+						resultInfo.setText(R.string.pay_send_fail);
+					}
+					
 	        	   break;
 	           case  PAY_SEND_FAIL:
 	        	   resultInfo.setText(R.string.pay_send_fail);

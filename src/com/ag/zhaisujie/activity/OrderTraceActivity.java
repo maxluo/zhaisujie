@@ -64,7 +64,7 @@ public class OrderTraceActivity extends BaseActivity {
 	private TextView service_done_time;
 	private Order order;
 	
-	private RelativeLayout norderLayout;
+	private LinearLayout norderLayout;
 	private RelativeLayout orderLayout;
 	private RelativeLayout companyLayout;
 	private RelativeLayout peopleLayout;
@@ -115,12 +115,12 @@ public class OrderTraceActivity extends BaseActivity {
 		waiter_time = (TextView) findViewById(R.id.waiter_time);
 		service_done_time = (TextView) findViewById(R.id.service_done_time);
 		
-		norderLayout=(RelativeLayout) findViewById(R.id.no_order);
+		norderLayout=(LinearLayout) findViewById(R.id.no_order);
 		orderLayout=(RelativeLayout) findViewById(R.id.add_order_layout);
 		companyLayout=(RelativeLayout) findViewById(R.id.company_order_layout);
 		peopleLayout=(RelativeLayout) findViewById(R.id.people_order_layout);
 		completeLayout=(RelativeLayout) findViewById(R.id.complete_order_layout);
-		contactCompanyLinear=(LinearLayout) findViewById(R.id.contact_home_company);
+		contactCompanyLinear=(LinearLayout) findViewById(R.id.contact_home_Linear);
 		
 		order_success_time.setText(commitTime);
 		company_name.setText(companyName);
