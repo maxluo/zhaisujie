@@ -339,11 +339,7 @@ public class MainActivity extends Activity {
 	
 	//去下一个联系页面
 	private void addOrder(){
-		if(app.getUser()==null){
-			ToastUtil.show(this, "请先登录！");
-			login();
-			return;
-		}else if(globleGP==null&&addrTxt.getText().toString().trim().length()==0){
+		if(globleGP==null&&addrTxt.getText().toString().trim().length()==0){
 			ToastUtil.show(this, "正在定位请稍后！");
 			return;
 		}
@@ -351,6 +347,9 @@ public class MainActivity extends Activity {
 		if(addrTxt.getText().toString().trim().length()>0){
 			addr=addrTxt.getText().toString();
 		}
+		//去添加订单
+		Order order =new Order();
+		order.setAddress(addr);
 		//没有服务验证
 		try{
 			Map<String ,Object> orderMap=new HashMap<String ,Object>();
@@ -365,9 +364,11 @@ public class MainActivity extends Activity {
 			ex.printStackTrace();
 			return;
 		}
-		//去添加订单
-		Order order =new Order();
-		order.setAddress(addr);
+		if(app.getUser()==null){
+			ToastUtil.show(this, "请先登录！");
+			login(order);
+			return;
+		} 
 		//if(globleGP!=null){
 		//	order.setLatitude(globleGP.getLatitudeE6());
 		//	order.setLongitude(globleGP.getLongitudeE6());
@@ -379,9 +380,12 @@ public class MainActivity extends Activity {
 		MainActivity.this.startActivity(intent);
 	}
 	
-	private void login(){
+	private void login(Order order){
 
 		Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+		Bundle bundle = new Bundle();  
+		bundle.putSerializable("Order", order);
+		intent.putExtras(bundle);//传递地址到下一页面
 		MainActivity.this.startActivity(intent);
 		//MainActivity.this.finish();
 	}
@@ -390,11 +394,11 @@ public class MainActivity extends Activity {
 			Button btn = (Button) v;
 			switch (btn.getId()) {
 			case R.id.title_btn_login:
-				login();
+				login(null);
 				break;
 			case R.id.title_btn_order:
 				Intent intent3 = new Intent(MainActivity.this, OrderTraceActivity.class);
-				Bundle bundle = new Bundle();
+				//Bundle bundle = new Bundle();
 				//bundle.putSerializable("Order", getOrder());
 				//intent3.putExtras(bundle);
 				//intent3.putExtra("ActivityClass", MainActivity.class.getCanonicalName());

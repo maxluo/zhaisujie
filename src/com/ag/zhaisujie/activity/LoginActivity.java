@@ -3,7 +3,7 @@ package com.ag.zhaisujie.activity;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -18,6 +18,7 @@ import com.ag.zhaisujie.HttpUtil;
 import com.ag.zhaisujie.R;
 import com.ag.zhaisujie.ToastUtil;
 import com.ag.zhaisujie.ValidUtil;
+import com.ag.zhaisujie.model.Order;
 import com.ag.zhaisujie.model.User;
 /**
  * 
@@ -29,7 +30,7 @@ import com.ag.zhaisujie.model.User;
  *     </p>
  * 
  */
-public class LoginActivity extends Activity {
+public class LoginActivity extends BaseActivity {
 	private TimeCount time;
 	private Button backBtn;
 	private EditText phoneTxt;
@@ -113,7 +114,7 @@ public class LoginActivity extends Activity {
 				if(App.getInstance()!=null){
 					App.getInstance().setUser(user);
 					MainActivity.initButton();
-					this.finish();
+					dispatch();
 				}
 			}catch(Exception ex){
 				ex.printStackTrace();
@@ -121,6 +122,22 @@ public class LoginActivity extends Activity {
 			}
 		}
 	}
+	
+	private void dispatch(){
+		
+		//设置地址
+		if(getIntent().getSerializableExtra("Order")!=null){
+			Order order=(Order)getIntent().getSerializableExtra("Order");
+			Intent intent = new Intent(LoginActivity.this, OrderFrstActivity.class);
+			Bundle bundle = new Bundle();  
+			bundle.putSerializable("Order", order);
+			intent.putExtras(bundle);//传递地址到下一页面
+			LoginActivity.this.startActivity(intent);
+		}
+		
+		this.finish();
+	}
+	
 	OnClickListener listener = new OnClickListener() {
 		public void onClick(View v) {
 			Button btn = (Button) v;
