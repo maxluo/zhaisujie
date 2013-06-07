@@ -1,7 +1,9 @@
 package com.ag.zhaisujie.activity;
 
 import java.util.Calendar;
+import java.util.Date;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -26,7 +28,7 @@ import com.ag.zhaisujie.model.Order;
 /**
  *    OrderFrstActivity.java
  *     <p>
- *     ¶©µ¥µÚÒ»¸öÒ³Ãæ
+ *     è®¢å•ç¬¬ä¸€ä¸ªé¡µé¢
  *     Copyright: Copyright(c) 2013 
  *     @author Gavin_Feng
  *     </p>
@@ -56,6 +58,10 @@ public class OrderFrstActivity extends BaseActivity {
     private static final int SHOW_TIMEPICK = 2;
     private static final int TIME_DIALOG_ID = 3;
     private Order order;
+    
+    private Date minDate;
+    private Date maxDate;
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -79,24 +85,25 @@ public class OrderFrstActivity extends BaseActivity {
 		time3Btn=(RadioButton)findViewById(R.id.time_btn_3);
 		time4Btn=(RadioButton)findViewById(R.id.time_btn_4);
 		
-		//ÉèÖÃµØÖ·
-		Intent intent=getIntent();
+		//è®¾ç½®åœ°å€
 		order=(Order)getIntent().getSerializableExtra("Order");
 		String addr=order.getAddress();
 		addrTxt.setText(addr);
-		//Ê±¼ä³õÊ¼
+		//æ—¶é—´åˆå§‹
 		
 		 final Calendar c = Calendar.getInstance();
-		 c.add(Calendar.DAY_OF_MONTH, 1);
+		 minDate=c.getTime();
          mYear = c.get(Calendar.YEAR); 
          mMonth = c.get(Calendar.MONTH); 
          mDay = c.get(Calendar.DAY_OF_MONTH);
          mHour = c.get(Calendar.HOUR_OF_DAY);
          mMinute = c.get(Calendar.MINUTE);
+         c.add(Calendar.DAY_OF_MONTH, 6);
+         maxDate=c.getTime();
 	}
 
     /**
-     * ÉèÖÃÈÕÆÚ
+     * è®¾ç½®æ—¥æœŸ
      */
 	private void setDateTime(){
        final Calendar c = Calendar.getInstance();  
@@ -109,7 +116,7 @@ public class OrderFrstActivity extends BaseActivity {
 	}
 	
 	/**
-	 * ¸üĞÂÈÕÆÚÏÔÊ¾
+	 * æ›´æ–°æ—¥æœŸæ˜¾ç¤º
 	 */
 	private void updateDateDisplay(){
 		dateTxt.setText(new StringBuilder().append(mYear).append("-")
@@ -118,7 +125,7 @@ public class OrderFrstActivity extends BaseActivity {
 	}
 	
     /** 
-     * ÈÕÆÚ¿Ø¼şµÄÊÂ¼ş 
+     * æ—¥æœŸæ§ä»¶çš„äº‹ä»¶ 
      */  
     private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {  
   
@@ -133,7 +140,7 @@ public class OrderFrstActivity extends BaseActivity {
     }; 
 	
 	/**
-	 * ÉèÖÃÊ±¼ä
+	 * è®¾ç½®æ—¶é—´
 	 */
 	private void setTimeOfDay(){
 	   final Calendar c = Calendar.getInstance(); 
@@ -143,7 +150,7 @@ public class OrderFrstActivity extends BaseActivity {
 	}
 	
 	/**
-	 * ¸üĞÂÊ±¼äÏÔÊ¾
+	 * æ›´æ–°æ—¶é—´æ˜¾ç¤º
 	 */
 	private void updateTimeDisplay(){
 		timeTxt.setText(new StringBuilder().append(mHour).append(":")
@@ -151,7 +158,7 @@ public class OrderFrstActivity extends BaseActivity {
 	}
     
     /**
-     * Ê±¼ä¿Ø¼şÊÂ¼ş
+     * æ—¶é—´æ§ä»¶äº‹ä»¶
      */
     private TimePickerDialog.OnTimeSetListener mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
 		
@@ -159,19 +166,29 @@ public class OrderFrstActivity extends BaseActivity {
 		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 			mHour = hourOfDay;
 			mMinute = minute;
-			
+			if (minute > 0 && minute < 30) {
+				view.setCurrentMinute(30);
+			} else {
+				view.setCurrentMinute(0);
+				view.setCurrentHour(hourOfDay+1);
+			}
 			updateTimeDisplay();
 		}
 	};
     
-    @Override  
+    @SuppressLint("NewApi")
+	@Override  
     protected Dialog onCreateDialog(int id) {  
        switch (id) {  
        case DATE_DIALOG_ID:  
-           return new DatePickerDialog(this, mDateSetListener, mYear, mMonth,  
-                  mDay);
+    	    DatePickerDialog d = new DatePickerDialog(this, mDateSetListener, mYear, mMonth, mDay);
+    	    DatePicker dp = d.getDatePicker();
+    	    dp.setMaxDate(maxDate.getTime());
+    	    dp.setMinDate(minDate.getTime());
+    	    return d;
        case TIME_DIALOG_ID:
-    	   return new TimePickerDialog(this, mTimeSetListener, mHour, mMinute, true);
+    	   TimePickerDialog t=new TimePickerDialog(this, mTimeSetListener, mHour, mMinute, true);
+    	   return t;
        }
     	   
        return null;  
@@ -190,7 +207,7 @@ public class OrderFrstActivity extends BaseActivity {
     }  
   
     /** 
-     * ´¦ÀíÈÕÆÚºÍÊ±¼ä¿Ø¼şµÄHandler 
+     * å¤„ç†æ—¥æœŸå’Œæ—¶é—´æ§ä»¶çš„Handler 
      */  
     Handler dateandtimeHandler = new Handler() {
   
@@ -207,22 +224,22 @@ public class OrderFrstActivity extends BaseActivity {
        }  
   
     }; 
-    //ÏÂÃæÒ³Ãæ
+    //ä¸‹é¢é¡µé¢
 	private void nextPage(){
 		if(addrTxt.getText().toString().trim().length()==0){
-			ToastUtil.show(this, "·şÎñµØÖ·²»ÄÜÎª¿Õ£¡");
+			ToastUtil.show(this, "æœåŠ¡åœ°å€ä¸èƒ½ä¸ºç©ºï¼");
 			return;
 		}else if(!(time2Btn.isChecked()||time3Btn.isChecked()||time4Btn.isChecked())){
-			ToastUtil.show(this, "ÇëÑ¡Ôñ·şÎñÊ±³¤£¡");
+			ToastUtil.show(this, "è¯·é€‰æ‹©æœåŠ¡æ—¶é•¿ï¼");
 			return;
 		}else if(dateTxt.getText().toString().trim().length()==0){
-			ToastUtil.show(this, "ÇëÑ¡Ôñ·şÎñÈÕÆÚ£¡");
+			ToastUtil.show(this, "è¯·é€‰æ‹©æœåŠ¡æ—¥æœŸï¼");
 			return;
 		}else if(!ValidUtil.isDate(dateTxt.getText().toString())){
-			ToastUtil.show(this, "ÇëÑ¡ÔñÊäÈëÕıÈ·ÈÕÆÚ£ºyyyy-mm-dd");
+			ToastUtil.show(this, "è¯·é€‰æ‹©è¾“å…¥æ­£ç¡®æ—¥æœŸï¼šyyyy-mm-dd");
 			return;
 		}else if(timeTxt.getText().toString().trim().length()==0){
-			ToastUtil.show(this, "ÇëÑ¡Ôñ·şÎñÊ±¼ä£¡");
+			ToastUtil.show(this, "è¯·é€‰æ‹©æœåŠ¡æ—¶é—´ï¼");
 			return;
 		}else if (ValidUtil.validTime(timeTxt.getText().toString())!=null){
 			ToastUtil.show(this, ValidUtil.validTime(timeTxt.getText().toString()));
@@ -248,7 +265,7 @@ public class OrderFrstActivity extends BaseActivity {
 		Intent intent = new Intent(OrderFrstActivity.this, ContactDetailActivity.class);
 		Bundle bundle = new Bundle();  
 		bundle.putSerializable("Order", order);
-		intent.putExtras(bundle);//´«µİµØÖ·µ½ÏÂÒ»Ò³Ãæ
+		intent.putExtras(bundle);//ä¼ é€’åœ°å€åˆ°ä¸‹ä¸€é¡µé¢
 		OrderFrstActivity.this.startActivity(intent);
 		
 	}
