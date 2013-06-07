@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -66,6 +67,11 @@ public class OrderTraceActivity extends BaseActivity {
 	private RelativeLayout norderLayout;
 	private RelativeLayout orderLayout;
 	private RelativeLayout companyLayout;
+	private RelativeLayout peopleLayout;
+	private RelativeLayout completeLayout;
+	
+	private LinearLayout contactCompanyLinear;
+	
 	
 	private final int INIT_ORDER=0;//初始化
 	
@@ -112,6 +118,9 @@ public class OrderTraceActivity extends BaseActivity {
 		norderLayout=(RelativeLayout) findViewById(R.id.no_order);
 		orderLayout=(RelativeLayout) findViewById(R.id.add_order_layout);
 		companyLayout=(RelativeLayout) findViewById(R.id.company_order_layout);
+		peopleLayout=(RelativeLayout) findViewById(R.id.people_order_layout);
+		completeLayout=(RelativeLayout) findViewById(R.id.complete_order_layout);
+		contactCompanyLinear=(LinearLayout) findViewById(R.id.contact_home_company);
 		
 		order_success_time.setText(commitTime);
 		company_name.setText(companyName);
@@ -143,16 +152,25 @@ public class OrderTraceActivity extends BaseActivity {
 					ToastUtil.show(this, "没有订单！");
 					norderLayout.setVisibility(View.VISIBLE);
 				}else{//处理显示
+					orderLayout.setVisibility(View.VISIBLE);
+					companyLayout.setVisibility(View.VISIBLE);
+					peopleLayout.setVisibility(View.VISIBLE);
+					completeLayout.setVisibility(View.VISIBLE);
+					
 					order=new Order();
 					order.setTaskId(job.getString("task_id"));
 					order.setOrderNumber(job.getString("ordernumber"));
 					order_success_time.setText(job.getString("created"));
-					orderLayout.setVisibility(View.VISIBLE);
+					
 					JSONObject bids=job.getJSONObject("bids");
 					if(bids!=null){
-						companyLayout.setVisibility(View.VISIBLE);
+						contactCompanyLinear.setVisibility(View.VISIBLE);
+						contactHomeCompanyBtn.setVisibility(View.VISIBLE);
+						
 						company_name.setText(bids.getString("department"));
 						companyPhone=bids.getString("mobile");
+						company_phone.setText(companyPhone);
+						match_time.setText(bids.getString("created"));
 					}
 				}
 				

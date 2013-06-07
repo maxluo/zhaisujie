@@ -7,7 +7,7 @@
     android:orientation="vertical" >
 <LinearLayout
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"
     android:background="@color/body_bg"
     android:orientation="vertical" >
 
@@ -30,15 +30,29 @@
                 android:textStyle="bold"
                 android:text=" 服务地址："
                 android:textColor="@color/blue" />
+           
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="10.0dip"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15.0dip"
+            android:layout_marginLeft="15.0dip"
+            android:layout_weight="1" 
+            android:background="@drawable/confirm_pay" >
+            
             <EditText
-                android:id="@+id/order_txt_addr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="8"
-                android:text=""
-                android:textStyle="bold"
-                android:textSize="17.0sp"
-                android:textColor="@color/black" />
+                    android:id="@+id/order_txt_addr"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" 
+                    android:ems="8"
+                    android:height="50dp"
+                    android:inputType="textMultiLine"
+                    android:text=""
+                    android:background="@null"
+                    android:textColor="@color/black"
+                    android:textSize="17.0sp" />
 
         </TableRow>
 

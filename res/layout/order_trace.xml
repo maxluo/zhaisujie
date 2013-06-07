@@ -73,7 +73,8 @@
             android:background="@drawable/btn_orange"
             android:text="@string/order_cancel"
             android:textColor="@color/white"
-            android:textSize="12.0dip" />
+            android:textSize="12.0dip" 
+            android:visibility="gone"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -144,7 +145,9 @@
             android:background="@drawable/btn_orange"
             android:text="@string/contact_home_company"
             android:textColor="@color/white"
-            android:textSize="12.0dip" />
+            android:textSize="12.0dip" 
+        	android:visibility="gone" 
+            />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -155,7 +158,8 @@
             android:layout_marginTop="10.0dip"
             android:layout_toLeftOf="@id/contact_home_company"
             android:layout_toRightOf="@id/match_complete"
-            android:orientation="vertical" >
+            android:orientation="vertical" 
+            android:visibility="gone" >
 
             <TextView
                 android:id="@+id/company_name"
@@ -225,7 +229,8 @@
             android:background="@drawable/btn_orange"
             android:text="@string/contact_waiter"
             android:textColor="@color/white"
-            android:textSize="12.0dip" />
+            android:textSize="12.0dip" 
+            android:visibility="gone"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -233,7 +238,8 @@
             android:layout_marginBottom="10.0dip"
             android:layout_marginTop="10.0dip"
             android:layout_toLeftOf="@id/contact_waiter"
-            android:layout_toRightOf="@id/home_service" >
+            android:layout_toRightOf="@id/home_service" 
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="50dip"
@@ -278,6 +284,7 @@
     <!-- 服务完成 -->
 
     <RelativeLayout
+        android:id="@+id/complete_order_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -314,7 +321,8 @@
             android:background="@drawable/btn_orange"
             android:text="@string/confirm"
             android:textColor="@color/white"
-            android:textSize="12.0dip" />
+            android:textSize="12.0dip" 
+            android:visibility="gone"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -325,7 +333,8 @@
             android:layout_marginTop="10.0dip"
             android:layout_toLeftOf="@id/confirm_done"
             android:layout_toRightOf="@id/confirm_complete"
-            android:orientation="vertical" >
+            android:orientation="vertical" 
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
