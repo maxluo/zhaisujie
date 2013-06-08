@@ -106,6 +106,12 @@ public class OrderSendActivity extends BaseActivity {
 					{
 						resultInfo.setText(R.string.pay_send_success);
 		        	    warnInfo.setVisibility(View.VISIBLE);
+		        	    //
+		        	    try {
+		    				Thread.sleep(3*1000);
+		    			} catch (Exception e) {
+		    				e.printStackTrace();
+		    			}
 		        	    Intent intent = new Intent(OrderSendActivity.this,OrderTraceActivity.class);
 		   			    startActivity(intent);
 					}else{
@@ -172,7 +178,7 @@ public class OrderSendActivity extends BaseActivity {
 				+ order.getPrice()+"\"";
 		payStr += "&";
 		payStr += "notify_url=" + "\""
-				+ "http://test.yunjiazheng.com/code/alipay/notify" + "\"";
+				+ PartnerConfig.Notify_URL + "\"";
 		Message msg = new Message();
 		try
 		{

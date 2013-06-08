@@ -1,12 +1,19 @@
 package com.ag.zhaisujie.activity;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import org.kobjects.base64.Base64;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -71,7 +78,9 @@ public class OrderTraceActivity extends BaseActivity {
 	private RelativeLayout completeLayout;
 	
 	private LinearLayout contactCompanyLinear;
-	
+	private LinearLayout peopleLinear;
+	private LinearLayout completeLinear;
+	private Bitmap  waitorPhoto;
 	
 	private final int INIT_ORDER=0;//初始化
 	
@@ -114,6 +123,7 @@ public class OrderTraceActivity extends BaseActivity {
 		waiter_phone = (TextView) findViewById(R.id.waiter_phone);
 		waiter_time = (TextView) findViewById(R.id.waiter_time);
 		service_done_time = (TextView) findViewById(R.id.service_done_time);
+		waiterImg =(ImageView) findViewById(R.id.people_View);
 		
 		norderLayout=(LinearLayout) findViewById(R.id.no_order);
 		orderLayout=(RelativeLayout) findViewById(R.id.add_order_layout);
@@ -121,6 +131,8 @@ public class OrderTraceActivity extends BaseActivity {
 		peopleLayout=(RelativeLayout) findViewById(R.id.people_order_layout);
 		completeLayout=(RelativeLayout) findViewById(R.id.complete_order_layout);
 		contactCompanyLinear=(LinearLayout) findViewById(R.id.contact_home_Linear);
+		peopleLinear=(LinearLayout) findViewById(R.id.people_Linear);
+		completeLinear=(LinearLayout) findViewById(R.id.complete_Linear);
 		
 		order_success_time.setText(commitTime);
 		company_name.setText(companyName);
@@ -162,25 +174,75 @@ public class OrderTraceActivity extends BaseActivity {
 					order.setOrderNumber(job.getString("ordernumber"));
 					order_success_time.setText(job.getString("created"));
 					
-					JSONObject bids=job.getJSONObject("bids");
-					if(bids!=null){
-						contactCompanyLinear.setVisibility(View.VISIBLE);
-						contactHomeCompanyBtn.setVisibility(View.VISIBLE);
+					if(!job.isNull("bids")){
+						JSONObject bids=job.getJSONObject("bids");
+						if(bids!=null){
+							contactCompanyLinear.setVisibility(View.VISIBLE);
+							contactHomeCompanyBtn.setVisibility(View.VISIBLE);
+							
+							company_name.setText(bids.getString("department"));
+							companyPhone=bids.getString("mobile");
+							company_phone.setText(companyPhone);
+							match_time.setText(bids.getString("created"));
+						}
+						if(!bids.isNull("ayi")){
+							JSONObject ayi=bids.getJSONObject("ayi");
+							if(ayi!=null){
+								peopleLinear.setVisibility(View.VISIBLE);
+								contactWaiterBtn.setVisibility(View.VISIBLE);
+								waiter_name.setText(ayi.getString("name"));
+								waiterPhone=ayi.getString("mobile");
+								waiter_phone.setText(waiterPhone);
+								//waiter_time.setText(ayi.getString("created"));
+								//设置图片
+								try{
+									InputStream  tmpStream= getStringStream(Base64.decode(ayi.getString("photo").replaceAll(" ", "+")));
+									waitorPhoto= BitmapFactory.decodeStream(tmpStream); 
+									waiterImg.setImageDrawable(new BitmapDrawable(waitorPhoto)); 
+								}catch(Exception ex){
+									ex.printStackTrace();
+								}
+							}
+						}
 						
-						company_name.setText(bids.getString("department"));
-						companyPhone=bids.getString("mobile");
-						company_phone.setText(companyPhone);
-						match_time.setText(bids.getString("created"));
 					}
+					//处理时间
+					JSONArray proes=job.getJSONArray("process");
+					
+					for(int i=0;i<proes.length();i++){
+						JSONObject tmpObj=proes.getJSONObject(i);
+						if(tmpObj.getInt("step")==1){
+							order_success_time.setText(tmpObj.getString("step_date"));
+						}
+						if(tmpObj.getInt("step")==2){
+							match_time.setText(tmpObj.getString("step_date"));
+						}
+						if(tmpObj.getInt("step")==3){
+							waiter_time.setText(tmpObj.getString("step_date"));
+						}
+						if(tmpObj.getInt("step")==4){
+							completeLinear.setVisibility(View.VISIBLE);
+							service_done_time.setText(tmpObj.getString("step_date"));
+						}
+					}
+					
+					
 				}
 				
 			}
 		}catch(Exception ex){
 			ex.printStackTrace();
-			myExit();
+			this.finish();
 		}
 	}
-	
+
+	public InputStream getStringStream(byte[] bytes) {
+		ByteArrayInputStream tInputStringStream = null;
+		if (bytes != null) {
+			tInputStringStream = new ByteArrayInputStream(bytes);
+		}
+		return tInputStringStream;
+	}
 	private void sendCancel(){
 		try{
 			Map<String ,Object> orderMap=new HashMap<String ,Object>();

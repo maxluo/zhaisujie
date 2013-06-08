@@ -105,6 +105,41 @@ public class ValidUtil {
         }
         return null;
     }
+    
+    /**
+     * 把数字转成周几显示
+     *
+     */
+    public static String convertWeekShow(int num){
+		String str = "";
+		switch (num) {
+		case 1:
+			str="一";
+			break;
+		case 2:
+			str="二";
+			break;
+		case 3:
+			str="三";
+			break;
+		case 4:
+			str="四";
+			break;
+		case 5:
+			str="五";
+			break;
+		case 6:
+			str="六";
+			break;
+		case 7:
+			str="日";
+			break;
+		default:
+			break;
+		}
+		return str;
+    }
+    
 	public static void main(String[] args) {
 		String phone = "13611716465";
 		System.out.print(isMobileNO(phone));

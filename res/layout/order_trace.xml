@@ -43,8 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10.0dip"
-        android:visibility="gone" 
-        android:background="@drawable/round_rect_arrow_down" >
+        android:background="@drawable/round_rect_arrow_down" 
+        android:visibility="gone">
 
         <FrameLayout
             android:id="@+id/order_submit"
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10.0dip"
-            android:layout_marginLeft="10.0dip"
+            android:layout_marginLeft="30.0dip"
             android:layout_marginTop="5.0dip"
             android:layout_toLeftOf="@id/order_cancel"
             android:layout_toRightOf="@id/order_submit"
@@ -94,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="提交成功"
+                android:textAlignment="center"
                 android:textColor="@color/black" />
 
             <TextView
@@ -102,6 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="2012-09-30 15:30"
+                android:textAlignment="center"
                 android:textColor="@color/lightgrey"
                 android:textSize="10dip" />
         </LinearLayout>
@@ -236,6 +238,7 @@
             android:visibility="gone"/>
 
         <LinearLayout
+            android:id="@+id/people_Linear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10.0dip"
@@ -245,6 +248,7 @@
             android:visibility="gone">
 
             <ImageView
+                android:id="@+id/people_View"
                 android:layout_width="50dip"
                 android:layout_height="40dip"
                 android:src="@drawable/default_avatar" />
@@ -328,11 +332,12 @@
             android:visibility="gone"/>
 
         <LinearLayout
+            android:id="@+id/complete_Linear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10.0dip"
-            android:layout_marginLeft="10.0dip"
+            android:layout_marginLeft="30.0dip"
             android:layout_marginTop="10.0dip"
             android:layout_toLeftOf="@id/confirm_done"
             android:layout_toRightOf="@id/confirm_complete"
