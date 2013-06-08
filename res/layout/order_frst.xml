@@ -15,7 +15,7 @@
 
     <TableLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dip"
         android:layout_marginLeft="15.0dip"
         android:layout_marginRight="15.0dip"
         android:layout_marginTop="20.0dip" >
@@ -49,10 +49,10 @@
                     android:ems="8"
                     android:height="50dp"
                     android:inputType="textMultiLine"
-                    android:text=""
+                    android:gravity="start|left"
                     android:background="@null"
                     android:textColor="@color/black"
-                    android:textSize="17.0sp" />
+                    android:textSize="14.0sp" />
 
         </TableRow>
 
