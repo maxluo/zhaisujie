@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/background"
+    android:background="@color/body_bg"
     android:orientation="vertical" >
 
     <include layout="@layout/titlebar" />
@@ -102,7 +102,8 @@
             android:layout_marginLeft="10.0dip"
             android:layout_marginTop="20.0dip"
             android:layout_alignParentLeft="true"
-            android:layout_below="@id/account">
+            android:layout_below="@id/account"
+            android:visibility="gone">
             
 			<ImageView 
                 android:id="@+id/user_info_img"

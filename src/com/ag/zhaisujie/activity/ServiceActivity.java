@@ -1,8 +1,11 @@
 package com.ag.zhaisujie.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -99,7 +102,22 @@ public class ServiceActivity extends BaseActivity {
 //				Intent intent = new Intent();
 //				intent.setAction(Intent.ACTION_CALL);
 //				intent.setData(Uri.parse("tel:" + servicePhoneNum.getText()));
-				SimpleFuncUtils.startPhoneIntent(ServiceActivity.this, "" + servicePhoneNum.getText());
+				TextView tv=new TextView(ServiceActivity.this);
+				tv.setText(servicePhoneNum.getText().toString());
+				tv.setGravity(Gravity.CENTER);
+				new AlertDialog.Builder(ServiceActivity.this)
+				.setView(tv)
+				//.setMessage(servicePhoneNum.getText().toString())
+				.setPositiveButton("ºô½Ð",  
+					new DialogInterface.OnClickListener() {  
+					    @Override  
+					    public void onClick(DialogInterface dialog, int which) {  
+					    	SimpleFuncUtils.startPhoneIntent(ServiceActivity.this, "" + servicePhoneNum.getText().toString().replaceAll("-", "")); 
+					    }  
+				})
+				.setNegativeButton("È¡Ïû", null)
+				.show();
+				
 				break;
 			case R.id.user_info_img:
 				Log.d("sss", "user_info_img");

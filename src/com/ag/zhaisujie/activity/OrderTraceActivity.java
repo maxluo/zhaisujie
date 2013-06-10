@@ -10,6 +10,8 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.kobjects.base64.Base64;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,6 +19,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -155,13 +158,13 @@ public class OrderTraceActivity extends BaseActivity {
 			orderMap.put("username", App.getInstance().getUser().getUserName());
 			String rtn=HttpUtil.getInfoFromServer(HttpUtil.URL_WEBSERVICE_GET_ORDER_DETAIL, orderMap).toString();
 			if(App.FAIL.equals(rtn)){
-				ToastUtil.show(this, "没有订单！");
+				//ToastUtil.show(this, "没有订单！");
 				this.finish();
 			}else{
 				JSONTokener jsonParser = new JSONTokener(rtn);
 				JSONObject job= (JSONObject)jsonParser.nextValue();
 				if("null".equals(job.getString("task_id"))||job.getString("task_id").trim().length()==0){
-					ToastUtil.show(this, "没有订单！");
+					//ToastUtil.show(this, "没有订单！");
 					norderLayout.setVisibility(View.VISIBLE);
 				}else{//处理显示
 					orderLayout.setVisibility(View.VISIBLE);
@@ -294,12 +297,40 @@ public class OrderTraceActivity extends BaseActivity {
 				
 				break;
 			case R.id.contact_home_company:
-				SimpleFuncUtils.startPhoneIntent(OrderTraceActivity.this,
-						getPhoneNum(companyPhone));
+				
+				TextView tv=new TextView(OrderTraceActivity.this);
+				tv.setText(companyPhone);
+				tv.setGravity(Gravity.CENTER);
+				new AlertDialog.Builder(OrderTraceActivity.this)
+				.setView(tv)
+				//.setMessage(servicePhoneNum.getText().toString())
+				.setPositiveButton("呼叫",  
+					new DialogInterface.OnClickListener() {  
+					    @Override  
+					    public void onClick(DialogInterface dialog, int which) {  
+					    	SimpleFuncUtils.startPhoneIntent(OrderTraceActivity.this, companyPhone); 
+					    }  
+				})
+				.setNegativeButton("取消", null)
+				.show();
+				
 				break;
 			case R.id.contact_waiter:
-				SimpleFuncUtils.startPhoneIntent(OrderTraceActivity.this,
-						getPhoneNum(waiterPhone));
+				TextView tv1=new TextView(OrderTraceActivity.this);
+				tv1.setText(waiterPhone);
+				tv1.setGravity(Gravity.CENTER);
+				new AlertDialog.Builder(OrderTraceActivity.this)
+				.setView(tv1)
+				//.setMessage(servicePhoneNum.getText().toString())
+				.setPositiveButton("呼叫",  
+					new DialogInterface.OnClickListener() {  
+					    @Override  
+					    public void onClick(DialogInterface dialog, int which) {  
+					    	SimpleFuncUtils.startPhoneIntent(OrderTraceActivity.this, waiterPhone); 
+					    }  
+				})
+				.setNegativeButton("取消", null)
+				.show();
 				break;
 			case R.id.confirm_done:
 				Intent intent2 = new Intent(OrderTraceActivity.this, OrderSendActivity.class);
