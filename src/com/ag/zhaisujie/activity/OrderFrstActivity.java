@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Selection;
+import android.text.Spannable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -89,6 +91,13 @@ public class OrderFrstActivity extends BaseActivity {
 		order=(Order)getIntent().getSerializableExtra("Order");
 		String addr=order.getAddress();
 		addrTxt.setText(addr);
+		//设置焦点
+		CharSequence text = addrTxt.getText();
+		if (text instanceof Spannable) {
+		    Spannable spanText = (Spannable)text;
+		     Selection.setSelection(spanText, text.length());
+		}
+		
 		//时间初始
 		
 		 final Calendar c = Calendar.getInstance();

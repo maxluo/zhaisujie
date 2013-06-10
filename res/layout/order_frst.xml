@@ -52,7 +52,7 @@
                     android:gravity="start|left"
                     android:background="@null"
                     android:textColor="@color/black"
-                    android:textSize="14.0sp" />
+                    android:textSize="14.0sp"/>
 
         </TableRow>
 
@@ -101,7 +101,8 @@
                         android:button="@null"
                         android:gravity="bottom|center"
                         android:text="@string/time_txt_2"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textSize="12.0dip"/>
 
                     <RadioButton
                         android:id="@+id/time_btn_3"
@@ -112,7 +113,8 @@
                         android:gravity="bottom|center"
                         android:text="@string/time_txt_3"
                         android:textColor="@color/white" 
-                        android:layout_marginLeft="5.0sp" />
+                        android:layout_marginLeft="5.0sp" 
+                        android:textSize="12.0dip"/>
 
                     <RadioButton
                         android:id="@+id/time_btn_4"
@@ -124,7 +126,8 @@
                         android:gravity="bottom|center"
                         android:text="@string/time_txt_4"
                         android:textColor="@color/white" 
-                        android:layout_marginLeft="5.0sp" />
+                        android:layout_marginLeft="5.0sp" 
+                        android:textSize="12.0dip"/>
 
             </RadioGroup>
 	</TableRow>
