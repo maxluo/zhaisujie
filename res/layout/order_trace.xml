@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20.0dip"
         android:layout_marginRight="20.0dip"
+        android:layout_marginTop="40.0dip"
         android:layout_gravity="center"
         android:orientation="vertical" 
         android:visibility="gone">
@@ -30,8 +31,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:text="@string/no_order"
+            android:lineSpacingExtra="5.0sp"
             android:gravity="center"
-            android:layout_marginTop="10.0dip"
+            android:layout_marginTop="15.0dip"
             android:textColor="@color/black" />
     </LinearLayout>
 
