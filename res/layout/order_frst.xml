@@ -156,7 +156,7 @@
             android:layout_marginLeft="20.0dip"
             android:background="@color/white">
             
-            <EditText android:textSize="14.0sp" android:id="@+id/date_txt_input" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="请选择报务时间" android:singleLine="true" android:layout_weight="1.0" android:inputType="none"/>
+            <EditText android:textSize="14.0sp" android:id="@+id/date_txt_input"  android:editable="false" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="请选择报务时间" android:singleLine="true" android:layout_weight="1.0" android:inputType="none"/>
             <Button
 	        android:id="@+id/date_btn_input"
 	        android:layout_width="wrap_content"
