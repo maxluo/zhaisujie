@@ -174,8 +174,8 @@ public class OrderSendActivity extends BaseActivity {
 		payStr += "body=" + "\"" + "宅速洁服务费" + "\"";
 		payStr += "&";
 		payStr += "total_fee=" + "\""
-		//		+ 0.01+"\"";
-				+ order.getPrice()+"\"";
+				+ 0.01+"\"";
+		//		+ order.getPrice()+"\"";
 		payStr += "&";
 		payStr += "notify_url=" + "\""
 				+ PartnerConfig.Notify_URL + "\"";

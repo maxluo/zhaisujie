@@ -15,13 +15,13 @@
         android:paddingRight="10dp"
         android:paddingTop="10dp" >
 
-		<com.xia.datetime.wheelview.WheelView
+		<com.ag.zhaisujie.dateview.WheelView
 			android:id="@+id/month_day" android:layout_height="wrap_content"
 			android:layout_width="100dip" />
-		<com.xia.datetime.wheelview.WheelView
+		<com.ag.zhaisujie.dateview.WheelView
 			android:id="@+id/hour" android:layout_height="wrap_content"
 			android:layout_width="40dip" />
-		<com.xia.datetime.wheelview.WheelView
+		<com.ag.zhaisujie.dateview.WheelView
 			android:id="@+id/mins" android:layout_height="wrap_content"
 			android:layout_width="40dip" />
       

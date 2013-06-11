@@ -7,7 +7,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.KeyEvent;
+import android.os.Handler;
+import android.os.Message;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -74,6 +75,8 @@ public class MainActivity extends Activity {
 	private GeoPoint globleGP;
 
 	private MaskDialogView maskDialog;
+	private static final int CHECK_SERVICE = 0;
+	private String addr="";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -346,49 +349,20 @@ public class MainActivity extends Activity {
 
 	// 去下一个联系页面
 	private void addOrder() {
+		maskDialog.show();
 		if (globleGP == null
 				&& addrTxt.getText().toString().trim().length() == 0) {
 			ToastUtil.show(this, "正在定位请稍后！");
+			maskDialog.hide();
 			return;
 		}
-		String addr = locatFrom.getText().toString();
+		addr = locatFrom.getText().toString();
 		if (addrTxt.getText().toString().trim().length() > 0) {
 			addr = addrTxt.getText().toString();
 		}
-		// 去添加订单
-		Order order = new Order();
-		order.setAddress(addr);
-		// 没有服务验证
-		try {
-			Map<String, Object> orderMap = new HashMap<String, Object>();
-			orderMap.put("address", addr);
-			String rtn = HttpUtil.getInfoFromServer(
-					HttpUtil.URL_WEBSERVICE_IS_SERVICE_BY_ADDR, orderMap)
-					.toString();
-			if (App.FAIL.equals(rtn)) {
-				Intent intent = new Intent(MainActivity.this,
-						ServiceHintActivity.class);
-				MainActivity.this.startActivity(intent);
-				return;
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return;
-		}
-		if (app.getUser() == null) {
-			ToastUtil.show(this, "请先登录！");
-			login(order);
-			return;
-		}
-		// if(globleGP!=null){
-		// order.setLatitude(globleGP.getLatitudeE6());
-		// order.setLongitude(globleGP.getLongitudeE6());
-		// }
-		Intent intent = new Intent(MainActivity.this, OrderFrstActivity.class);
-		Bundle bundle = new Bundle();
-		bundle.putSerializable("Order", order);
-		intent.putExtras(bundle);// 传递地址到下一页面
-		MainActivity.this.startActivity(intent);
+		Message msg = new Message();
+		msg.what=CHECK_SERVICE;
+		handler.sendMessage(msg);
 	}
 
 	private void login(Order order) {
@@ -434,5 +408,53 @@ public class MainActivity extends Activity {
 
 			}
 		}
+	};
+	
+	Handler handler =  new Handler() {
+
+		@Override
+		public void handleMessage(Message msg) {
+			
+			 switch (msg.what) {
+	           case CHECK_SERVICE:  
+		        	// 去添加订单
+		       		Order order = new Order();
+		       		order.setAddress(addr);
+		       		// 没有服务验证
+		       		try {
+		       			Map<String, Object> orderMap = new HashMap<String, Object>();
+		       			orderMap.put("address", addr);
+		       			String rtn = HttpUtil.getInfoFromServer(
+		       					HttpUtil.URL_WEBSERVICE_IS_SERVICE_BY_ADDR, orderMap)
+		       					.toString();
+		       			if (App.FAIL.equals(rtn)) {
+		       				Intent intent = new Intent(MainActivity.this,
+		       						ServiceHintActivity.class);
+		       				MainActivity.this.startActivity(intent);
+		       				return;
+		       			}
+		       		} catch (Exception ex) {
+		       			ex.printStackTrace();
+		       			return;
+		       		}
+		       		if (app.getUser() == null) {
+		       			ToastUtil.show(MainActivity.this, "请先登录！");
+		       			login(order);
+		       			return;
+		       		}
+		       		// if(globleGP!=null){
+		       		// order.setLatitude(globleGP.getLatitudeE6());
+		       		// order.setLongitude(globleGP.getLongitudeE6());
+		       		// }
+		       		Intent intent = new Intent(MainActivity.this, OrderFrstActivity.class);
+		       		Bundle bundle = new Bundle();
+		       		bundle.putSerializable("Order", order);
+		       		intent.putExtras(bundle);// 传递地址到下一页面
+		       		MainActivity.this.startActivity(intent);
+			    	maskDialog.hide();
+	               break; 
+			 }
+		}
+
 	};
 }
