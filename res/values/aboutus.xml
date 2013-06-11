@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="aboutus_title">关于我们：</string>
+    <string name="aboutus">关于我们：</string>
+    <string name="aboutus_info">
+		云家政是全国领先的高品质一站式家政预定平台，为您营造轻松家庭生活。
+		\n该APP提供的是宅速洁服务，无需选人，快速上门，系统匹配，全面清洁。
+	</string>
+    <string name="note">注意事项：</string>
+    <string name="note_info">
+        1.查看订单，知悉服务人员信息，实时联系；
+		\n2.服务人员上门后，务必先确认身份；
+		\n3.支付宝付款，更放心安全；
+		\n4.务必填写准确联系方式。
+	</string>
+    <string name="contact">联系方式：</string>
+    <string name="contact_info">
+		客服电话：400-920-4040
+		\n官网：www.yunjiazheng.com 
+		\n微博：@云家政网
+		\n微信：yunjiazheng2013
+	</string>
+    <string name="price_bz">计费标准：</string>
+    <string name="price_bz_info">
+		客服电话：400-920-4040
+		\n官网：www.yunjiazheng.com 
+		\n微博：@云家政网
+		\n微信：yunjiazheng2013
+	</string>
+	<string name="price_time">计费时间：</string>
+    <string name="price_time_info">2小时起订，以服务员到达客户指定位置服务开始，至服务终结为止，此段时间为计费时间。</string>
+    <string name="price_contact">问题联系：</string>
+    <string name="price_contact_info">如您对服务标准，服务价格等有疑问， 请致电400-920-4040进行咨询，我们将为您耐心解答，谢谢。</string>	
+	<string name="price_title">价格说明</string>
+</resources>

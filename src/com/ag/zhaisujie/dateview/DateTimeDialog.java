@@ -40,8 +40,8 @@ public class DateTimeDialog extends AlertDialog implements
 		
 	    setButton(context.getText(R.string.ok),this);
 	    setButton2(context.getText(R.string.cancle), (OnClickListener) null);
-		setIcon(R.drawable.ic_launcher);
-		setTitle("日期时间选择");
+		//setIcon(R.drawable.ic_launcher);
+		setTitle("服务时间");
 		// 找到dialog的布局文件
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
