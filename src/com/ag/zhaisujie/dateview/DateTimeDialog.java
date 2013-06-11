@@ -25,10 +25,15 @@ public class DateTimeDialog extends AlertDialog implements
 	private final OnDateTimeSetListener mCallBack;
 	private final Calendar mCalendar;
 	final WheelView wv_month, wv_hours, wv_mins;
+	private String[] arrayOfString1;
+	private String[] arrayOfString2;
+	private String[] arrayOfString3;
 	private final int mYear;
+	private final int mMonth;
 	public DateTimeDialog(Context context,final int mYear,final int mMonth,final int mDay,int mHour,int mMin,OnDateTimeSetListener callBack) {
 		super(context);
 		this.mYear=mYear;
+		this.mMonth=mMonth;
 		mCallBack = callBack;
 		mCalendar=Calendar.getInstance();
 		mCalendar.set(mYear, mMonth, mDay, mHour, mMin);
@@ -44,7 +49,7 @@ public class DateTimeDialog extends AlertDialog implements
       
 		int textSize = 0;
 		textSize = adjustFontSize(getWindow().getWindowManager()); 
-		String[] arrayOfString1=new String[7];
+		arrayOfString1=new String[7];
 		for(int i=0;i<7;i++){
 			arrayOfString1[i]=mCalendar.get(Calendar.MONTH) +"月"+mCalendar.get(Calendar.DAY_OF_MONTH)+"日"+"  周"+mCalendar.get(Calendar.DAY_OF_WEEK);
 			mCalendar.add(Calendar.DAY_OF_MONTH, 1);
@@ -56,17 +61,28 @@ public class DateTimeDialog extends AlertDialog implements
 		wv_month.setCurrentItem(0);
 
 		// 时
+		arrayOfString2=new String[]{ "9", "10","11","12","13","14","15","16","17","18"};
 		wv_hours = (WheelView) view.findViewById(R.id.hour);
-		wv_hours.setAdapter(new NumericWheelAdapter(0, 23));
-		wv_hours.setCyclic(true);
-		wv_hours.setCurrentItem(mHour);
-		String[] arrayOfString3 = { "00", "30"};
+		wv_hours.setAdapter(new ArrayWheelAdapter(arrayOfString2,arrayOfString2.length));
+		wv_hours.setCyclic(false);
+		for(int i=0;i<arrayOfString2.length;i++){
+			if(Integer.valueOf(arrayOfString2[i])==mHour){
+				wv_hours.setCurrentItem(i);
+				break;
+			}
+		}
+		arrayOfString3 = new String[]{ "00", "30"};
 		// 分
 		wv_mins = (WheelView) view.findViewById(R.id.mins);
 		wv_mins.setAdapter(new ArrayWheelAdapter(arrayOfString3,arrayOfString3.length));
 		wv_mins.setCyclic(false);
-		wv_mins.setCurrentItem(mMin);
 		
+		for(int i=0;i<arrayOfString3.length;i++){
+			if(Integer.valueOf(arrayOfString3[i])==mHour){
+				wv_mins.setCurrentItem(i);
+				break;
+			}
+		}
 		wv_hours.TEXT_SIZE = textSize;
 		wv_mins.TEXT_SIZE = textSize;
 		wv_month.TEXT_SIZE = textSize;
@@ -74,11 +90,15 @@ public class DateTimeDialog extends AlertDialog implements
 	}
 	public void onClick(DialogInterface dialog, int which) {
 
-		int curr_year = 2013;
-		int curr_month = wv_month.getCurrentItem() + 1;
-		int curr_day=1;
-		int curr_hour = wv_hours.getCurrentItem();
-		int curr_minute = wv_mins.getCurrentItem();
+		int curr_year = mYear;
+		String tmpMon=arrayOfString1[wv_month.getCurrentItem()];
+		int curr_month = Integer.valueOf(tmpMon.substring(0,tmpMon.indexOf("月")));
+		int curr_day=Integer.valueOf(tmpMon.substring(tmpMon.indexOf("月")+1,tmpMon.indexOf("日")));
+		if(mMonth==12&&curr_month==1){
+			curr_year=curr_year+1;
+		}
+		int curr_hour = Integer.valueOf(arrayOfString2[wv_hours.getCurrentItem()]);
+		int curr_minute = Integer.valueOf(arrayOfString3[wv_mins.getCurrentItem()]);
 		if (mCallBack != null) {
 			mCallBack.onDateTimeSet(curr_year, curr_month, curr_day, curr_hour,
 					curr_minute);

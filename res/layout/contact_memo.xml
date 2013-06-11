@@ -28,7 +28,6 @@
                     android:background="@null"
                     android:text="联系方式"
                     android:textSize="18.0sp"
-               		android:textStyle="bold"
                     android:textColor="@color/blue" >
 
                     <requestFocus />
@@ -111,7 +110,6 @@
                     android:layout_height="wrap_content"
                     android:text="特别备注"
                      android:textSize="18.0sp"
-               		android:textStyle="bold"
                     android:textColor="@color/blue" />
             </TableRow>
         </TableLayout>
