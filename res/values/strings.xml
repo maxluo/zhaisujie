@@ -54,5 +54,7 @@
 	
 	<string name="cancle">取消</string>
     <string name="ok">确定</string>
+    
+    <string name="searching">查询中,请稍候...</string>
 	
 </resources>

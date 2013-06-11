@@ -24,4 +24,5 @@
      <item type="color" name="conact_three">#2ECC71</item>
      <item type="color" name="conact_four">#8E44AD</item>
      <item type="color" name="little_black">#333333</item>
+     <color name="transparent">#00000000</color>
 </resources>

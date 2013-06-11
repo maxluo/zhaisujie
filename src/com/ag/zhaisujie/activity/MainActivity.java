@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,16 +45,16 @@ import com.baidu.platform.comapi.basestruct.GeoPoint;
 
 /**
  * 
- *    MainActivity.java
- *     <p>
- *     选择服务地点主页面
- *     Copyright: Copyright(c) 2013 
- *     @author Gavin_Feng
- *     </p>
+ * MainActivity.java
+ * <p>
+ * 选择服务地点主页面 Copyright: Copyright(c) 2013
+ * 
+ * @author Gavin_Feng
+ *         </p>
  * 
  */
 public class MainActivity extends Activity {
-	private String key="B380D1FC76F5489BEA2C6B9B1C69E2744D1FB471";
+	private String key = "B380D1FC76F5489BEA2C6B9B1C69E2744D1FB471";
 	private BMapManager mBMapMan = null;
 	private MapView mMapView = null;
 	private MapController mapController = null;
@@ -67,51 +68,63 @@ public class MainActivity extends Activity {
 	private static Button orderBtn;
 	private static Button settingBtn;
 	private static Button localBtn;
-	
-	private Button goOnbtn;//下单
-	private EditText addrTxt;//补充地址
+
+	private Button goOnbtn;// 下单
+	private EditText addrTxt;// 补充地址
 	private GeoPoint globleGP;
+
+	private MaskDialogView maskDialog;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 		mBMapMan = new BMapManager(getApplication());
 		mBMapMan.init(key, null);
 		// 注意：请在试用setContentView前初始化BMapManager对象，否则会报错
 		setContentView(R.layout.main);
-		locatFrom=(TextView)findViewById(R.id.from_location);
+		locatFrom = (TextView) findViewById(R.id.from_location);
 		mMapView = (MapView) findViewById(R.id.bmapsView);
-		initMap();//初始化地图
-		app=App.getInstance(this);
-		loginBtn=(Button) findViewById(R.id.title_btn_login);
+		initMap();// 初始化地图
+		app = App.getInstance(this);
+		loginBtn = (Button) findViewById(R.id.title_btn_login);
 		loginBtn.setOnClickListener(listener);
-		orderBtn=(Button) findViewById(R.id.title_btn_order);
-		settingBtn=(Button) findViewById(R.id.title_btn_back);
+		orderBtn = (Button) findViewById(R.id.title_btn_order);
+		settingBtn = (Button) findViewById(R.id.title_btn_back);
 		settingBtn.setText(R.string.service_title);
-		goOnbtn=(Button) findViewById(R.id.search_clear_bt);
-		addrTxt=(EditText) findViewById(R.id.search_bar_et);
-		localBtn=(Button) findViewById(R.id.mylocation);
+		goOnbtn = (Button) findViewById(R.id.search_clear_bt);
+		addrTxt = (EditText) findViewById(R.id.search_bar_et);
+		localBtn = (Button) findViewById(R.id.mylocation);
 		localBtn.setOnClickListener(listener);
-		
+
 		goOnbtn.setOnClickListener(listener);
 		orderBtn.setOnClickListener(listener);
 		settingBtn.setOnClickListener(listener);
 		initButton();
-		
+
+		// 开启遮罩
+		if (maskDialog == null) {
+			maskDialog = new MaskDialogView(MainActivity.this);
+		}
+
+		maskDialog.show();
 	}
-	public static void initButton(){
-		//设置抬头
-		if(app.getUser()==null){
+
+	public static void initButton() {
+		// 设置抬头
+		if (app.getUser() == null) {
 			loginBtn.setVisibility(View.VISIBLE);
 			orderBtn.setVisibility(View.GONE);
 			settingBtn.setVisibility(View.GONE);
-		}else{
+		} else {
 			loginBtn.setVisibility(View.GONE);
 			orderBtn.setVisibility(View.VISIBLE);
 			settingBtn.setVisibility(View.VISIBLE);
 		}
 	}
-	private void initMap(){
-		
+
+	private void initMap() {
+
 		mMapView.setBuiltInZoomControls(true);
 		// 设置启用内置的缩放控件
 		mapController = mMapView.getController();
@@ -121,78 +134,70 @@ public class MainActivity extends Activity {
 		// 用给定的经纬度构造一个GeoPoint，单位是微度 (度 * 1E6)
 		mapController.setCenter(point);// 设置地图中心点
 		mapController.setZoom(12);// 设置地图zoom级别
-		
+
 		// 添加定位图层
 		myLocationOverlay = new MyLocationOverlay(mMapView);
 		// 开启磁场感应传感器
 		myLocationOverlay.enableCompass();
 		mMapView.getOverlays().add(myLocationOverlay);
-		
+
 		mLocationClient = new LocationClient(getApplicationContext()); // 声明LocationClient类
 		mLocationClient.registerLocationListener(myListener); // 注册监听函数
-		
+
 		LocationClientOption option = new LocationClientOption();
 		option.setOpenGps(true);
-		option.setAddrType("all");//返回的定位结果包含地址信息
-		option.setCoorType("bd09ll");//返回的定位结果是百度经纬度,默认值gcj02
-		option.setScanSpan(5000);//设置发起定位请求的间隔时间为5000ms
-		option.disableCache(true);//禁止启用缓存定位
-		//option.setPoiNumber(5);	//最多返回POI个数	
-		//option.setPoiDistance(1000); //poi查询距离		
-		//option.setPoiExtraInfo(true); //是否需要POI的电话和地址等详细信息		
+		option.setAddrType("all");// 返回的定位结果包含地址信息
+		option.setCoorType("bd09ll");// 返回的定位结果是百度经纬度,默认值gcj02
+		option.setScanSpan(5000);// 设置发起定位请求的间隔时间为5000ms
+		option.disableCache(true);// 禁止启用缓存定位
+		// option.setPoiNumber(5); //最多返回POI个数
+		// option.setPoiDistance(1000); //poi查询距离
+		// option.setPoiExtraInfo(true); //是否需要POI的电话和地址等详细信息
 		mLocationClient.setLocOption(option);
-		//开始
+		// 开始
 		mLocationClient.start();
 		mLocationClient.requestLocation();
 		/*
-		mMapView.setOnTouchListener(new OnTouchListener() {
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				// TODO Auto-generated method stub
-				switch (event.getAction()) {
-				case MotionEvent.ACTION_UP:
-					// 做我想做的事 ，显示相关信息，这一步，我不知道怎么处理了。
-					// 这一步想要的效果是：在屏幕中心点图标上面，有个冒泡框显示相关信息
-					// 获取mapview的中心坐标
-					globleGP=null;//全局
-					GeoPoint gpt = mMapView.getMapCenter();
-					search(gpt);//显示
-					return true;
-				}
-				return false;
-			}
-		});*/
+		 * mMapView.setOnTouchListener(new OnTouchListener() {
+		 * 
+		 * @Override public boolean onTouch(View v, MotionEvent event) { // TODO
+		 * Auto-generated method stub switch (event.getAction()) { case
+		 * MotionEvent.ACTION_UP: // 做我想做的事 ，显示相关信息，这一步，我不知道怎么处理了。 //
+		 * 这一步想要的效果是：在屏幕中心点图标上面，有个冒泡框显示相关信息 // 获取mapview的中心坐标 globleGP=null;//全局
+		 * GeoPoint gpt = mMapView.getMapCenter(); search(gpt);//显示 return true;
+		 * } return false; } });
+		 */
 
 		MKMapViewListener mapViewListener = new MKMapViewListener() {
-			 
-	        @Override
-	        public void onMapMoveFinish() {
-	            // 此处可以实现地图移动完成事件的状态监听
-	        	globleGP=null;//全局
+
+			@Override
+			public void onMapMoveFinish() {
+				// 此处可以实现地图移动完成事件的状态监听
+				globleGP = null;// 全局
 				GeoPoint gpt = mMapView.getMapCenter();
-				search(gpt);//显示
-	        }
-	                        
-	        @Override
-	        public void onClickMapPoi(MapPoi arg0) {
-	                // 此处可实现地图点击事件的监听
-	        }
+				search(gpt);// 显示
+			}
+
+			@Override
+			public void onClickMapPoi(MapPoi arg0) {
+				// 此处可实现地图点击事件的监听
+			}
 
 			@Override
 			public void onGetCurrentMap(Bitmap arg0) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void onMapAnimationFinish() {
 				// TODO Auto-generated method stub
-				
+
 			}
 		};
-		mMapView.regMapViewListener(mBMapMan, mapViewListener);  //注册监听
-		
-		//搜索初始化
+		mMapView.regMapViewListener(mBMapMan, mapViewListener); // 注册监听
+
+		// 搜索初始化
 		mkSerach = new MKSearch();
 		mkSerach.init(mBMapMan, new MKSearchListener() {
 
@@ -244,36 +249,37 @@ public class MainActivity extends Activity {
 			@Override
 			public void onGetAddrResult(MKAddrInfo info, int arg1) {
 				locatFrom.setText(info.strAddr);
-				globleGP=info.geoPt;
+				globleGP = info.geoPt;
+				maskDialog.hide();
 			}
 		});
-		
-		
+
 	}
-	
+
 	public class MyLocationListener implements BDLocationListener {
 		@Override
 		public void onReceiveLocation(BDLocation location) {
 			if (location == null)
 				return;
 			LocationData locData = new LocationData();
-			//手动将位置源置为天安门，在实际应用中，请使用百度定位SDK获取位置信息，要在SDK中显示一个位置，需要
-			//使用百度经纬度坐标（bd09ll）
-			locData.latitude  = location.getLatitude();
+			// 手动将位置源置为天安门，在实际应用中，请使用百度定位SDK获取位置信息，要在SDK中显示一个位置，需要
+			// 使用百度经纬度坐标（bd09ll）
+			locData.latitude = location.getLatitude();
 			locData.longitude = location.getLongitude();
 			locData.accuracy = location.getRadius();
 			locData.direction = location.getDerect();
-			locData.speed     = location.getSpeed();
-			locData.satellitesNum     = location.getSatelliteNumber();
+			locData.speed = location.getSpeed();
+			locData.satellitesNum = location.getSatelliteNumber();
 			myLocationOverlay.setData(locData);
 			mMapView.refresh();
-			GeoPoint gp= new GeoPoint((int)(locData.latitude*1e6),
-					(int)(locData.longitude* 1e6));
+			GeoPoint gp = new GeoPoint((int) (locData.latitude * 1e6),
+					(int) (locData.longitude * 1e6));
 			mMapView.getController().animateTo(gp);
-			search(gp);//显示
+			search(gp);// 显示
 			mLocationClient.stop();
-		
+
 		}
+
 		public void onReceivePoi(BDLocation poiLocation) {
 			return;
 		}
@@ -284,11 +290,11 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		super.onOptionsItemSelected(item);
-		if(item.getItemId()==R.id.action_exit){
+		if (item.getItemId() == R.id.action_exit) {
 			finish();
 		}
 		return true;
@@ -301,9 +307,9 @@ public class MainActivity extends Activity {
 			mBMapMan.destroy();
 			mBMapMan = null;
 		}
-		if(mLocationClient!=null){
+		if (mLocationClient != null) {
 			mLocationClient.stop();
-			mLocationClient=null;
+			mLocationClient = null;
 		}
 		super.onDestroy();
 	}
@@ -314,7 +320,7 @@ public class MainActivity extends Activity {
 		if (mBMapMan != null) {
 			mBMapMan.stop();
 		}
-		if(mLocationClient!=null){
+		if (mLocationClient != null) {
 			mLocationClient.stop();
 		}
 		super.onPause();
@@ -326,69 +332,75 @@ public class MainActivity extends Activity {
 		if (mBMapMan != null) {
 			mBMapMan.start();
 		}
-		if(mLocationClient!=null){
+		if (mLocationClient != null) {
 			mLocationClient.start();
 		}
 		super.onResume();
 	}
-	
-	private void search(GeoPoint gp){
+
+	private void search(GeoPoint gp) {
 		mkSerach.reverseGeocode(gp);
 		locatFrom.setText("获取位置中...");
+		maskDialog.show();
 	}
-	
-	//去下一个联系页面
-	private void addOrder(){
-		if(globleGP==null&&addrTxt.getText().toString().trim().length()==0){
+
+	// 去下一个联系页面
+	private void addOrder() {
+		if (globleGP == null
+				&& addrTxt.getText().toString().trim().length() == 0) {
 			ToastUtil.show(this, "正在定位请稍后！");
 			return;
 		}
-		String addr=locatFrom.getText().toString();
-		if(addrTxt.getText().toString().trim().length()>0){
-			addr=addrTxt.getText().toString();
+		String addr = locatFrom.getText().toString();
+		if (addrTxt.getText().toString().trim().length() > 0) {
+			addr = addrTxt.getText().toString();
 		}
-		//去添加订单
-		Order order =new Order();
+		// 去添加订单
+		Order order = new Order();
 		order.setAddress(addr);
-		//没有服务验证
-		try{
-			Map<String ,Object> orderMap=new HashMap<String ,Object>();
-			orderMap.put("address",addr);
-			String rtn=HttpUtil.getInfoFromServer(HttpUtil.URL_WEBSERVICE_IS_SERVICE_BY_ADDR, orderMap).toString();
-			if(App.FAIL.equals(rtn)){
-				Intent intent = new Intent(MainActivity.this, ServiceHintActivity.class);
+		// 没有服务验证
+		try {
+			Map<String, Object> orderMap = new HashMap<String, Object>();
+			orderMap.put("address", addr);
+			String rtn = HttpUtil.getInfoFromServer(
+					HttpUtil.URL_WEBSERVICE_IS_SERVICE_BY_ADDR, orderMap)
+					.toString();
+			if (App.FAIL.equals(rtn)) {
+				Intent intent = new Intent(MainActivity.this,
+						ServiceHintActivity.class);
 				MainActivity.this.startActivity(intent);
 				return;
 			}
-		}catch(Exception ex){
+		} catch (Exception ex) {
 			ex.printStackTrace();
 			return;
 		}
-		if(app.getUser()==null){
+		if (app.getUser() == null) {
 			ToastUtil.show(this, "请先登录！");
 			login(order);
 			return;
-		} 
-		//if(globleGP!=null){
-		//	order.setLatitude(globleGP.getLatitudeE6());
-		//	order.setLongitude(globleGP.getLongitudeE6());
-		//}
+		}
+		// if(globleGP!=null){
+		// order.setLatitude(globleGP.getLatitudeE6());
+		// order.setLongitude(globleGP.getLongitudeE6());
+		// }
 		Intent intent = new Intent(MainActivity.this, OrderFrstActivity.class);
-		Bundle bundle = new Bundle();  
+		Bundle bundle = new Bundle();
 		bundle.putSerializable("Order", order);
-		intent.putExtras(bundle);//传递地址到下一页面
+		intent.putExtras(bundle);// 传递地址到下一页面
 		MainActivity.this.startActivity(intent);
 	}
-	
-	private void login(Order order){
+
+	private void login(Order order) {
 
 		Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-		Bundle bundle = new Bundle();  
+		Bundle bundle = new Bundle();
 		bundle.putSerializable("Order", order);
-		intent.putExtras(bundle);//传递地址到下一页面
+		intent.putExtras(bundle);// 传递地址到下一页面
 		MainActivity.this.startActivity(intent);
-		//MainActivity.this.finish();
+		// MainActivity.this.finish();
 	}
+
 	OnClickListener listener = new OnClickListener() {
 		public void onClick(View v) {
 			Button btn = (Button) v;
@@ -397,28 +409,30 @@ public class MainActivity extends Activity {
 				login(null);
 				break;
 			case R.id.title_btn_order:
-				Intent intent3 = new Intent(MainActivity.this, OrderTraceActivity.class);
-				//Bundle bundle = new Bundle();
-				//bundle.putSerializable("Order", getOrder());
-				//intent3.putExtras(bundle);
-				//intent3.putExtra("ActivityClass", MainActivity.class.getCanonicalName());
+				Intent intent3 = new Intent(MainActivity.this,
+						OrderTraceActivity.class);
+				// Bundle bundle = new Bundle();
+				// bundle.putSerializable("Order", getOrder());
+				// intent3.putExtras(bundle);
+				// intent3.putExtra("ActivityClass",
+				// MainActivity.class.getCanonicalName());
 				MainActivity.this.startActivity(intent3);
 				break;
 			case R.id.title_btn_back:
-				Intent intent2 = new Intent(MainActivity.this, ServiceActivity.class);
+				Intent intent2 = new Intent(MainActivity.this,
+						ServiceActivity.class);
 				MainActivity.this.startActivity(intent2);
 				break;
 			case R.id.search_clear_bt:
 				addOrder();
 				break;
 			case R.id.mylocation:
-				//开始
+				// 开始
 				mLocationClient.start();
 				mLocationClient.requestLocation();
 				break;
-				
+
 			}
 		}
 	};
-	
 }
