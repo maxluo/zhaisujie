@@ -66,6 +66,7 @@ public class OrderFrstActivity extends BaseActivity {
 
 		orderBtn=(Button)findViewById(R.id.order_btn_next);
 		orderBtn.setOnClickListener(listener);
+		dateTxt.setOnClickListener(txtListener);
 		time2Btn=(RadioButton)findViewById(R.id.time_btn_2);
 		time3Btn=(RadioButton)findViewById(R.id.time_btn_3);
 		time4Btn=(RadioButton)findViewById(R.id.time_btn_4);
@@ -199,11 +200,30 @@ public class OrderFrstActivity extends BaseActivity {
 					msgd.what = SHOW_DATAPICK; 
 	                dateandtimeHandler.sendMessage(msgd);
 	                break;
+				case R.id.date_txt_input:
+					Message msgi = new Message();
+					msgi.what = SHOW_DATAPICK; 
+	                dateandtimeHandler.sendMessage(msgi);
+	                break;
 				case R.id.order_btn_next:
 					nextPage();
 					break;
 			}
 		}
 	};
+	
+	OnClickListener txtListener = new OnClickListener() {
+		public void onClick(View v) {
+			TextView btn = (TextView) v;
+			switch (btn.getId()) {
+				case R.id.date_txt_input:
+					Message msgi = new Message();
+					msgi.what = SHOW_DATAPICK; 
+	                dateandtimeHandler.sendMessage(msgi);
+	                break;
+			}
+		}
+	};
+
 
 }

@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -37,8 +36,6 @@ public class ServiceActivity extends BaseActivity {
 	private ImageView aboutUsImg;
 	private ImageView priceImg;
 	
-	
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -120,13 +117,15 @@ public class ServiceActivity extends BaseActivity {
 				
 				break;
 			case R.id.user_info_img:
-				Log.d("sss", "user_info_img");
+				//Log.d("sss", "user_info_img");
 				break;
 			case R.id.about_us_img:
-				Log.d("sss", "about_us_img");
+				Intent intent1 = new Intent(ServiceActivity.this,AboutActivity.class);
+				startActivity(intent1);
 				break;
 			case R.id.price_img:
-				Log.d("sss", "price_img");
+				Intent inten2 = new Intent(ServiceActivity.this,PriceActivity.class);
+				startActivity(inten2);
 				break;
 			}
 			

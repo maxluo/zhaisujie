@@ -45,8 +45,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10.0dip"
-        android:background="@drawable/round_rect_arrow_down" 
-        android:visibility="gone">
+        android:layout_marginRight="5.0dip"
+        android:layout_marginLeft="5.0dip"
+        android:paddingLeft="5.0dip"
+        android:paddingRight="5.0dip"
+        android:paddingTop="10.0dip"
+        android:background="@drawable/round_rect_arrow_down"
+        android:visibility="gone" >
 
         <FrameLayout
             android:id="@+id/order_submit"
@@ -54,7 +59,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5.0dip"
             android:background="@drawable/btn_white_on" >
 
             <TextView
@@ -69,12 +73,10 @@
 
         <Button
             android:id="@+id/order_cancel"
-            android:layout_width="85.0dip"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5.0dip"
-            android:background="@drawable/btn_orange"
+            android:background="@drawable/trace_btn"
             android:text="@string/order_cancel"
             android:textColor="@color/white"
             android:textSize="12.0dip" 
@@ -84,11 +86,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10.0dip"
-            android:layout_marginLeft="30.0dip"
-            android:layout_marginTop="5.0dip"
-            android:layout_toLeftOf="@id/order_cancel"
-            android:layout_toRightOf="@id/order_submit"
+            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
             android:orientation="vertical" >
 
             <TextView
@@ -119,8 +119,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10.0dip"
+        android:layout_marginRight="5.0dip"
+        android:layout_marginLeft="5.0dip"
+        android:paddingLeft="5.0dip"
+        android:paddingRight="5.0dip"
+        android:paddingTop="8.0dip"
         android:background="@drawable/round_rect_arrow_down"
-        android:visibility="gone" >
+        android:visibility="gone">
 
         <FrameLayout
             android:id="@+id/match_complete"
@@ -128,7 +133,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5.0dip"
             android:background="@drawable/btn_white_on" >
 
             <TextView
@@ -147,26 +151,21 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5.0dip"
-            android:background="@drawable/btn_orange"
+            android:background="@drawable/trace_btn"
             android:text="@string/contact_home_company"
             android:textColor="@color/white"
             android:textSize="12.0dip" 
-        	android:visibility="gone" 
-            />
+            android:visibility="gone"/>
 
         <LinearLayout
             android:id="@+id/contact_home_Linear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10.0dip"
-            android:layout_marginLeft="10.0dip"
-            android:layout_marginTop="10.0dip"
             android:layout_toLeftOf="@id/contact_home_company"
             android:layout_toRightOf="@id/match_complete"
-            android:orientation="vertical" 
-            android:visibility="gone" >
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/company_name"
@@ -204,6 +203,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10.0dip"
+        android:layout_marginRight="5.0dip"
+        android:layout_marginLeft="5.0dip"
+        android:paddingLeft="5.0dip"
+        android:paddingRight="5.0dip"
+        android:paddingTop="8.0dip"
         android:background="@drawable/round_rect_arrow_down" 
         android:visibility="gone">
 
@@ -213,7 +217,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5.0dip"
             android:background="@drawable/btn_white_on" >
 
             <TextView
@@ -232,8 +235,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5.0dip"
-            android:background="@drawable/btn_orange"
+            android:background="@drawable/trace_btn"
             android:text="@string/contact_waiter"
             android:textColor="@color/white"
             android:textSize="12.0dip" 
@@ -243,16 +245,14 @@
             android:id="@+id/people_Linear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10.0dip"
-            android:layout_marginTop="10.0dip"
             android:layout_toLeftOf="@id/contact_waiter"
             android:layout_toRightOf="@id/home_service" 
             android:visibility="gone">
 
             <ImageView
                 android:id="@+id/people_View"
-                android:layout_width="50dip"
-                android:layout_height="40dip"
+                android:layout_width="40dip"
+                android:layout_height="30dip"
                 android:src="@drawable/default_avatar" />
 
             <LinearLayout
@@ -298,7 +298,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10.0dip"
-        android:background="@drawable/round_rect" 
+        android:layout_marginRight="5.0dip"
+        android:layout_marginLeft="5.0dip"
+        android:paddingLeft="5.0dip"
+        android:paddingRight="5.0dip"
+        android:paddingTop="10.0dip"
+        android:background="@drawable/confirm_pay" 
         android:visibility="gone">
 
         <FrameLayout
@@ -307,7 +312,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5.0dip"
             android:background="@drawable/btn_white_on" >
 
             <TextView
@@ -326,11 +330,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dip"
-            android:background="@drawable/btn_orange"
+            android:background="@drawable/trace_btn"
             android:text="@string/confirm"
             android:textColor="@color/white"
-            android:textSize="12.0dip" 
+            android:textSize="12.0dip"
             android:visibility="gone"/>
 
         <LinearLayout
@@ -338,12 +341,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10.0dip"
-            android:layout_marginLeft="30.0dip"
-            android:layout_marginTop="10.0dip"
-            android:layout_toLeftOf="@id/confirm_done"
-            android:layout_toRightOf="@id/confirm_complete"
-            android:orientation="vertical" 
+            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:orientation="vertical"
             android:visibility="gone">
 
             <TextView

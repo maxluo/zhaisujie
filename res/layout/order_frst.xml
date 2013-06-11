@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17.0sp"
-                android:text=" 服务地址："
+                android:text=" 服务地址"
                 android:textColor="@color/blue" />
            
         </TableRow>
@@ -68,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17.0sp"
-                android:text=" 服务时长："
+                android:text=" 服务时长"
                 android:textColor="@color/blue" />
         </TableRow>
 	</TableLayout>
@@ -146,22 +146,43 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17.0sp"
-                android:text=" 服务时间："
+                android:text=" 服务时间"
                 android:textColor="@color/blue" />
         </TableRow>
-
+	</TableLayout>
+	<TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15.0dip"
+        android:layout_marginRight="15.0dip"
+        android:layout_marginTop="5.0dip" 
+        android:background="@drawable/confirm_pay"
+        android:gravity="center">
         <TableRow 
-            android:layout_marginTop="20.0dip"
-            android:layout_marginRight="20.0dip"
-            android:layout_marginLeft="20.0dip"
-            android:background="@color/white">
-            
-            <EditText android:textSize="14.0sp" android:id="@+id/date_txt_input"  android:editable="false" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="请选择报务时间" android:singleLine="true" android:layout_weight="1.0" android:inputType="none"/>
-            <Button
-	        android:id="@+id/date_btn_input"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:background="@drawable/time_bg_input"/>
+            android:paddingLeft="10.0dip"
+            android:paddingRight="10.0dip"
+            android:layout_width="match_parent"
+        	android:layout_height="wrap_content">
+          
+                 <EditText
+                     android:id="@+id/date_txt_input"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="1.0"
+                     android:background="@drawable/date_bg_input"
+                     android:editable="false"
+                     android:hint="  请选择报务时间"
+                     android:inputType="none"
+                     android:singleLine="true"
+                     android:drawableRight="@drawable/time_bg_input"
+                     android:textSize="14.0sp" />
+                 <Button
+                     android:id="@+id/date_btn_input"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:background="@drawable/time_bg_input" 
+                     android:visibility="gone"/>
+
         </TableRow>
 
     </TableLayout>
