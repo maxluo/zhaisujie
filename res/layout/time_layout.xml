@@ -17,13 +17,13 @@
 
 		<com.ag.zhaisujie.dateview.WheelView
 			android:id="@+id/month_day" android:layout_height="wrap_content"
-			android:layout_width="100dip" />
+			android:layout_width="120dip" />
 		<com.ag.zhaisujie.dateview.WheelView
 			android:id="@+id/hour" android:layout_height="wrap_content"
-			android:layout_width="40dip" />
+			android:layout_width="60dip" />
 		<com.ag.zhaisujie.dateview.WheelView
 			android:id="@+id/mins" android:layout_height="wrap_content"
-			android:layout_width="40dip" />
+			android:layout_width="60dip" />
       
     </LinearLayout>
 
