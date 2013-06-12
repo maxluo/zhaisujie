@@ -34,7 +34,7 @@
             android:lineSpacingExtra="5.0sp"
             android:gravity="center"
             android:layout_marginTop="15.0dip"
-            android:textColor="@color/black" />
+            android:textColor="@color/little_black" />
     </LinearLayout>
 
     <!-- 提交订单 -->
@@ -65,10 +65,9 @@
                 android:id="@+id/order_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
-                android:layout_marginTop="5dip"
                 android:text="@string/order_submit"
-                android:textSize="12.0dip" />
+                android:layout_gravity="center"
+                android:textColor="@color/little_black"/>
         </FrameLayout>
 
         <Button
@@ -79,15 +78,12 @@
             android:background="@drawable/trace_btn"
             android:text="@string/order_cancel"
             android:textColor="@color/white"
-            android:textSize="12.0dip" 
             android:visibility="gone"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:orientation="vertical" >
 
@@ -97,7 +93,7 @@
                 android:layout_gravity="center"
                 android:text="提交成功"
                 android:textAlignment="center"
-                android:textColor="@color/black" />
+                android:textColor="@color/little_black" />
 
             <TextView
                 android:id="@+id/order_success_time"
@@ -105,8 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="2012-09-30 15:30"
-                android:textAlignment="center"
-                android:textColor="@color/lightgrey"
+                android:textColor="@color/trac_date"
                 android:textSize="10dip" />
         </LinearLayout>
     </RelativeLayout>
@@ -139,23 +134,23 @@
                 android:id="@+id/match_complete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
-                android:layout_marginTop="5.0dip"
                 android:text="@string/match_complete"
-                android:textSize="12.0dip" />
+                android:layout_gravity="center"
+                android:textColor="@color/little_black"/>
         </FrameLayout>
 
         <Button
             android:id="@+id/contact_home_company"
-            android:layout_width="85.0dip"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerHorizontal="true"
             android:background="@drawable/trace_btn"
             android:text="@string/contact_home_company"
             android:textColor="@color/white"
-            android:textSize="12.0dip" 
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"/>
 
         <LinearLayout
             android:id="@+id/contact_home_Linear"
@@ -173,7 +168,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="爱君家政接单"
-                android:textColor="@color/black" />
+                android:textColor="@color/little_black" />
 
             <TextView
                 android:id="@+id/company_phone"
@@ -181,7 +176,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="电话：10086"
-                android:textColor="@color/lightgrey"
+                android:textColor="@color/trac_date"
                 android:textSize="10dip" />
 
             <TextView
@@ -190,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="2012-09-30 15:30"
-                android:textColor="@color/lightgrey"
+                android:textColor="@color/trac_date"
                 android:textSize="10dip" />
         </LinearLayout>
     </RelativeLayout>
@@ -223,23 +218,23 @@
                 android:id="@+id/home_service"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
-                android:layout_marginTop="5.0dip"
                 android:text="@string/home_service"
-                android:textSize="12.0dip" />
+                android:layout_gravity="center"
+                android:textColor="@color/little_black"/>
         </FrameLayout>
 
         <Button
             android:id="@+id/contact_waiter"
-            android:layout_width="85.0dip"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerHorizontal="true"
             android:background="@drawable/trace_btn"
             android:text="@string/contact_waiter"
             android:textColor="@color/white"
-            android:textSize="12.0dip" 
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:paddingLeft="26dp"
+            android:paddingRight="26dp"/>
 
         <LinearLayout
             android:id="@+id/people_Linear"
@@ -267,7 +262,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:text="路陈刚"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/little_black" />
 
                 <TextView
                     android:id="@+id/waiter_phone"
@@ -275,7 +270,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:text="手机:10086"
-                    android:textColor="@color/lightgrey"
+                    android:textColor="@color/trac_date"
                     android:textSize="10dip" />
 
                 <TextView
@@ -284,7 +279,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:text="2012-09-30 15:30"
-                    android:textColor="@color/lightgrey"
+                    android:textColor="@color/trac_date"
                     android:textSize="10dip" />
             </LinearLayout>
         </LinearLayout>
@@ -318,22 +313,20 @@
                 android:id="@+id/confirm_complete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dip"
-                android:layout_marginTop="5dip"
                 android:text="@string/confirm_complete"
-                android:textSize="12.0dip" />
+                android:layout_gravity="center"
+                android:textColor="@color/little_black"/>
         </FrameLayout>
 
         <Button
             android:id="@+id/confirm_done"
-            android:layout_width="85.0dip"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerHorizontal="true"
             android:background="@drawable/trace_btn"
             android:text="@string/confirm"
             android:textColor="@color/white"
-            android:textSize="12.0dip"
             android:visibility="gone"/>
 
         <LinearLayout
@@ -352,7 +345,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="服务完成"
-                android:textColor="@color/black" />
+                android:textColor="@color/little_black" />
 
             <TextView
                 android:id="@+id/service_done_time"
@@ -360,7 +353,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="2012-09-30 15:30"
-                android:textColor="@color/lightgrey"
+                android:textColor="@color/trac_date"
                 android:textSize="10dip" />
         </LinearLayout>
     </RelativeLayout>

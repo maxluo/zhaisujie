@@ -30,7 +30,7 @@
             android:layout_below="@id/order_send_process"
             android:text="@string/pay_install"
             android:textColor="@color/orange"
-            android:textSize="50dip" />
+            android:textSize="30dip" />
 
         <TextView
             android:id="@+id/order_warn_info"
