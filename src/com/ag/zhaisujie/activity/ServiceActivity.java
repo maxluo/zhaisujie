@@ -91,7 +91,7 @@ public class ServiceActivity extends BaseActivity {
 				accountNum.setText("");
 				App.getInstance().setUser(null);
 				MainActivity.initButton();
-				ServiceActivity.this.finish();
+				myExit();
 				break;
 
 			case R.id.call_btn:
