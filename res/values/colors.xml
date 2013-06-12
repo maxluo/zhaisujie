@@ -26,4 +26,5 @@
      <item type="color" name="little_black">#333333</item>
      <color name="transparent">#00000000</color>
      <color name="aboutus_info">#333333</color>
+     <color name="trac_date">#869097</color>
 </resources>

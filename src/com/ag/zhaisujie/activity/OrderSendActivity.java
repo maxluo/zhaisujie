@@ -55,7 +55,7 @@ public class OrderSendActivity extends BaseActivity {
 		backBtn.setVisibility(View.VISIBLE);
 		backBtn.setOnClickListener(listener);
 		TextView title = (TextView) findViewById(R.id.title);
-		//title.setText(R.string.order_send);
+		title.setText(R.string.pay_send);
 
 		progressImg = (CustomGifView) findViewById(R.id.order_send_process);
 		progressImg.setResource(R.drawable.loading);
