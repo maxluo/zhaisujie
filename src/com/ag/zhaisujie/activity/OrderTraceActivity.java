@@ -210,26 +210,31 @@ public class OrderTraceActivity extends BaseActivity {
 						
 					}
 					//处理时间
-					JSONArray proes=job.getJSONArray("process");
-					
-					for(int i=0;i<proes.length();i++){
-						JSONObject tmpObj=proes.getJSONObject(i);
-						if(tmpObj.getInt("step")==1){
-							order_success_time.setText(tmpObj.getString("step_date"));
+					if (!job.isNull("process")) {
+						JSONArray proes = job.getJSONArray("process");
+
+						for (int i = 0; i < proes.length(); i++) {
+							JSONObject tmpObj = proes.getJSONObject(i);
+							if (tmpObj.getInt("step") == 1) {
+								order_success_time.setText(tmpObj
+										.getString("step_date"));
+							}
+							if (tmpObj.getInt("step") == 2) {
+								match_time.setText(tmpObj
+										.getString("step_date"));
+							}
+							if (tmpObj.getInt("step") == 3) {
+								waiter_time.setText(tmpObj
+										.getString("step_date"));
+							}
+							if (tmpObj.getInt("step") == 4) {
+								completeLinear.setVisibility(View.VISIBLE);
+								service_done_time.setText(tmpObj
+										.getString("step_date"));
+							}
 						}
-						if(tmpObj.getInt("step")==2){
-							match_time.setText(tmpObj.getString("step_date"));
-						}
-						if(tmpObj.getInt("step")==3){
-							waiter_time.setText(tmpObj.getString("step_date"));
-						}
-						if(tmpObj.getInt("step")==4){
-							completeLinear.setVisibility(View.VISIBLE);
-							service_done_time.setText(tmpObj.getString("step_date"));
-						}
+
 					}
-					
-					
 				}
 				
 			}

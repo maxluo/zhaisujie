@@ -93,13 +93,13 @@ public class OrderFrstActivity extends BaseActivity {
          if(mHour>=9&&mHour<13){
 	         c.add(Calendar.HOUR_OF_DAY, 6);
 	         mHour=c.get(Calendar.HOUR_OF_DAY);
-         }
+         }else
          if(mHour>13&&mHour<17){
         	 mHour=9+(6-(18-mHour));
         	 c.add(Calendar.DAY_OF_MONTH, 1);
         	 mDay = c.get(Calendar.DAY_OF_MONTH);
-         }
-         if(mHour>=17&&mHour<9){
+         }else
+         if(mHour>=17){
         	 mHour=9+6;
         	 c.add(Calendar.DAY_OF_MONTH, 1);
         	 mDay = c.get(Calendar.DAY_OF_MONTH);
