@@ -131,7 +131,7 @@ public class ValidUtil {
 		case 6:
 			str="Áù";
 			break;
-		case 7:
+		case 0:
 			str="ÈÕ";
 			break;
 		default:

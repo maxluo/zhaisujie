@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.ag.zhaisujie.R;
+import com.ag.zhaisujie.ValidUtil;
 
 /**
  *    DateTimeDialog.java
@@ -37,7 +38,6 @@ public class DateTimeDialog extends AlertDialog implements
 		mCallBack = callBack;
 		mCalendar=Calendar.getInstance();
 		mCalendar.set(mYear, mMonth, mDay, mHour, mMin);
-		
 	    setButton(context.getText(R.string.ok),this);
 	    setButton2(context.getText(R.string.cancle), (OnClickListener) null);
 		//setIcon(R.drawable.ic_launcher);
@@ -51,7 +51,7 @@ public class DateTimeDialog extends AlertDialog implements
 		textSize = adjustFontSize(getWindow().getWindowManager()); 
 		arrayOfString1=new String[7];
 		for(int i=0;i<7;i++){
-			arrayOfString1[i]=mCalendar.get(Calendar.MONTH) +"月"+mCalendar.get(Calendar.DAY_OF_MONTH)+"日"+"  周"+mCalendar.get(Calendar.DAY_OF_WEEK);
+			arrayOfString1[i]=mCalendar.get(Calendar.MONTH) +"月"+mCalendar.get(Calendar.DAY_OF_MONTH)+"日";//+"  周"+ValidUtil.convertWeekShow(mCalendar.get(Calendar.DAY_OF_WEEK_IN_MONTH)-1);
 			mCalendar.add(Calendar.DAY_OF_MONTH, 1);
 		}
 		// 月
